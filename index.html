@@ -114,10 +114,6 @@ Paso 13. I &lt;-- REA
 
 Paso 14. CAR &lt;-- J
    (Usa J=8. Se intenta asignar un 'entero' (8) a un 'caracter' (CAR). Esto es un Error de Tipo)</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/1.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -132,6 +128,10 @@ Paso 14. CAR &lt;-- J
             
             <div class="tip-box">
               <strong>Tip:</strong> Puedes crear un programa en Java (`TrazaMemoria.java`) e imprimir las variables después de cada paso. ¡Esto te ayudará a verificar tu traza manual!
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/1.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -163,10 +163,6 @@ Paso 14. CAR &lt;-- J
             <h3>Ejemplo de uso esperado</h3>
             <pre><code class="code-block">Introduce el número de días: 3
 En 3 días, hay 259200.0 segundos.</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/2.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -180,6 +176,10 @@ En 3 días, hay 259200.0 segundos.</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> Puedes usar `System.out.printf("En %d días, hay %.0f segundos.\n", dias, seg);` para mostrar el resultado sin decimales (`.0f`).
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/2.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -214,10 +214,6 @@ La temperatura es: 43.75 grados Fahrenheit.
 --- (Si se ejecuta de nuevo) ---
 Introduce el número de sonidos por minuto (N): -5
 (El programa termina sin imprimir nada)</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/3.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -230,6 +226,10 @@ Introduce el número de sonidos por minuto (N): -5
             
             <div class="tip-box">
               <strong>¡Cuidado con la división entera!</strong> Si escribes `N / 4`, Java (siendo `N` un `int`) descartará los decimales. Debes forzar una división real usando `(double)N / 4`.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/3.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -268,10 +268,6 @@ Ingresa el número 4: 0
 Ingresa el número 5: 100
 -------------------------------------------
 El número total de 'ceros' ingresados fue: 2</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/4.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -284,6 +280,10 @@ El número total de 'ceros' ingresados fue: 2</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> El `System.out.println(CUECER)` debe ir *fuera* y *después* del bucle `for`. Si lo pones dentro, imprimirás el conteo en cada paso.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/4.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -343,6 +343,10 @@ RECAUDACION TOTAL DEL ESTADIO: $...</code></pre>
             <div class="tip-box">
               <strong>Tip:</strong> El patrón de "leer antes del bucle" y "volver a leer al final del bucle" es fundamental para los bucles `while` controlados por centinela.
             </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/5.png')">📊 Ver diagrama de flujo</button>
+            </div>
           </aside>
         </div>
       </article>
@@ -392,10 +396,6 @@ Ingrese valor 7: 10
 8
 9
 10</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/6.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -408,6 +408,10 @@ Ingrese valor 7: 10
             
             <div class="tip-box">
               <strong>Tip:</strong> El algoritmo funciona porque el arreglo está ordenado. El bucle externo imprime un número, y el bucle interno avanza el índice `I` hasta que encuentra un número *diferente*.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/6.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -448,10 +452,6 @@ En el mes 5, se registró el mayor costo de producción de dulces.
 Promedio anual de costos de producción de bebidas: 180.50
 En el mes 8, se registró el mayor costo de ... y en el mes 2, el menor costo.
 El departamento 3 tuvo el menor costo en diciembre.</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/7.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -466,6 +466,10 @@ El departamento 3 tuvo el menor costo en diciembre.</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> Ten cuidado con los índices. El mes "Enero" (mes 1) es la fila `[0]`. El "Depto 1" es la columna `[0]`. "Diciembre" (mes 12) es la fila `[11]`.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/7.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -511,10 +515,6 @@ Nombre: Ana
 Número de empleado: 10
 ...
 Elija una opción: 4</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/8.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -529,6 +529,10 @@ Elija una opción: 4</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> Es una excelente práctica separar la lógica de cada inciso del menú en su propia **función** (método estático). Por ejemplo: `public static void encontrarVentaMaxima(Empleado[] empleados) { ... }`
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/8.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -565,10 +569,6 @@ Ingrese el valor del Seno: 1.0
 Ingrese el valor del Coseno: 0
 Error: El coseno es 0.
 La tangente no está definida (división por cero).</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/9.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -581,6 +581,10 @@ La tangente no está definida (división por cero).</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> Esto se llama "programación defensiva". Anticipas los errores (como la división por cero) y los manejas antes de que rompan tu programa.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/9.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -617,10 +621,6 @@ Ingrese el valor del Seno: 0
 Ingrese el valor del Coseno: 1.0
 Error: El seno es 0.
 La cotangente no está definida (división por cero).</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/10.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -632,6 +632,10 @@ La cotangente no está definida (división por cero).</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> Siempre analiza tus fórmulas. Cualquier variable que esté en un denominador (dividiendo) es un candidato para una validación con `if`.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/10.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -677,10 +681,6 @@ Ingrese las 5 calificaciones del alumno 1001:
 
 Ingrese la matrícula del alumno 2: 1002
 ... (y así 35 veces)</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/11.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -693,6 +693,10 @@ Ingrese la matrícula del alumno 2: 1002
             
             <div class="tip-box">
               <strong>Tip:</strong> Usar bucles anidados es mucho más eficiente que declarar 5 variables (`cal1`, `cal2`...). Si te pidieran 100 calificaciones, solo cambiarías el límite del bucle interno.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/11.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -744,10 +748,6 @@ Ingrese la matrícula del alumno 2: 1002
 --- RESULTADOS FINALES ---
 Mejor Alumno: Matrícula 1035 con Promedio 91.00
 Peor Alumno:  Matrícula 1001 con Promedio 84.00</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/12.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -760,6 +760,10 @@ Peor Alumno:  Matrícula 1001 con Promedio 84.00</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> La impresión de los resultados finales debe estar *fuera* del bucle principal. Solo quieres imprimir el resultado una vez al final.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/12.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -813,10 +817,6 @@ Ingrese Nombre (o 'X' para terminar): X
 --- FIN DEL PROCESAMIENTO ---
 Porcentaje de alumnas aptas: 100.00% (de 1 alumnas totales)
 No se ingresaron alumnos.</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/13.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -829,6 +829,10 @@ No se ingresaron alumnos.</code></pre>
             
             <div class="tip-box">
               <strong>¡Cuidado al dividir!</strong> Al calcular el porcentaje, asegúrate de que el divisor (`totalMujeres` o `totalHombres`) no sea 0. Usa un `if (totalMujeres > 0)` antes de dividir.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/13.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -879,10 +883,6 @@ Número 4: -2
 Números Positivos: 1
 Números Negativos: 2
 Números Nulos (cero): 1</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/14.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -894,6 +894,10 @@ Números Nulos (cero): 1</code></pre>
             
             <div class="tip-box">
               <strong>Tip:</strong> El bloque `else` final no necesita condición. Si el número no es `> 0` y no es `< 0`, lógicamente la única opción que queda es que sea `== 0`.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/14.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -954,10 +958,6 @@ b) Promedio de calificaciones por alumno:
 
 c) Examen con el mayor promedio:
    El Examen 1 tuvo el mayor promedio: 85.30</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/15.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -970,6 +970,10 @@ c) Examen con el mayor promedio:
             
             <div class="tip-box">
               <strong>Tip:</strong> Piensa en los bucles anidados como un reloj. El bucle externo es el horario (avanza lento) y el interno es el minutero (da una vuelta completa por cada hora).
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/15.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
@@ -1018,10 +1022,6 @@ Ingrese un nombre a buscar (o 'SALIR' para terminar): Ana
 
 Ingrese un nombre a buscar (o 'SALIR' para terminar): SALIR
 --- Directorio cerrado ---</code></pre>
-            
-            <div class="diagram-button-container">
-              <button class="diagram-button" onclick="openDiagram('img/16.png')">📊 Ver diagrama de flujo</button>
-            </div>
           </section>
           
           <aside class="exercise-sidebar">
@@ -1034,6 +1034,10 @@ Ingrese un nombre a buscar (o 'SALIR' para terminar): SALIR
             
             <div class="tip-box">
               <strong>Tip:</strong> Usa `.equalsIgnoreCase()` en lugar de `==` para comparar `String`s. `==` compara la memoria, `.equals()` compara el contenido.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/16.png')">📊 Ver diagrama de flujo</button>
             </div>
           </aside>
         </div>
