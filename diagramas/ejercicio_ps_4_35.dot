@@ -1,0 +1,29 @@
+digraph Ejercicio_PS_4_35_Directorio_Telefonico {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    create_array [label="Crear arrays\nde nombre y teléfono"];
+    mostrar_menu [label="Mostrar menú\nde opciones"];
+    read_opcion [label="Leer comando"];
+    check_comando [label="¿Qué comando?"];
+    opcion_agregar [label="AGREGAR:\nAñadir contacto"];
+    opcion_buscar [label="BUSCAR:\nEncontrar\ncontacto"];
+    opcion_listar [label="LISTAR:\nMostrar todos"];
+    opcion_salir [label="SALIR:\nTerminar"];
+    salir_check [label="¿Salir?"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> create_array -> mostrar_menu -> read_opcion -> check_comando;
+    check_comando -> opcion_agregar [label="AGREGAR"];
+    check_comando -> opcion_buscar [label="BUSCAR"];
+    check_comando -> opcion_listar [label="LISTAR"];
+    check_comando -> opcion_salir [label="SALIR"];
+    opcion_agregar -> salir_check;
+    opcion_buscar -> salir_check;
+    opcion_listar -> salir_check;
+    opcion_salir -> end;
+    salir_check -> mostrar_menu [label="No"];
+    salir_check -> mostrar_menu [label="Sí"];
+}

@@ -1,0 +1,21 @@
+digraph Ejercicio_PS_2_2_Cotangente {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    input [label="Leer ángulo (radianes)"];
+    calc_seno [label="seno = Math.sin(ángulo)"];
+    calc_coseno [label="coseno = Math.cos(ángulo)"];
+    condition [label="¿seno != 0?"];
+    calc_cot [label="cotangente = coseno / seno"];
+    print_result [label="Mostrar cotangente\ncon 4 decimales"];
+    print_error [label="Mostrar 'Error:\nNo puede calcular'"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> input -> calc_seno -> calc_coseno -> condition;
+    condition -> calc_cot [label="Sí"];
+    condition -> print_error [label="No"];
+    calc_cot -> print_result -> end;
+    print_error -> end;
+}

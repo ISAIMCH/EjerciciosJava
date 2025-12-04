@@ -1,0 +1,19 @@
+digraph Ejercicio_PS_3_23_Promedio_Alumnos {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    create_matriz [label="Crear matriz 35x5"];
+    loop_alumnos [label="Para alumno=0 a 34"];
+    loop_califs [label="Para calificación=0 a 4\nleer valor"];
+    suma_cal [label="suma = 0"];
+    loop_calc [label="Para cada calificación\nsuma += valor"];
+    promedio [label="promedio = suma / 5"];
+    print_prom [label="Mostrar promedio\ndel alumno"];
+    next_alumno [label="Siguiente alumno"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> create_matriz -> loop_alumnos -> loop_califs -> suma_cal -> loop_calc -> promedio -> print_prom -> next_alumno -> loop_alumnos;
+    loop_alumnos -> end [label="Fin bucle"];
+}

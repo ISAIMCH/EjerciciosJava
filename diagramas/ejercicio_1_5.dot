@@ -1,0 +1,20 @@
+digraph Ejercicio_1_5_Traza_Memoria {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    decl [label="Declarar variables:\nint, double, char, boolean"];
+    init1 [label="a = 10, b = 3"];
+    init2 [label="c = a + b"];
+    init3 [label="d = a * b"];
+    init4 [label="e = (double)a / b"];
+    init5 [label="f = Math.pow(2, 3)"];
+    init6 [label="g = 'A'"];
+    logic1 [label="h = (a > 5) && (b < 10)"];
+    logic2 [label="i = (a == 10) || (b == 5)"];
+    print1 [label="Mostrar traza de memoria"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> decl -> init1 -> init2 -> init3 -> init4 -> init5 -> init6 -> logic1 -> logic2 -> print1 -> end;
+}

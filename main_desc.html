@@ -1,0 +1,1083 @@
+
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de Programación en Java</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+</head>
+<body>
+  <!-- Modal para mostrar diagramas -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="diagramImage" src="" alt="Diagrama de flujo">
+    </div>
+  </div>
+
+  <div class="container">
+    <header class="page-header" id="top">
+      <h1>Ejercicios de Programación Estructurada en Java</h1>
+      <p class="subtitle">Conceptos básicos de algoritmos, variables, condicionales y ciclos.</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <div class="nav-grid">
+        <a href="#traza-memoria" class="nav-link">1.5</a>
+        <a href="#segundos-dias" class="nav-link">1.6</a>
+        <a href="#grillo-temperatura" class="nav-link">2.1</a>
+        <a href="#contar-ceros" class="nav-link">3.3</a>
+        <a href="#estadio-precios" class="nav-link">3.14</a>
+        <a href="#lista-sin-repeticiones" class="nav-link">4.1</a>
+        <a href="#produccion-deptos" class="nav-link">4.14</a>
+        <a href="#empleados-tienda" class="nav-link">5.2</a>
+        <a href="#calcular-tangente" class="nav-link">PS 2.1</a>
+        <a href="#calcular-cotangente" class="nav-link">PS 2.2</a>
+        <a href="#promedios-ciclo" class="nav-link">PS 3.23</a>
+        <a href="#promedio-maxmin" class="nav-link">PS 3.24</a>
+        <a href="#aptitudes-basquet" class="nav-link">PS 3.25</a>
+        <a href="#contar-arreglo" class="nav-link">PS 4.3</a>
+        <a href="#calificaciones-grupo" class="nav-link">PS 4.19</a>
+        <a href="#directorio-telefonico" class="nav-link">PS 4.35</a>
+      </div>
+    </nav>
+
+    <main class="exercises-main">
+      
+      <article id="traza-memoria" class="exercise-card" aria-labelledby="traza-memoria-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio 1.5</span>
+          <h2 id="traza-memoria-title">Prueba de Escritorio (Traza de Memoria)</h2>
+          <p class="exercise-description">
+            Este es un ejercicio fundamental de "lápiz y papel". El objetivo es simular
+            lo que hace la computadora paso a paso para entender cómo cambian los valores de las
+            variables en la memoria.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Toma el código del ejercicio 1.5 y realiza lo siguiente (no necesitas programar):</p>
+            <ul>
+              <li>Crea una tabla en una hoja de papel con columnas para cada variable: `I`, `J`, `ACUM`, `REA`, `SUM`, `CAR`, `BAND`.</li>
+              <li>Sigue la secuencia de 14 asignaciones, una por una.</li>
+              <li>Para cada paso, calcula el resultado de la derecha y anota el nuevo valor en la celda correspondiente de tu tabla.</li>
+              <li>Presta mucha atención a los tipos de datos: `div` es división entera (sin decimales), mientras que `/` es división real.</li>
+              <li>Evalúa las condiciones lógicas (`y`, `o`) para obtener `VERDADERO` o `FALSO`.</li>
+              <li>Identifica las líneas (13 y 14) que causan un error de tipo.</li>
+            </ul>
+            
+            <h3>Ejemplo de seguimiento</h3>
+            <pre><code class="code-block">Estado Inicial: I=indef, J=indef, ACUM=indef, REA=indef, SUM=indef, CAR=indef, BAND=indef
+
+Paso 1. I &lt;-- 0
+   (I se vuelve 0. Valor actual en memoria: I=0)
+
+Paso 2. I &lt;-- I + 1
+   (Usa I=0. 0 + 1 = 1. I se vuelve 1. Valor actual: I=1)
+
+Paso 3. ACUM &lt;-- 0
+   (ACUM se vuelve 0. Valor actual: ACUM=0)
+
+Paso 4. J &lt;-- 5 ** 2 div 3
+   (5^2 = 25. 25 div 3 = 8 (división entera). J se vuelve 8. Valor actual: J=8)
+
+Paso 5. CAR &lt;-- 'a'
+   (CAR se vuelve 'a'. Valor actual: CAR='a')
+
+Paso 6. ACUM &lt;-- J div I
+   (Usa J=8, I=1. 8 div 1 = 8. ACUM se vuelve 8. Valor actual: ACUM=8)
+
+Paso 7. REA &lt;-- ACUM / 3
+   (Usa ACUM=8. 8 / 3 = 2.666... (división real). REA se vuelve 2.66... Valor actual: REA=2.66...)
+   (Nota: La tabla del libro lo trunca a 2.66)
+
+Paso 8. BAND &lt;-- (8 &gt; 5) y (15 &lt; 2 ** 3)
+   (P1: 8&gt;5 es VERDADERO. P2: 2^3=8. 15&lt;8 es FALSO. VERDADERO y FALSO = FALSO. BAND se vuelve FALSO)
+
+Paso 9. SUM &lt;-- ACUM * 5 / J ** 2
+   (Usa ACUM=8, J=8. (8 * 5) / (8^2) = 40 / 64 = 0.625. SUM se vuelve 0.625)
+
+Paso 10. I &lt;-- I * 3
+   (Usa I=1. 1 * 3 = 3. I se vuelve 3. Valor actual: I=3)
+
+Paso 11. REA &lt;-- REA / 5
+   (Usa el valor de REA del paso 7. La tabla del libro usa el valor truncado 2.66. 2.66 / 5 = 0.532. REA se vuelve 0.532)
+
+Paso 12. BAND &lt;-- BAND o (I = J)
+   (Usa BAND=FALSO, I=3, J=8. P2: (3=8) es FALSO. FALSO o FALSO = FALSO. BAND se vuelve FALSO)
+
+Paso 13. I &lt;-- REA
+   (Usa REA=0.532. Se intenta asignar un 'real' (0.532) a un 'entero' (I). Esto es un Error de Tipo)
+
+Paso 14. CAR &lt;-- J
+   (Usa J=8. Se intenta asignar un 'entero' (8) a un 'caracter' (CAR). Esto es un Error de Tipo)</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/1.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El operador `**` significa potencia.</li>
+              <li>`div` es **división entera** (cuántas veces cabe, sin residuo).</li>
+              <li>`/` es **división real** (con decimales).</li>
+              <li>`y` (AND) solo es `VERDADERO` si ambas partes son `VERDADERO`.</li>
+              <li>`o` (OR) es `VERDADERO` si al menos una parte es `VERDADERO`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes crear un programa en Java (`TrazaMemoria.java`) e imprimir las variables después de cada paso. ¡Esto te ayudará a verificar tu traza manual!
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="segundos-dias" class="exercise-card" aria-labelledby="segundos-dias-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 1.6</span>
+          <h2 id="segundos-dias-title">Segundos en Días</h2>
+          <p class="exercise-description">
+            Este es tu primer programa completo con la estructura **Entrada-Proceso-Salida**.
+            Aprenderás a pedir un dato al usuario, realizar un cálculo simple y mostrar
+            un resultado formateado.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa llamado `SegundosEnDias.java` que haga lo siguiente:</p>
+            <ul>
+              <li>Importa la herramienta `Scanner` para leer la entrada del teclado: `import java.util.Scanner;`</li>
+              <li>Crea un objeto `Scanner`: `Scanner scanner = new Scanner(System.in);`</li>
+              <li>Pide al usuario que ingrese un número de días (ej. "Introduce el número de días: ").</li>
+              <li>Lee el número y guárdalo en una variable entera: `int dias = scanner.nextInt();`</li>
+              <li>Calcula los segundos en una variable `double` (para números grandes): `double seg = dias * 24 * 60 * 60;`</li>
+              <li>Imprime el resultado de forma clara.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Introduce el número de días: 3
+En 3 días, hay 259200.0 segundos.</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/2.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>`Scanner` es la herramienta estándar de Java para leer la entrada de la consola.</li>
+              <li>`System.out.print()` imprime un mensaje sin saltar de línea.</li>
+              <li>`scanner.nextInt()` lee el siguiente número entero que el usuario teclee.</li>
+              <li>Usamos `double` para el resultado porque `int` podría quedarse sin espacio si el número de días es muy grande (esto se llama *overflow*).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes usar `System.out.printf("En %d días, hay %.0f segundos.\n", dias, seg);` para mostrar el resultado sin decimales (`.0f`).
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="grillo-temperatura" class="exercise-card" aria-labelledby="grillo-temperatura-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 2.1</span>
+          <h2 id="grillo-temperatura-title">El Grillo como Termómetro</h2>
+          <p class="exercise-description">
+            Aquí introduces la estructura de control más importante: la **selección**.
+            Aprenderás a usar la sentencia `if` para tomar decisiones y ejecutar código
+            solo si se cumple una condición específica.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `GrilloTemperatura.java` que:</p>
+            <ul>
+              <li>Pida al usuario el número de sonidos por minuto (`int N`).</li>
+              <li>Utilice una sentencia `if` para verificar si `N` es mayor que 0: `if (N > 0) { ... }`</li>
+              <li>**Dentro del 'if'**, calcula la temperatura: `double T = (double)N / 4 + 40;`</li>
+              <li>**Dentro del 'if'**, imprime la temperatura calculada.</li>
+              <li>Si el usuario ingresa 0 o un número negativo, el programa no debe imprimir nada y simplemente terminar.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Introduce el número de sonidos por minuto (N): 15
+La temperatura es: 43.75 grados Fahrenheit.
+
+--- (Si se ejecuta de nuevo) ---
+Introduce el número de sonidos por minuto (N): -5
+(El programa termina sin imprimir nada)</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/3.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El rombo (`&lt; &gt;`) en un diagrama de flujo siempre se traduce como un `if` en Java.</li>
+              <li>La condición se escribe entre paréntesis: `if (N > 0)`.</li>
+              <li>El código que depende de la condición va entre llaves `{ ... }`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>¡Cuidado con la división entera!</strong> Si escribes `N / 4`, Java (siendo `N` un `int`) descartará los decimales. Debes forzar una división real usando `(double)N / 4`.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="contar-ceros" class="exercise-card" aria-labelledby="contar-ceros-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 3.3</span>
+          <h2 id="contar-ceros-title">Contar Ceros</h2>
+          <p class="exercise-description">
+            Este ejercicio introduce tu primera **estructura repetitiva** (bucle).
+            Aprenderás a usar el bucle `for` para repetir un bloque de código un
+            número de veces que el usuario decida.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `ContarCeros.java` que:</p>
+            <ul>
+              <li>Primero, pregunte al usuario cuántos números va a ingresar. Guarda este límite en una variable `int N`.</li>
+              <li>Antes de empezar a contar, inicializa un **contador** en cero: `int CUECER = 0;`</li>
+              <li>Crea un bucle `for` que se ejecute `N` veces. La sintaxis es: `for (int i = 1; i <= N; i++) { ... }`</li>
+              <li>**Dentro del bucle**, pide al usuario que ingrese un número (`int NUM`).</li>
+              <li>**Dentro del bucle**, usa un `if (NUM == 0)` para verificar si el número es cero.</li>
+              <li>Si lo es, incrementa tu contador: `CUECER = CUECER + 1;` (o `CUECER++;`).</li>
+              <li>**Después de que el bucle termine**, imprime el valor final del contador `CUECER`.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">¿Cuántos números enteros vas a ingresar?: 5
+Ingresa el número 1: 28
+Ingresa el número 2: 0
+Ingresa el número 3: -15
+Ingresa el número 4: 0
+Ingresa el número 5: 100
+-------------------------------------------
+El número total de 'ceros' ingresados fue: 2</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/4.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Un **contador** es una variable que se usa para llevar la cuenta de algo. Siempre debe inicializarse en 0.</li>
+              <li>Un bucle `for` es perfecto cuando sabes de antemano cuántas veces quieres que se repita el código.</li>
+              <li>`i++` es un atajo para `i = i + 1`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El `System.out.println(CUECER)` debe ir *fuera* y *después* del bucle `for`. Si lo pones dentro, imprimirás el conteo en cada paso.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="estadio-precios" class="exercise-card" aria-labelledby="estadio-precios-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 3.14</span>
+          <h2 id="estadio-precios-title">Taquilla del Estadio</h2>
+          <p class="exercise-description">
+            Este problema combina bucles y condicionales. Aprenderás a usar el bucle `while` para
+            procesar un número *indeterminado* de datos, deteniéndote con un **valor centinela**.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `EstadioPrecios.java` que:</p>
+            <ul>
+              <li>Declare e inicialice en 0 todos los **acumuladores**: `AP1`...`AP5` (para boletos) y `RECAU` (para el dinero).</li>
+              <li>Pida al usuario que ingrese los 5 precios (`P1`...`P5`).</li>
+              <li>Pida la `CLAVE` y `CANT` de la primera venta. (Esto se llama "lectura cebadora").</li>
+              <li>Inicie un bucle `while` que se repita mientras la `CLAVE` sea diferente de -1: `while (CLAVE != -1) { ... }`</li>
+              <li>**Dentro del bucle**, usa un `switch (CLAVE)` para determinar qué precio usar (`P1`...`P5`) y qué acumulador (`AP1`...`AP5`) incrementar.</li>
+              <li>Calcula el precio de esa venta (`PRE`) e incremente la recaudación total: `RECAU = RECAU + PRE;`.</li>
+              <li>**Al final del bucle**, vuelve a pedir la `CLAVE` y `CANT` para la siguiente venta.</li>
+              <li>**Después del bucle**, imprime el reporte final con los totales de `AP1`...`AP5` y `RECAU`.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese los 5 precios...
+P1: 100
+...
+P5: 50
+--- Ingrese la primera venta ---
+Clave del boleto (1-5) o -1 para terminar: 2
+Cantidad de boletos: 3
+Venta procesada: Clave 2, Cant 3, Importe $...
+--- Siguiente Venta ---
+Clave del boleto (1-5) o -1 para terminar: -1
+--- FIN DE VENTAS ---
+--- REPORTE FINAL ---
+CANTIDAD BOLETOS TIPO 1: 0
+CANTIDAD BOLETOS TIPO 2: 3
+...
+RECAUDACION TOTAL DEL ESTADIO: $...</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Un **valor centinela** (como -1) es una señal para que un bucle `while` sepa cuándo detenerse.</li>
+              <li>Un **acumulador** es una variable que "suma" valores, no solo cuenta de 1 en 1.</li>
+              <li>Un `switch` es una forma limpia de manejar múltiples `if` basados en el valor de una sola variable.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El patrón de "leer antes del bucle" y "volver a leer al final del bucle" es fundamental para los bucles `while` controlados por centinela.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="lista-sin-repeticiones" class="exercise-card" aria-labelledby="lista-sin-repeticiones-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.1</span>
+          <h2 id="lista-sin-repeticiones-title">Lista Sin Repeticiones</h2>
+          <p class="exercise-description">
+            Introduce las **estructuras de datos: arreglos (arrays)**. Aprenderás a
+            declarar un arreglo, llenarlo con datos y procesarlo usando **bucles anidados**
+            (un bucle dentro de otro).
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `ListaSinRepeticiones.java` que:</p>
+            <ul>
+              <li>Pida al usuario el tamaño del arreglo (`int N`).</li>
+              <li>Cree el arreglo: `int[] VEC = new int[N];`</li>
+              <li>Llene el arreglo usando un bucle `for` (de `i = 0` hasta `N-1`).</li>
+              <li>Imprima el encabezado "Lista de números sin repeticiones".</li>
+              <li>Use un bucle `while` para recorrer el arreglo (con un índice `I = 0`).</li>
+              <li>**Dentro del `while`**:
+                <ol>
+                  <li>Imprime el valor actual: `System.out.println(VEC[I]);`</li>
+                  <li>Guarda ese valor: `int REPET = VEC[I];`</li>
+                  <li>Inicia un **bucle anidado**: `while (I < N && REPET == VEC[I]) { ... }`</li>
+                  <li>Lo único dentro del bucle anidado es: `I++;`. Esto "saltará" todos los duplicados.</li>
+                </ol>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingresa número de elementos: 7
+Ingrese valor 1: 5
+Ingrese valor 2: 5
+Ingrese valor 3: 5
+Ingrese valor 4: 8
+Ingrese valor 5: 9
+Ingrese valor 6: 9
+Ingrese valor 7: 10
+
+--- Lista de números sin repeticiones ---
+5
+8
+9
+10</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/6.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Los arreglos en Java y muchos lenguajes usan **índice base 0**. El primer elemento está en `VEC[0]`, el segundo en `VEC[1]`, etc.</li>
+              <li>El último elemento está en `VEC[N-1]`.</li>
+              <li>Un bucle anidado es un bucle que se ejecuta completamente dentro de una iteración de otro bucle.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El algoritmo funciona porque el arreglo está ordenado. El bucle externo imprime un número, y el bucle interno avanza el índice `I` hasta que encuentra un número *diferente*.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="produccion-deptos" class="exercise-card" aria-labelledby="produccion-deptos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.14</span>
+          <h2 id="produccion-deptos-title">Producción por Departamentos</h2>
+          <p class="exercise-description">
+            Introduce los **arreglos bidimensionales (matrices)**. Aprenderás a
+            almacenar y procesar datos en una cuadrícula (filas y columnas)
+            para responder preguntas analíticas.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `ProduccionDepartamentos.java` que:</p>
+            <ul>
+              <li>Declare una matriz de 12x3: `double[][] prod = new double[12][3];` (12 meses, 3 deptos).</li>
+              <li>Use bucles anidados (`for i...` y `for j...`) para llenar la matriz con 36 datos.</li>
+              <li>**Inciso a):** Use un bucle `for` (de `i = 0` a 11) para recorrer la **columna 0** (`prod[i][0]`) y encontrar el costo más alto (`MAYDUL`) y el mes (`MES`) en que ocurrió.</li>
+              <li>**Inciso b):** Use un bucle `for` (de `i = 0` a 11) para sumar todos los valores de la **columna 1** (`prod[i][1]`) y calcular el promedio.</li>
+              <li>**Inciso c):** Combine la lógica del inciso 'a' para encontrar el máximo y el mínimo de la **columna 1** (`prod[i][1]`) y sus respectivos meses.</li>
+              <li>**Inciso d):** Use un bucle `for` (de `j = 0` a 2) para recorrer la **fila 11** (`prod[11][j]`) y encontrar el costo más bajo (`MENOR`) y el depto (`DEP`) en que ocurrió.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">--- Ingrese los costos de producción ---
+Mes 1, Depto 1: 100
+Mes 1, Depto 2: 150
+...
+Mes 12, Depto 3: 200
+
+--- Resultados del Análisis ---
+En el mes 5, se registró el mayor costo de producción de dulces.
+Promedio anual de costos de producción de bebidas: 180.50
+En el mes 8, se registró el mayor costo de ... y en el mes 2, el menor costo.
+El departamento 3 tuvo el menor costo en diciembre.</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/7.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Una matriz se declara como `tipo[][] nombre;`.</li>
+              <li>Se accede a un elemento con `nombre[fila][columna]`.</li>
+              <li>En Java, las filas y columnas empiezan en el índice 0.</li>
+              <li>Recorrer una **columna** significa mantener la `j` fija y mover la `i`.</li>
+              <li>Recorrer una **fila** significa mantener la `i` fija y mover la `j`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Ten cuidado con los índices. El mes "Enero" (mes 1) es la fila `[0]`. El "Depto 1" es la columna `[0]`. "Diciembre" (mes 12) es la fila `[11]`.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="empleados-tienda" class="exercise-card" aria-labelledby="empleados-tienda-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 5.2</span>
+          <h2 id="empleados-tienda-title">Gestión de Empleados (Registros)</h2>
+          <p class="exercise-description">
+            Este es un ejercicio avanzado que introduce los **Arreglos de Registros**. En Java,
+            esto se implementa creando una **Clase** (un molde) y luego creando un
+            **Arreglo de Objetos** de esa clase.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ol>
+              <li>Crea una **clase `Empleado`** (en el mismo archivo o en uno nuevo) que sirva como "registro". Debe tener los atributos: `int numero;`, `String nombre;`, `double salario;`, `double[] ventas;`.</li>
+              <li>En el constructor de la clase `Empleado`, inicializa el arreglo: `ventas = new double[12];`</li>
+              <li>En tu programa principal (`EmpleadosTienda.java`), crea un arreglo de estos objetos: `Empleado[] empleados = new Empleado[N];`</li>
+              <li>Usa un bucle (`for i...`) para llenar el arreglo. ¡Recuerda crear el objeto en cada posición: `empleados[i] = new Empleado();`!</li>
+              <li>Dentro de ese bucle, usa un **bucle anidado** (`for j...`) para leer las 12 ventas de `empleados[i].ventas[j]`.</li>
+              <li>Crea un menú con un bucle `do-while` y un `switch` para las opciones (1, 2, 3, 4).</li>
+              <li>Implementa la lógica para cada inciso (Venta Máxima, Incremento, Ventas Mínimas) recorriendo el arreglo de empleados.</li>
+            </ol>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese número de empleados: 2
+--- Datos del Empleado 1 ---
+Número: 10
+Nombre: Ana
+...
+--- MENÚ DE OPCIONES ---
+(1) Empleado con mayor venta
+...
+(4) Terminar
+Elija una opción: 1
+
+--- Empleado con Mayores Ventas ---
+Nombre: Ana
+Número de empleado: 10
+...
+Elija una opción: 4</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/8.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Un **Registro** (en pseudocódigo) es una **Clase** (en Java).</li>
+              <li>Un **Objeto** es una instancia de una Clase.</li>
+              <li>`empleados[i]` te da el objeto `Empleado` en la posición `i`.</li>
+              <li>`empleados[i].nombre` te da el nombre de ese empleado.</li>
+              <li>`empleados[i].ventas[j]` te da la venta del mes `j` del empleado `i`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Es una excelente práctica separar la lógica de cada inciso del menú en su propia **función** (método estático). Por ejemplo: `public static void encontrarVentaMaxima(Empleado[] empleados) { ... }`
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="calcular-tangente" class="exercise-card" aria-labelledby="calcular-tangente-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 2.1</span>
+          <h2 id="calcular-tangente-title">Calcular Tangente</h2>
+          <p class="exercise-description">
+            Este ejercicio refuerza el uso de la estructura `if-else` para la
+            **validación de datos**. Aprenderás a prevenir un error matemático común:
+            la división por cero.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `CalcularTangente.java` que:</p>
+            <ul>
+              <li>Pida al usuario dos valores: `double seno` y `double coseno`.</li>
+              <li>Verifique si el coseno es diferente de cero: `if (coseno != 0) { ... }`</li>
+              <li>**Si es diferente de 0**, calcula la tangente: `double tangente = seno / coseno;` e imprime el resultado.</li>
+              <li>**Si es igual a 0**, usa un bloque `else` para imprimir un mensaje de error: `else { System.out.println("Error: El coseno es 0..."); }`</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el valor del Seno: 0.866
+Ingrese el valor del Coseno: 0.5
+La tangente es: 1.7320
+
+--- (Si se ejecuta de nuevo) ---
+Ingrese el valor del Seno: 1.0
+Ingrese el valor del Coseno: 0
+Error: El coseno es 0.
+La tangente no está definida (división por cero).</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/9.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>`!=` significa "diferente de".</li>
+              <li>`==` significa "igual a".</li>
+              <li>La estructura `if-else` es perfecta para manejar dos caminos mutuamente excluyentes (un cálculo exitoso o un error).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Esto se llama "programación defensiva". Anticipas los errores (como la división por cero) y los manejas antes de que rompan tu programa.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="calcular-cotangente" class="exercise-card" aria-labelledby="calcular-cotangente-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 2.2</span>
+          <h2 id="calcular-cotangente-title">Calcular Cotangente</h2>
+          <p class="exercise-description">
+            Similar al ejercicio anterior, este problema refuerza la validación de datos
+            con `if-else`, pero esta vez debes validar una variable diferente (el seno)
+            para la fórmula de la cotangente.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `CalcularCotangente.java` que:</p>
+            <ul>
+              <li>Pida al usuario `double seno` y `double coseno`.</li>
+              <li>Verifique si el **seno** es diferente de cero: `if (seno != 0) { ... }`</li>
+              <li>**Si es diferente de 0**, calcula la cotangente: `double cotangente = coseno / seno;` e imprime el resultado.</li>
+              <li>**Si es igual a 0**, usa un bloque `else` para imprimir un mensaje de error.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese el valor del Seno: 0.5
+Ingrese el valor del Coseno: 0.866
+La cotangente es: 1.7320
+
+--- (Si se ejecuta de nuevo) ---
+Ingrese el valor del Seno: 0
+Ingrese el valor del Coseno: 1.0
+Error: El seno es 0.
+La cotangente no está definida (división por cero).</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/10.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>La lógica es idéntica al ejercicio de la tangente, pero el denominador ha cambiado.</li>
+              <li>El objetivo es que aprendas a identificar qué variable *específica* necesitas validar en una fórmula.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Siempre analiza tus fórmulas. Cualquier variable que esté en un denominador (dividiendo) es un candidato para una validación con `if`.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="promedios-ciclo" class="exercise-card" aria-labelledby="promedios-ciclo-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 3.23</span>
+          <h2 id="promedios-ciclo-title">Promedio de Alumnos (con Ciclo)</h2>
+          <p class="exercise-description">
+            Este ejercicio te enseña a usar **bucles anidados** (un `for` dentro de otro `for`)
+            para procesar datos de forma estructurada. Calcularás el promedio de 35 alumnos,
+            leyendo sus 5 calificaciones una por una.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `PromediosAlumnosCiclo.java` que:</p>
+            <ul>
+              <li>Cree un bucle `for` externo que se repita 35 veces (para los alumnos).</li>
+              <li>**Dentro del bucle de alumnos**:
+                <ol>
+                  <li>Pide la matrícula del alumno.</li>
+                  <li>Inicializa un acumulador: `double suma = 0;`</li>
+                  <li>Crea un bucle `for` **interno** que se repita 5 veces (para las calificaciones).</li>
+                  <li>**Dentro del bucle interno**: Pide la calificación y súmala al acumulador: `suma = suma + calificacion;`</li>
+                  <li>**Después del bucle interno**, calcula el promedio: `double promedio = suma / 5;`</li>
+                  <li>Imprime la matrícula y el promedio de *ese* alumno.</li>
+                </ol>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese la matrícula del alumno 1: 1001
+Ingrese las 5 calificaciones del alumno 1001:
+  Calificación 1: 80
+  Calificación 2: 90
+  Calificación 3: 100
+  Calificación 4: 70
+  Calificación 5: 80
+-&gt; El promedio del alumno 1001 es: 84.00
+
+Ingrese la matrícula del alumno 2: 1002
+... (y así 35 veces)</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/11.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El bucle externo maneja a los "alumnos".</li>
+              <li>El bucle interno maneja las "calificaciones".</li>
+              <li>El acumulador `suma` **debe reiniciarse a 0** por cada nuevo alumno (al inicio del bucle externo).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Usar bucles anidados es mucho más eficiente que declarar 5 variables (`cal1`, `cal2`...). Si te pidieran 100 calificaciones, solo cambiarías el límite del bucle interno.
+            </div>
+          </aside>
+        </div>
+      </article>
+      
+      <article id="promedio-maxmin" class="exercise-card" aria-labelledby="promedio-maxmin-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 3.24</span>
+          <h2 id="promedio-maxmin-title">Mejor y Peor Promedio</h2>
+          <p class="exercise-description">
+            Este ejercicio se basa en el anterior (PS 3.23), pero añade el algoritmo de
+            **búsqueda de máximo y mínimo**. Aprenderás a "recordar" el mejor y peor
+            valor mientras recorres una lista de datos.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `PromedioMaxMin.java` que:</p>
+            <ul>
+              <li>**Antes del bucle** de 35 alumnos, inicializa 4 variables:
+                <ul>
+                  <li>`double mejorProm = -1.0;` (un valor muy bajo)</li>
+                  <li>`int matMejor = 0;`</li>
+                  <li>`double peorProm = 101.0;` (un valor muy alto)</li>
+                  <li>`int matPeor = 0;`</li>
+                </ul>
+              </li>
+              <li>Usa la misma estructura de bucles anidados del PS 3.23 para calcular el `promedio` de cada alumno.</li>
+              <li>**Dentro del bucle de alumnos** (después de calcular el promedio):
+                <ol>
+                  <li>Compara con el máximo: `if (promedio > mejorProm) { ... }`</li>
+                  <li>Si es un nuevo máximo, actualiza `mejorProm = promedio;` y `matMejor = matricula;`.</li>
+                  <li>Compara con el mínimo: `if (promedio < peorProm) { ... }`</li>
+                  <li>Si es un nuevo mínimo, actualiza `peorProm = promedio;` y `matPeor = matricula;`.</li>
+                </ol>
+              </li>
+              <li>**Después de que el bucle de 35 alumnos termine**, imprime los valores finales de `matMejor`, `mejorProm`, `matPeor` y `peorProm`.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(El programa pide los datos de los 35 alumnos...)
+
+-> Promedio del alumno 1001: 84.00
+...
+-> Promedio del alumno 1035: 91.00
+
+--- Procesamiento Terminado ---
+--- RESULTADOS FINALES ---
+Mejor Alumno: Matrícula 1035 con Promedio 91.00
+Peor Alumno:  Matrícula 1001 con Promedio 84.00</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/12.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Este algoritmo compara el valor *actual* con el "campeón" guardado.</li>
+              <li>Si el actual es mejor, se convierte en el nuevo "campeón".</li>
+              <li>Inicializar los "campeones" con valores centinela (`-1` y `101`) asegura que el primer alumno real siempre gane.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> La impresión de los resultados finales debe estar *fuera* del bucle principal. Solo quieres imprimir el resultado una vez al final.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="aptitudes-basquet" class="exercise-card" aria-labelledby="aptitudes-basquet-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 3.25</span>
+          <h2 id="aptitudes-basquet-title">Aptitudes para Básquetbol</h2>
+          <p class="exercise-description">
+            Este problema combina varias habilidades: un bucle `while` controlado por **centinela**,
+            múltiples contadores, y condiciones lógicas complejas usando el operador **Y** (`&&`).
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `AptitudesBasquet.java` que:</p>
+            <ul>
+              <li>Inicialice 4 contadores en 0: `totalMujeres`, `aptasMujeres`, `totalHombres`, `aptosHombres`.</li>
+              <li>Pida el nombre del primer alumno (lectura cebadora).</li>
+              <li>Inicie un bucle `while (!nombre.equalsIgnoreCase("X")) { ... }` (mientras el nombre no sea "X").</li>
+              <li>**Dentro del bucle**:
+                <ol>
+                  <li>Pide `SEXO`, `EDAD`, `PESO`, `ALTURA`.</li>
+                  <li>Usa un `if (sexo == 'F')`... `else if (sexo == 'M')` para separar la lógica.</li>
+                  <li>**Si es 'F'**: incrementa `totalMujeres`. Luego, con un `if` anidado, revisa la condición (a): `if (altura >= 1.73 && peso <= 90)` e incrementa `aptasMujeres`.</li>
+                  <li>**Si es 'M'**: incrementa `totalHombres`. Luego, con un `if` anidado, revisa la condición (c): `if (altura >= 1.83 && peso <= 110)` e incrementa `aptosHombres`.</li>
+                  <li>**Al final del bucle**, vuelve a pedir el `nombre` para la siguiente iteración.</li>
+                </ol>
+              </li>
+              <li>**Después del bucle**, calcula los porcentajes (b) y (d).</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese Nombre (o 'X' para terminar): Ana
+Sexo (F/M): F
+...
+Altura (m): 1.75
+Peso (kg): 60
+   (Apta) -&gt; Ana
+
+Ingrese Nombre (o 'X' para terminar): Luis
+Sexo (F/M): M
+...
+Altura (m): 1.80
+Peso (kg): 90
+(Luis no cumple la condición de altura para hombres)
+
+Ingrese Nombre (o 'X' para terminar): X
+--- FIN DEL PROCESAMIENTO ---
+Porcentaje de alumnas aptas: 100.00% (de 1 alumnas totales)
+No se ingresaron alumnos.</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/13.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>El operador "Y" en Java se escribe `&&`.</li>
+              <li>`if (condicion1 && condicion2)`: Ambas deben ser verdaderas.</li>
+              <li>`.equalsIgnoreCase("X")` compara texto ignorando mayúsculas/minúsculas.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>¡Cuidado al dividir!</strong> Al calcular el porcentaje, asegúrate de que el divisor (`totalMujeres` o `totalHombres`) no sea 0. Usa un `if (totalMujeres > 0)` antes de dividir.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="contar-arreglo" class="exercise-card" aria-labelledby="contar-arreglo-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.3</span>
+          <h2 id="contar-arreglo-title">Contar Positivos, Negativos y Nulos</h2>
+          <p class="exercise-description">
+            Un ejercicio clásico de procesamiento de arreglos. Aprenderás a "barrer" un
+            arreglo y clasificar cada elemento usando contadores y una estructura
+            `if-else if-else`.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `ContarNumerosArreglo.java` que:</p>
+            <ul>
+              <li>Pida al usuario el tamaño del arreglo (`int N`), validando que sea menor o igual a 300.</li>
+              <li>Inicialice 3 contadores en 0: `cpos`, `cneg`, `cnul`.</li>
+              <li>Cree el arreglo: `int[] ARRE = new int[N];`</li>
+              <li>Cree un **único bucle `for`** (de `i = 0` a `N-1`) que haga dos cosas:
+                <ol>
+                  <li>Pida el número y lo guarde en el arreglo: `ARRE[i] = scanner.nextInt();`</li>
+                  <li>Inmediatamente, clasifique ese número:
+                    <ul>
+                      <li>`if (ARRE[i] > 0) { cpos++; }`</li>
+                      <li>`else if (ARRE[i] < 0) { cneg++; }`</li>
+                      <li>`else { cnul++; }`</li>
+                    </ul>
+                  </li>
+                </ol>
+              </li>
+              <li>**Después del bucle**, imprima los 3 contadores.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">¿Cuántos números va a ingresar? (Máx. 300): 4
+Ingrese los 4 números enteros:
+Número 1: 10
+Número 2: -5
+Número 3: 0
+Número 4: -2
+
+--- Conteo Final ---
+Números Positivos: 1
+Números Negativos: 2
+Números Nulos (cero): 1</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/14.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>La estructura `if-else if-else` es perfecta para clasificar algo en 3 o más categorías mutuamente excluyentes.</li>
+              <li>Es más eficiente llenar y procesar el arreglo en el mismo bucle (si es posible) que recorrerlo dos veces.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El bloque `else` final no necesita condición. Si el número no es `> 0` y no es `< 0`, lógicamente la única opción que queda es que sea `== 0`.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="calificaciones-grupo" class="exercise-card" aria-labelledby="calificaciones-grupo-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.19</span>
+          <h2 id="calificaciones-grupo-title">Análisis de Calificaciones (Matriz)</h2>
+          <p class="exercise-description">
+            Un ejercicio completo de **procesamiento de matrices**. Aprenderás a
+            recorrer una matriz por filas (para promedios de alumnos) y por columnas
+            (para promedios de exámenes).
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `CalificacionesGrupo.java` que:</p>
+            <ul>
+              <li>Declare una matriz de 30x6: `double[][] calificaciones = new double[30][6];`</li>
+              <li>Use bucles anidados (`for i...` y `for j...`) para llenar la matriz.</li>
+              <li>**Inciso (a) y (c):** Promedio por Examen (recorrido por columnas).
+                <ul>
+                  <li>Crea un bucle `for j...` (externo, para columnas/exámenes).</li>
+                  <li>**Dentro**, inicializa `sumaExamen = 0;`.</li>
+                  <li>Crea un bucle `for i...` (interno, para filas/alumnos).</li>
+                  <li>Acumula `sumaExamen += calificaciones[i][j];`</li>
+                  <li>Calcula e imprime el `promedioExamen`.</li>
+                  <li>Compara este promedio con `mejorPromedioExamen` para resolver el inciso (c).</li>
+                </ul>
+              </li>
+              <li>**Inciso (b):** Promedio por Alumno (recorrido por filas).
+                <ul>
+                  <li>Crea un bucle `for i...` (externo, para filas/alumnos).</li>
+                  <li>**Dentro**, inicializa `sumaAlumno = 0;`.</li>
+                  <li>Crea un bucle `for j...` (interno, para columnas/exámenes).</li>
+                  <li>Acumula `sumaAlumno += calificaciones[i][j];`</li>
+                  <li>Calcula e imprime el `promedioAlumno`.</li>
+                </ul>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">(Pide las 180 calificaciones...)
+
+--- Procesamiento de Datos ---
+
+a) Promedio de calificaciones por examen:
+   Promedio Examen 1: 85.30
+   ...
+   Promedio Examen 6: 79.50
+
+b) Promedio de calificaciones por alumno:
+   Promedio Alumno 1: 82.50
+   ...
+   Promedio Alumno 30: 88.00
+
+c) Examen con el mayor promedio:
+   El Examen 1 tuvo el mayor promedio: 85.30</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/15.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Para recorrer **por columnas** (inciso a), el bucle de las columnas (`j`) va por fuera.</li>
+              <li>Para recorrer **por filas** (inciso b), el bucle de las filas (`i`) va por fuera.</li>
+              <li>`[i][j]` siempre es `[fila][columna]`.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Piensa en los bucles anidados como un reloj. El bucle externo es el horario (avanza lento) y el interno es el minutero (da una vuelta completa por cada hora).
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      <article id="directorio-telefonico" class="exercise-card" aria-labelledby="directorio-telefonico-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema PS 4.35</span>
+          <h2 id="directorio-telefonico-title">Directorio Telefónico</h2>
+          <p class="exercise-description">
+            Este problema introduce los **arreglos paralelos** (dos arreglos
+            conectados por el mismo índice) y un **algoritmo de búsqueda secuencial**
+            para encontrar o agregar contactos.
+          </p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <p>Crea un programa `DirectorioTelefonico.java` que:</p>
+            <ul>
+              <li>Declare dos arreglos (`String[] nombre`, `String[] telefono`) de tamaño 1000.</li>
+              <li>Declare un contador para los contactos actuales: `int numContactosActuales = 0;`</li>
+              <li>Cree un bucle `while(true)` o `do-while` para el menú principal.</li>
+              <li>Pida al usuario un nombre a buscar (o "SALIR" para terminar).</li>
+              <li>Use una "bandera" `boolean encontrado = false;` y un bucle `for` (de `i = 0` a `numContactosActuales`) para **buscar** el nombre.</li>
+              <li>Si lo encuentra, imprime `telefono[i]` y marca `encontrado = true`.</li>
+              <li>**Si `encontrado` es falso**:
+                <ol>
+                  <li>Verifica si hay espacio: `if (numContactosActuales < N_MAX) { ... }`</li>
+                  <li>Si hay espacio, pide el teléfono y agrégalo: `nombre[numContactosActuales] = nombreBuscado;` y `telefono[numContactosActuales] = nuevoTelefono;`</li>
+                  <li>Incrementa el contador: `numContactosActuales++;`</li>
+                  <li>Si no hay espacio, imprime "Directorio lleno".</li>
+                </ol>
+              </li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <pre><code class="code-block">Ingrese un nombre a buscar (o 'SALIR' para terminar): Ana
+-&gt; Nombre no encontrado.
+Agregando nuevo contacto...
+Ingrese el teléfono para Ana: 55123456
+-&gt; Contacto agregado exitosamente.
+
+Ingrese un nombre a buscar (o 'SALIR' para terminar): Ana
+-&gt; Teléfono encontrado: 55123456
+
+Ingrese un nombre a buscar (o 'SALIR' para terminar): SALIR
+--- Directorio cerrado ---</code></pre>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/16.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>**Arreglos Paralelos:** `nombre[5]` y `telefono[5]` pertenecen a la misma persona.</li>
+              <li>**Búsqueda Secuencial:** Recorrer un arreglo uno por uno (de `0` a `N`) hasta encontrar algo.</li>
+              <li>`numContactosActuales` es la variable clave: te dice dónde agregar el próximo contacto (en el índice `N`) y hasta dónde buscar.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Usa `.equalsIgnoreCase()` en lugar de `==` para comparar `String`s. `==` compara la memoria, `.equals()` compara el contenido.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Funcionalidad del Modal para Diagramas
+    const modal = document.getElementById('diagramModal');
+    const diagramImage = document.getElementById('diagramImage');
+    const closeBtn = document.querySelector('.close');
+
+    function openDiagram(imagePath) {
+      modal.style.display = 'flex';
+      diagramImage.src = imagePath;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDiagram() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    closeBtn.onclick = closeDiagram;
+
+    // Cerrar modal al hacer clic fuera de la imagen
+    modal.onclick = function(event) {
+      if (event.target == modal) {
+        closeDiagram();
+      }
+    }
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && modal.style.display === 'flex') {
+        closeDiagram();
+      }
+    });
+  </script>
+</body>
+</html>

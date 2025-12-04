@@ -1,0 +1,31 @@
+digraph Ejercicio_5_2_Gestion_Empleados {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    input_cantidad [label="Leer cantidad\nde empleados"];
+    create_array [label="Crear array\nde empleados"];
+    read_empleados [label="Leer datos\nde empleados"];
+    mostrar_menu [label="Mostrar menú\nde opciones"];
+    read_opcion [label="Leer opción"];
+    check_opcion [label="¿Qué opción?"];
+    opcion1 [label="Opción 1:\nMostrar máx ventas"];
+    opcion2 [label="Opción 2:\nAplicar 10%\nincremento"];
+    opcion3 [label="Opción 3:\nMostrar Diciembre"];
+    opcion4 [label="Opción 4:\nSalir"];
+    salir [label="¿Salir?"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> input_cantidad -> create_array -> read_empleados -> mostrar_menu -> read_opcion -> check_opcion;
+    check_opcion -> opcion1 [label="1"];
+    check_opcion -> opcion2 [label="2"];
+    check_opcion -> opcion3 [label="3"];
+    check_opcion -> opcion4 [label="4"];
+    opcion1 -> salir;
+    opcion2 -> salir;
+    opcion3 -> salir;
+    opcion4 -> salir;
+    salir -> mostrar_menu [label="No"];
+    salir -> end [label="Sí"];
+}

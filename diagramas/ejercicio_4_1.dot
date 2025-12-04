@@ -1,0 +1,33 @@
+digraph Ejercicio_4_1_Numeros_Unicos {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    input_n [label="Leer N (1-500)"];
+    validate [label="¿1 <= N <= 500?"];
+    create_array [label="Crear array de N"];
+    read_array [label="Leer N elementos"];
+    i [label="i = 0"];
+    loop_i [label="¿i < N?"];
+    print_numero [label="Imprimir números[i]"];
+    repetido [label="repetido = números[i]"];
+    loop_j [label="¿números[i] == repetido?"];
+    increment_i [label="i++"];
+    next_i [label="Siguiente i"];
+    print_error [label="Mostrar error de tamaño"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> input_n -> validate;
+    validate -> create_array [label="Sí"];
+    validate -> print_error [label="No"];
+    create_array -> read_array -> i -> loop_i;
+    loop_i -> print_numero [label="Sí"];
+    loop_i -> end [label="No"];
+    print_numero -> repetido -> loop_j;
+    loop_j -> increment_i [label="Sí"];
+    loop_j -> next_i [label="No"];
+    increment_i -> loop_j;
+    next_i -> loop_i;
+    print_error -> end;
+}

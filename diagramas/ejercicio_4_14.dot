@@ -1,0 +1,17 @@
+digraph Ejercicio_4_14_Analisis_Produccion {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    create_matriz [label="Crear matriz 12x3\n(meses × departamentos)"];
+    read_matriz [label="Leer datos de matriz"];
+    encontrar_mayor_dulces [label="Encontrar mes con\nmayor costo en Dulces"];
+    promedio_bebidas [label="Calcular promedio\nanual de Bebidas"];
+    extremos_bebidas [label="Encontrar meses\nmín/máx de Bebidas"];
+    menor_diciembre [label="Encontrar departamento\ncon menor costo\nen Diciembre"];
+    mostrar_resultados [label="Mostrar todos\nlos análisis"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> create_matriz -> read_matriz -> encontrar_mayor_dulces -> promedio_bebidas -> extremos_bebidas -> menor_diciembre -> mostrar_resultados -> end;
+}

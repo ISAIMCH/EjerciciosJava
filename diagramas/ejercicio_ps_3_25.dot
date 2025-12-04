@@ -1,0 +1,35 @@
+digraph Ejercicio_PS_3_25_Clasificacion_Atletica {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    input [label="Leer nombre\n(o 'X' para salir)"];
+    check_salida [label="¿nombre == 'X'?"];
+    leer_datos [label="Leer género, altura, peso"];
+    check_genero [label="¿género == 'F'?"];
+    check_mujer [label="¿altura >= 1.73\nY peso <= 90?"];
+    check_hombre [label="¿altura >= 1.83\nY peso <= 110?"];
+    calif_mujer [label="Mujer clasificada\ncalifF++"];
+    calif_hombre [label="Hombre clasificado\ncalifM++"];
+    no_calif [label="No clasificado"];
+    next_persona [label="Siguiente persona"];
+    mostrar_stats [label="Mostrar estadísticas\ny porcentajes"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> input -> check_salida;
+    check_salida -> mostrar_stats [label="Sí"];
+    check_salida -> leer_datos [label="No"];
+    leer_datos -> check_genero;
+    check_genero -> check_mujer [label="Sí"];
+    check_genero -> check_hombre [label="No"];
+    check_mujer -> calif_mujer [label="Sí"];
+    check_mujer -> no_calif [label="No"];
+    check_hombre -> calif_hombre [label="Sí"];
+    check_hombre -> no_calif [label="No"];
+    calif_mujer -> next_persona;
+    calif_hombre -> next_persona;
+    no_calif -> next_persona;
+    next_persona -> input;
+    mostrar_stats -> end;
+}

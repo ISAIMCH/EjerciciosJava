@@ -1,0 +1,16 @@
+digraph Ejercicio_1_6_Dias_A_Segundos {
+    rankdir=TB;
+    node [shape=box, style=rounded, fillcolor="#E8F4F8", color="#0D47A1", fontname="Arial"];
+    edge [color="#0D47A1", penwidth=2];
+    
+    start [label="INICIO", shape=ellipse, fillcolor="#4CAF50"];
+    input [label="Leer días"];
+    calc1 [label="horas = días × 24"];
+    calc2 [label="minutos = horas × 60"];
+    calc3 [label="segundos = minutos × 60"];
+    convert [label="segundos = (double)segundos"];
+    print [label="Mostrar resultado\ncon formato %.2f"];
+    end [label="FIN", shape=ellipse, fillcolor="#FF6B6B"];
+    
+    start -> input -> calc1 -> calc2 -> calc3 -> convert -> print -> end;
+}
