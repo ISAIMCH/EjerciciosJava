@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio PS 2.2 - Calcular Cotangente</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+</head>
+<body>
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="diagramImage" src="" alt="Diagrama de flujo">
+    </div>
+  </div>
+
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicio PS 2.2 - Calcular Cotangente</h1>
+      <p class="subtitle">Ejercicios de Programación Estructurada en Java</p>
+      <a href="index-main.html" class="back-link">← Volver al menú</a>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio PS 2.2</span>
+          <h2>Calcular Cotangente</h2>
+          <p class="exercise-description">Similar al anterior, pero validando el seno.</p>
+        </header>
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Descripción</h3>
+            <p>Este es el ejercicio PS 2.2: Calcular Cotangente. Para más detalles, consulta el sitio web de origen o tu material de clase.</p>
+            
+            <h3>Objetivos de Aprendizaje</h3>
+            <ul>
+              <li>Comprender los conceptos clave del ejercicio.</li>
+              <li>Implementar la solución según los requisitos.</li>
+              <li>Validar tu solución con los casos de prueba.</li>
+            </ul>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <ul>
+              <li>Consulta tu material de clase para los detalles completos.</li>
+              <li>Utiliza el diagrama de flujo como referencia.</li>
+              <li>Prueba tu código con varios casos de entrada.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Si tienes dudas, revisa los ejercicios anteriores que cubren conceptos similares.
+            </div>
+            
+            <div class="diagram-button-container">
+              <button class="diagram-button" onclick="openDiagram('img/10.png')">📊 Ver diagrama de flujo</button>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text"><a href="index-main.html">← Volver al menú de ejercicios</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const modal = document.getElementById('diagramModal');
+    const closeBtn = document.querySelector('.close');
+    function openDiagram(imagePath) {
+      document.getElementById('diagramImage').src = imagePath;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDiagram() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    closeBtn.onclick = closeDiagram;
+    modal.onclick = e => e.target === modal && closeDiagram();
+    document.addEventListener('keydown', e => e.key === 'Escape' && modal.style.display === 'flex' && closeDiagram());
+  </script>
+</body>
+</html>
