@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 3.24 - Mejor y Peor Alumno</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 3.24 - Mejor y Peor Alumno</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 427</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- PS 3.24 -->
+      <article id="ps-3-24" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 3.24</span>
+          <h2 id="ejercicio-title">Identificar Mejor y Peor Alumno</h2>
+          
+          <p class="exercise-description">
+            En este problema, necesitas procesar las calificaciones de 35 alumnos con 5 calificaciones cada uno, 
+            calcular el promedio de cada alumno y determinar cuál es el alumno con el mejor promedio y cuál es el 
+            alumno con el peor promedio. Al final, solo se imprimirán la matrícula y promedio de estos dos alumnos.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>Resuelva el problema anterior con las consideraciones planteadas en el mismo, pero sólo imprima matrícula y promedio del mejor y del peor alumno.</p>
+            <div class="formula-box">
+              <p><strong>Datos:</strong> MAT<sub>1</sub>, CAL<sub>1,1</sub>, ..., CAL<sub>1,5</sub>, ..., MAT<sub>35</sub>, CAL<sub>35,1</sub>, CAL<sub>35,5</sub></p>
+            </div>
+            
+            <p><strong>Donde:</strong></p>
+            <ul>
+              <li>MAT<sub>i</sub> es una variable de tipo entero que representa la matrícula del alumno i (1 ≤ i ≤ 35).</li>
+              <li>CAL<sub>i,j</sub> es una variable de tipo real que representa la calificación j del alumno i (1 ≤ j ≤ 5, 1 ≤ i ≤ 35).</li>
+            </ul>
+
+            <h3>Explicación del Enunciado</h3>
+            <p>
+              <strong>MAT (Matrícula):</strong> Identificador único del alumno (tipo entero, rango 1 a 35).
+            </p>
+            <p>
+              <strong>CAL (Calificaciones):</strong> Array de 5 calificaciones reales por alumno (valores entre 0 y 100).
+            </p>
+            <p>
+              <strong>PROMEDIO:</strong> Resultado del cálculo de las 5 calificaciones de cada alumno.
+            </p>
+            <p>
+              <strong>Comparación:</strong> Se necesita identificar el promedio máximo y el promedio mínimo entre todos los alumnos, guardando su matrícula asociada.
+            </p>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Declarar variables para almacenar las 5 calificaciones de cada alumno.</li>
+              <li>Utilizar un bucle externo (for) para procesar los 35 alumnos (i = 1 a 35).</li>
+              <li>Utilizar un bucle interno (for) para leer las 5 calificaciones de cada alumno (j = 1 a 5).</li>
+              <li>Calcular el promedio de las 5 calificaciones para cada alumno.</li>
+              <li>Comparar cada promedio con el máximo y mínimo calculado hasta el momento.</li>
+              <li>Guardar la matrícula del mejor alumno (promedio máximo) y del peor alumno (promedio mínimo).</li>
+              <li>Mostrar solo la matrícula y promedio del mejor alumno.</li>
+              <li>Mostrar solo la matrícula y promedio del peor alumno.</li>
+            </ul>
+
+            <h3>Explicación de Variables</h3>
+            <div class="formula-box">
+              <ul>
+                <li><strong>MAT:</strong> Variable de tipo entero que almacena la matrícula del alumno actual.</li>
+                <li><strong>CAL[]:</strong> Arreglo de tipo real que almacena las 5 calificaciones del alumno.</li>
+                <li><strong>i:</strong> Variable de control del bucle externo (alumnos, 1 a 35).</li>
+                <li><strong>j:</strong> Variable de control del bucle interno (calificaciones, 1 a 5).</li>
+                <li><strong>PROM:</strong> Promedio calculado para el alumno actual.</li>
+                <li><strong>MAX_PROM:</strong> Promedio máximo encontrado hasta el momento.</li>
+                <li><strong>MIN_PROM:</strong> Promedio mínimo encontrado hasta el momento.</li>
+                <li><strong>MAT_MAX:</strong> Matrícula del alumno con el mejor promedio.</li>
+                <li><strong>MAT_MIN:</strong> Matrícula del alumno con el peor promedio.</li>
+              </ul>
+            </div>
+
+            <h3>Tabla de Casos de Prueba</h3>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Alumnos Procesados</th>
+                  <th>Mejor Alumno (MAT)</th>
+                  <th>Mejor Promedio</th>
+                  <th>Peor Alumno (MAT)</th>
+                  <th>Peor Promedio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>5 alumnos</td>
+                  <td>1003</td>
+                  <td>97.8000</td>
+                  <td>1005</td>
+                  <td>60.0000</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>3 alumnos</td>
+                  <td>2001</td>
+                  <td>92.0000</td>
+                  <td>2003</td>
+                  <td>65.0000</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>10 alumnos</td>
+                  <td>3002</td>
+                  <td>95.6000</td>
+                  <td>3009</td>
+                  <td>50.0000</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <p><strong>Datos procesados (5 alumnos de ejemplo):</strong></p>
+            <pre><code class="code-block">Alumno 1001: Promedio 86.60
+Alumno 1002: Promedio 78.40
+Alumno 1003: Promedio 97.80
+Alumno 1004: Promedio 70.00
+Alumno 1005: Promedio 60.00
+
+Mejor Alumno: MAT=1003 | Promedio: 97.8000
+Peor Alumno: MAT=1005 | Promedio: 60.0000</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Usa bucles anidados para procesar todos los alumnos y sus calificaciones.</li>
+              <li>Inicializa MAX_PROM con un valor muy bajo (ej: -1 o Double.MIN_VALUE).</li>
+              <li>Inicializa MIN_PROM con un valor muy alto (ej: 101 o Double.MAX_VALUE).</li>
+              <li>Compara cada promedio calculado con MAX_PROM y MIN_PROM.</li>
+              <li>Guarda la matrícula cuando encuentres un nuevo máximo o mínimo.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>Para evitar problemas al identificar el primer alumno, inicializa MAX_PROM con -1 y MIN_PROM con 101. 
+            Así, el primer promedio calculado será siempre mayor que MAX_PROM y menor que MIN_PROM, asegurando que 
+            se actualicen correctamente.</p>
+
+            <h3>Consideraciones</h3>
+            <ul>
+              <li>Gestiona correctamente los bucles anidados.</li>
+              <li>Asegúrate de que MIN_PROM y MAX_PROM se inicialicen correctamente.</li>
+              <li>Valida que los promedios de entrada sean válidos.</li>
+              <li>Al final, solo imprime los resultados del mejor y peor alumno, no todos los alumnos.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">PS 3.24 - Mejor y Peor Alumno - Programación Estructurada en Java</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - PS 3.24</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/12.png" alt="Diagrama de Flujo PS 3.24" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
+
+  
+            

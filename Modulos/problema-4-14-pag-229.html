@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 4.14 - Costos de Producción</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+
+    .highlight {
+      background-color: #fff3cd;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    thead {
+      background-color: #667eea;
+      color: white;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .result-box {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 4.14 - Costos de Producción de Departamentos</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 229</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- Problema 4.14 -->
+      <article id="problema-4-14" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 4.14</span>
+          <h2 id="ejercicio-title">Análisis de Costos de Producción con Arreglos Bidimensionales</h2>
+          
+          <p class="exercise-description">
+            En este problema trabajarás con arreglos bidimensionales para analizar datos de costos de producción 
+            de múltiples departamentos durante varios meses. Aprenderás a recorrer matrices, encontrar máximos 
+            y mínimos, y calcular promedios en estructuras multidimensionales.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>
+              Se tienen los costos de producción de tres departamentos (dulces, bebidas y conservas), 
+              correspondientes a los 12 meses del año anterior. Construya un programa en Java que 
+              pueda proporcionar la siguiente información:
+            </p>
+            <ul>
+              <li><strong>a)</strong> ¿En qué mes se registró el mayor costo de producción de dulces?</li>
+              <li><strong>b)</strong> Promedio anual de los costos de producción de bebidas.</li>
+              <li><strong>c)</strong> ¿En qué mes se registró el mayor costo de producción en bebidas, y en qué mes el menor costo?</li>
+              <li><strong>d)</strong> ¿Cuál fue el rubro que tuvo el menor costo de producción en diciembre?</li>
+            </ul>
+
+            <div class="formula-box">
+              <strong>Datos de entrada:</strong>
+              <p><strong>PROD [1..12,1..3]:</strong> Arreglo bidimensional de tipo real que almacena los costos 
+              de producción de tres departamentos en los 12 meses del año anterior.</p>
+              <p><strong>Columnas:</strong> 1=Dulces, 2=Bebidas, 3=Conservas</p>
+              <p><strong>Filas:</strong> 1-12 representan los meses de enero a diciembre</p>
+            </div>
+
+            <h3>Explicación del Enunciado</h3>
+            <p>
+              <strong>PROD:</strong> Es un arreglo bidimensional de tipo real (matriz), cuyas dimensiones son 
+              12 filas (meses) por 3 columnas (departamentos).
+            </p>
+            <p>
+              <strong>Dulces:</strong> Departamento 1, guarda costos de producción de artículos dulces para cada mes.
+            </p>
+            <p>
+              <strong>Bebidas:</strong> Departamento 2, guarda costos de producción de bebidas para cada mes.
+            </p>
+            <p>
+              <strong>Conservas:</strong> Departamento 3, guarda costos de producción de conservas para cada mes.
+            </p>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Utilizar un arreglo bidimensional para almacenar los costos.</li>
+              <li>Usar múltiples ciclos para buscar el mayor costo de dulces.</li>
+              <li>Calcular la suma y el promedio de los costos de bebidas.</li>
+              <li>Encontrar el mayor y menor costo en el departamento de bebidas.</li>
+              <li>Identificar el departamento con el menor costo en diciembre.</li>
+              <li>Mostrar todos los resultados en pantalla.</li>
+              <li>Usar variables auxiliares para almacenar máximos, mínimos y promedios.</li>
+            </ul>
+
+            <h3>Tabla de Datos</h3>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>Mes</th>
+                  <th>Dulces</th>
+                  <th>Bebidas</th>
+                  <th>Conservas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 (Enero)</td>
+                  <td>1500.00</td>
+                  <td>2000.00</td>
+                  <td>1800.00</td>
+                </tr>
+                <tr>
+                  <td>2 (Febrero)</td>
+                  <td>1600.00</td>
+                  <td>2100.00</td>
+                  <td>1900.00</td>
+                </tr>
+                <tr>
+                  <td>3 (Marzo)</td>
+                  <td>1550.00</td>
+                  <td>2050.00</td>
+                  <td>1850.00</td>
+                </tr>
+                <tr>
+                  <td>4 (Abril)</td>
+                  <td>1700.00</td>
+                  <td>2200.00</td>
+                  <td>2000.00</td>
+                </tr>
+                <tr>
+                  <td>5 (Mayo)</td>
+                  <td>1650.00</td>
+                  <td>2150.00</td>
+                  <td>1950.00</td>
+                </tr>
+                <tr>
+                  <td>6 (Junio)</td>
+                  <td>1800.00</td>
+                  <td>2300.00</td>
+                  <td>2100.00</td>
+                </tr>
+                <tr>
+                  <td>7 (Julio)</td>
+                  <td>1900.00</td>
+                  <td>2400.00</td>
+                  <td>2200.00</td>
+                </tr>
+                <tr>
+                  <td>8 (Agosto)</td>
+                  <td>1850.00</td>
+                  <td>2350.00</td>
+                  <td>2150.00</td>
+                </tr>
+                <tr>
+                  <td>9 (Septiembre)</td>
+                  <td>1750.00</td>
+                  <td>2250.00</td>
+                  <td>2050.00</td>
+                </tr>
+                <tr>
+                  <td>10 (Octubre)</td>
+                  <td>1650.00</td>
+                  <td>2150.00</td>
+                  <td>1950.00</td>
+                </tr>
+                <tr>
+                  <td>11 (Noviembre)</td>
+                  <td>1700.00</td>
+                  <td>2200.00</td>
+                  <td>2000.00</td>
+                </tr>
+                <tr>
+                  <td>12 (Diciembre)</td>
+                  <td>1600.00</td>
+                  <td>2100.00</td>
+                  <td>1700.00</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Explicación de Variables</h3>
+            <div class="formula-box">
+              <ul>
+                <li><strong>I, J:</strong> Variables de tipo entero. Se usan como variables de control de varios ciclos e índices de los arreglos.</li>
+                <li><strong>PROD:</strong> Arreglo bidimensional de tipo real (PROD[1..12,1..3]).</li>
+                <li><strong>MAYDUL:</strong> Variable de tipo real. Almacena el mayor costo de producción de dulces a lo largo del año.</li>
+                <li><strong>MES:</strong> Variable de tipo entero. Almacena el número de mes en el que se registró el mayor costo de dulces.</li>
+                <li><strong>SUM:</strong> Variable de tipo real. Acumula los costos mensuales de bebidas para calcular el promedio anual.</li>
+                <li><strong>PROMEDIO:</strong> Variable de tipo real. Almacena el promedio anual de bebidas (SUM / 12).</li>
+                <li><strong>MESMAY:</strong> Variable de tipo entero. Mes en el que se registró el mayor costo de bebidas.</li>
+                <li><strong>MESMEN:</strong> Variable de tipo entero. Mes en el que se registró el menor costo de bebidas.</li>
+                <li><strong>MAYBEB:</strong> Variable de tipo real. Mayor costo mensual de bebidas.</li>
+                <li><strong>MENBEB:</strong> Variable de tipo real. Menor costo mensual de bebidas.</li>
+                <li><strong>MENOR:</strong> Variable de tipo real. Menor costo de producción en diciembre.</li>
+                <li><strong>DEP:</strong> Variable de tipo entero. Número del departamento con menor costo en diciembre.</li>
+              </ul>
+            </div>
+
+            <h3>Tabla de Pruebas</h3>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>Inciso</th>
+                  <th>Descripción</th>
+                  <th>Resultado Esperado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>a)</td>
+                  <td>Mayor costo de dulces</td>
+                  <td>Mes 7 (Julio): 1900.00</td>
+                </tr>
+                <tr>
+                  <td>b)</td>
+                  <td>Promedio anual de bebidas</td>
+                  <td>2187.50</td>
+                </tr>
+                <tr>
+                  <td>c)</td>
+                  <td>Mayor bebidas</td>
+                  <td>Mes 7 (Julio): 2400.00</td>
+                </tr>
+                <tr>
+                  <td>c)</td>
+                  <td>Menor bebidas</td>
+                  <td>Mes 1 (Enero): 2000.00</td>
+                </tr>
+                <tr>
+                  <td>d)</td>
+                  <td>Menor en diciembre</td>
+                  <td>Depto 1 (Dulces): 1600.00</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <pre><code class="code-block">Se registró el mayor costo de producción de dulces en el mes: 7 (Julio)
+
+Promedio anual de costos de producción de bebidas: 2187.50
+
+En el mes 7 (Julio), se registró el mayor costo de producción en bebidas: 2400.00
+En el mes 1 (Enero), se registró el menor costo de producción en bebidas: 2000.00
+
+En diciembre, el departamento 1 (Dulces) tuvo el menor costo de producción: 1600.00</code></pre>
+
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Este problema utiliza <span class="highlight">arreglos bidimensionales</span> (matrices).</li>
+              <li>Se usan <span class="highlight">múltiples ciclos</span> para procesar filas y columnas.</li>
+              <li>Es necesario realizar <span class="highlight">búsquedas de máximos y mínimos</span> en arreglos.</li>
+              <li>Se debe calcular el <span class="highlight">promedio</span> de una columna completa.</li>
+              <li>Es importante guardar tanto el valor como el índice (mes o departamento) cuando se encuentra un máximo o mínimo.</li>
+              <li>Se trabaja con datos de tipo <span class="highlight">real (double)</span> para precisión en dinero.</li>
+              <li>El arreglo tiene estructura fija: 12 meses × 3 departamentos.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>
+              Para encontrar máximos y mínimos en una matriz, inicializa la variable con el primer elemento 
+              de la sección a evaluar, luego compara todos los demás con este valor. Cuando encuentres uno mayor 
+              (o menor), actualiza tanto el valor como la posición (índice) para referencia posterior.
+            </p>
+
+            <h3>Consideración Importante</h3>
+            <p>
+              Los arreglos bidimensionales se pueden recorrer de diferentes formas según la necesidad:
+            </p>
+            <ul>
+              <li>Por filas: para analizar datos de un mes específico.</li>
+              <li>Por columnas: para analizar datos de un departamento en todos los meses.</li>
+              <li>Elemento específico: PROD[fila][columna] para un mes y departamento particular.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Arreglos Bidimensionales</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - Problema 4.14</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/7.png" alt="Diagrama de Flujo Problema 4.14" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

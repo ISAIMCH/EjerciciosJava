@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 5.2 - Empleados Tienda</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+
+    .highlight {
+      background-color: #fff3cd;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    .values-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .values-table thead {
+      background-color: #667eea;
+      color: white;
+    }
+
+    .values-table th, .values-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .values-table tbody tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .note-text {
+      color: #555;
+      font-style: italic;
+    }
+
+    code.code-block {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      display: block;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .result-block {
+      background: #f0f0f0;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border-left: 4px solid #e0e0e0;
+      font-family: 'Courier New', monospace;
+      line-height: 1.6;
+    }
+
+    .result-block p {
+      margin: 5px 0;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 5.2 - Sistema de Gestión de Empleados de Tienda</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 363</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- Problema 5.2 -->
+      <article id="problema-5-2" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 5.2</span>
+          <h2 id="ejercicio-title">Procesamiento de Registros de Empleados con Arreglos</h2>
+          
+          <p class="exercise-description">
+            En este problema trabajarás con arreglos de registros (estructuras) para procesar información de empleados. 
+            Aprenderás a trabajar con datos complejos que contienen múltiples campos, realizar búsquedas, comparaciones 
+            y cálculos sobre información multidimensional de empleados incluyendo sus ventas mensuales.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>
+              En una tienda importante de la Ciudad de México se almacena información, relativa a las ventas efectuadas 
+              por sus empleados en los 12 meses del año anterior. Esta información se almacena en un arreglo de registros 
+              con la siguiente estructura.
+            </p>
+            <p>
+              El programa, dada información sobre las ventas efectuadas por los empleados de una tienda en el año anterior, 
+              efectúa las siguientes operaciones:
+            </p>
+            <ul>
+              <li><strong>a)</strong> Lista el número y nombre del empleado que tuvo las mayores ventas durante el año.</li>
+              <li><strong>b)</strong> Incremente un 10% el salario de todos los empleados que durante el año obtuvieron ventas superiores a $1'000,000.</li>
+              <li><strong>c)</strong> Liste el número y nombre de los empleados que en el mes de diciembre tuvieron ventas inferiores a $30,000.</li>
+            </ul>
+
+            <div class="formula-box">
+              <strong>Datos de entrada:</strong>
+              <p><strong>EMPLEADOS [1..N]:</strong> Arreglo unidimensional de registros.</p>
+              <p><strong>Donde:</strong></p>
+              <ul>
+                <li><strong>NUMERO:</strong> Entero. Identificador único del empleado.</li>
+                <li><strong>NOMBRE:</strong> Cadena de caracteres. Nombre del empleado.</li>
+                <li><strong>VENTAS [1..12]:</strong> Arreglo unidimensional de tipo real. Sus 12 elementos representan las ventas en cada mes.</li>
+                <li><strong>SALARIO:</strong> Real. Salario base del empleado.</li>
+              </ul>
+            </div>
+
+            <h3>Explicación del Enunciado</h3>
+            <p>
+              <strong>EMPLEADOS:</strong> Es un arreglo unidimensional de registros, donde cada registro contiene los datos 
+              completos de un empleado incluyendo sus ventas mensuales.
+            </p>
+            <p>
+              <strong>NUMERO:</strong> Campo de tipo entero que identifica de forma única a cada empleado.
+            </p>
+            <p>
+              <strong>NOMBRE:</strong> Campo de tipo cadena que almacena el nombre completo del empleado.
+            </p>
+            <p>
+              <strong>VENTAS:</strong> Campo que es un arreglo de 12 elementos (uno por cada mes del año) con los montos 
+              vendidos en cada período.
+            </p>
+            <p>
+              <strong>SALARIO:</strong> Campo de tipo real que almacena el salario actual del empleado. Este valor puede 
+              modificarse en el inciso b) si el empleado cumple la condición.
+            </p>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Trabajar con un arreglo de registros (estructura compleja).</li>
+              <li>Leer datos de N empleados (validar que 1 ≤ N ≤ 100).</li>
+              <li>Para cada empleado, leer 12 meses de ventas.</li>
+              <li>Encontrar el empleado con mayores ventas totales del año.</li>
+              <li>Calcular la suma total de ventas de cada empleado.</li>
+              <li>Actualizar salarios basándose en un umbral de $1'000,000 en ventas anuales.</li>
+              <li>Buscar empleados con ventas bajas en diciembre (menores a $30,000).</li>
+              <li>Mostrar los resultados de los tres incisos.</li>
+            </ul>
+
+            <h3>Estructura de Datos - Registro EMPLEADO</h3>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>Campo</th>
+                  <th>Tipo</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NUMERO</td>
+                  <td>Entero</td>
+                  <td>ID único del empleado (1-100)</td>
+                </tr>
+                <tr>
+                  <td>NOMBRE</td>
+                  <td>Cadena</td>
+                  <td>Nombre completo del empleado</td>
+                </tr>
+                <tr>
+                  <td>VENTAS[1..12]</td>
+                  <td>Real</td>
+                  <td>Ventas mensuales (enero a diciembre)</td>
+                </tr>
+                <tr>
+                  <td>SALARIO</td>
+                  <td>Real</td>
+                  <td>Salario del empleado (puede modificarse)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Explicación de Variables</h3>
+            <div class="formula-box">
+              <ul>
+                <li><strong>N:</strong> Variable de tipo entero. Indica el total de empleados (1 ≤ N ≤ 100).</li>
+                <li><strong>I:</strong> Variable de tipo entero. Se usa como índice del arreglo y como variable de control de ciclos.</li>
+                <li><strong>EMPLEADOS:</strong> Arreglo unidimensional de registros que almacena la información de todos los empleados.</li>
+                <li><strong>J:</strong> Variable de tipo entero. Se utiliza como índice del arreglo "ventas" (que es un campo del registro) y como variable de control de ciclos.</li>
+                <li><strong>OPCION:</strong> Variable de tipo entero. Se utiliza para leer la opción de trabajo seleccionada por el usuario.</li>
+                <li><strong>MAX:</strong> Variable de tipo real. Se usa en la solución del inciso a, para obtener el número y nombre del empleado que realizó la mayor venta durante el año.</li>
+                <li><strong>EMPLE:</strong> Variable de tipo entero. Almacena la posición en la que se encuentran los datos del empleado con mayores ventas durante el año (inciso a).</li>
+                <li><strong>SUMA:</strong> Variable de tipo real. Se usa para sumar las ventas realizadas por cada empleado a lo largo del año (incisos a y b).</li>
+              </ul>
+            </div>
+
+            <h3>Tabla de Pruebas</h3>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>Opción</th>
+                  <th>Descripción</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Empleado con mayor venta</td>
+                  <td>Muestra número y nombre del empleado con máximas ventas anuales</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Incrementar salarios</td>
+                  <td>Aumenta 10% el salario de empleados con ventas > $1'000,000</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Empleados con ventas bajas en diciembre</td>
+                  <td>Lista empleados con ventas < $30,000 en mes de diciembre</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Terminar</td>
+                  <td>Finaliza la ejecución del programa</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <div class="result-block">
+              <p>Inciso a) Empleado con mayores ventas:</p>
+              <p>Número de empleado: 1</p>
+              <p>Nombre: Juan</p>
+            </div>
+            <div class="result-block">
+              <p>Inciso b) Salarios incrementados en 10%:</p>
+              <p>Se incrementó salario a empleados con ventas anuales > $1,000,000</p>
+            </div>
+            <div class="result-block">
+              <p>Inciso c) Empleados con ventas bajas en diciembre:</p>
+              <p>Número y nombre de empleados con ventas < $30,000 en diciembre:</p>
+              <p>...mostrar resultados...</p>
+            </div>
+
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Este problema utiliza <span class="highlight">arreglos de registros</span> (estructuras complejas).</li>
+              <li>Cada registro contiene <span class="highlight">múltiples campos</span> de diferentes tipos.</li>
+              <li>Se usan <span class="highlight">ciclos anidados</span> para procesar empleados y sus ventas.</li>
+              <li>Es necesario <span class="highlight">sumar arrays</span> dentro de registros.</li>
+              <li>Se deben realizar <span class="highlight">búsquedas de máximos</span> en valores calculados.</li>
+              <li>Se implementa un <span class="highlight">menú de opciones</span> para las tres operaciones.</li>
+              <li>Se trabaja con datos de tipo <span class="highlight">real (double)</span> para precisión monetaria.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>
+              Para acceder a los campos de un registro en un arreglo, usa la notación: 
+              <code>EMPLEADOS[i].VENTAS[j]</code>. Esto te permite acceder a las ventas del mes j 
+              del empleado i. Para sumar todas las ventas de un empleado, necesitas un ciclo anidado.
+            </p>
+
+            <h3>Consideración Importante</h3>
+            <p>
+              Los registros son estructuras que agrupan múltiples datos relacionados. En este problema:
+            </p>
+            <ul>
+              <li>Un empleado es un registro con 4 campos: NUMERO, NOMBRE, VENTAS (que es otro arreglo), y SALARIO.</li>
+              <li>EMPLEADOS es un arreglo de estos registros.</li>
+              <li>Para procesar toda la información, necesitas dos ciclos anidados: uno para empleados y otro para meses.</li>
+              <li>El menú de opciones permite ejecutar diferentes operaciones sobre los mismos datos.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Arreglos de Registros (Estructuras)</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - Problema 5.2</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/8.png" alt="Diagrama de Flujo Problema 5.2" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
+
+            

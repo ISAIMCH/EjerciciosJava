@@ -1,0 +1,32 @@
+digraph PS_2_1_Tangente {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#E8F4F8", fontname="Arial", fontsize=10];
+    
+    INICIO [label="INICIO", fillcolor="#90EE90"];
+    FIN [label="FIN", fillcolor="#FFB6C6"];
+    
+    node [shape=parallelogram, fillcolor="#FFE4B5"];
+    LEER_SENO [label="LEER\nSENO"];
+    LEER_COSENO [label="LEER\nCOSENO"];
+    
+    node [shape=diamond, fillcolor="#FFFFE0"];
+    DECISION [label="¿COSENO\n≠ 0?"];
+    
+    node [shape=rectangle, fillcolor="#B0E0E6"];
+    CALCULAR [label="TANGENTE =\nSENO / COSENO"];
+    
+    node [shape=egg, fillcolor="#FFE4E1"];
+    IMPRIMIR_TANGENTE [label="Imprimir\nTANGENTE"];
+    IMPRIMIR_ERROR [label="Imprimir\nERROR"];
+    
+    INICIO -> LEER_SENO;
+    LEER_SENO -> LEER_COSENO;
+    LEER_COSENO -> DECISION;
+    
+    DECISION -> CALCULAR [label="Sí", fontname="Arial", fontsize=9];
+    CALCULAR -> IMPRIMIR_TANGENTE;
+    IMPRIMIR_TANGENTE -> FIN;
+    
+    DECISION -> IMPRIMIR_ERROR [label="No", fontname="Arial", fontsize=9];
+    IMPRIMIR_ERROR -> FIN;
+}

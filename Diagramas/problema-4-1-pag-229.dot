@@ -1,0 +1,80 @@
+digraph Problema4_1 {
+    rankdir=TB;
+    node [fontname="Arial", fontsize=11, style=filled, fillcolor=white];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos principales
+    inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
+    mensaje_entrada [shape=box, label="Mostrar 'Ingrese número\nde elementos del arreglo'", fillcolor="#B3E5FC"];
+    leer_n [shape=parallelogram, label="Leer N", fillcolor="#FFE082"];
+    
+    // Validación de N
+    validar_n [shape=diamond, label="¿N >= 1 y\nN <= 500?", fillcolor="#FFD54F"];
+    
+    // Rama de error
+    error_n [shape=egg, label="Mostrar 'El número de\nelementos es incorrecto'", fillcolor="#FFCCBC"];
+    
+    // Rama correcta - Lectura de elementos
+    mensaje_elementos [shape=box, label="Mostrar 'Ingrese los N\nelementos ordenados'", fillcolor="#B3E5FC"];
+    init_i [shape=box, label="I = 0", fillcolor="#B3E5FC"];
+    
+    // Ciclo de lectura
+    condicion_lectura [shape=diamond, label="¿I < N?", fillcolor="#FFD54F"];
+    leer_elemento [shape=parallelogram, label="Leer VEC[I]", fillcolor="#FFE082"];
+    incrementar_i [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
+    
+    // Procesamiento
+    mensaje_salida [shape=box, label="Mostrar 'Lista de números\nsin repeticiones'", fillcolor="#B3E5FC"];
+    repet_asign [shape=box, label="REPET = VEC[0]", fillcolor="#B3E5FC"];
+    print_repet [shape=egg, label="Imprimir REPET", fillcolor="#FFE082"];
+    init_i2 [shape=box, label="I = 1", fillcolor="#B3E5FC"];
+    
+    // Ciclo principal
+    condicion_principal [shape=diamond, label="¿I < N?", fillcolor="#FFD54F"];
+    condicion_diferente [shape=diamond, label="¿VEC[I] !=\nREPET?", fillcolor="#FFD54F"];
+    actualizar_repet [shape=box, label="REPET = VEC[I]", fillcolor="#B3E5FC"];
+    print_elemento [shape=egg, label="Imprimir VEC[I]", fillcolor="#FFE082"];
+    incrementar_i2 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
+    
+    // Salida
+    salida [shape=egg, label="Mostrar resultado:\nLista de números\nsin repeticiones:\nREPET", fillcolor="#C8E6C9"];
+    fin [shape=ellipse, label="Fin", fillcolor="#4A90E2"];
+
+    // Conexiones
+    inicio -> mensaje_entrada;
+    mensaje_entrada -> leer_n;
+    leer_n -> validar_n;
+    
+    // Validación
+    validar_n -> error_n [label="No"];
+    error_n -> fin;
+    
+    validar_n -> mensaje_elementos [label="Sí"];
+    mensaje_elementos -> init_i;
+    init_i -> condicion_lectura;
+    
+    // Ciclo de lectura
+    condicion_lectura -> leer_elemento [label="Sí"];
+    leer_elemento -> incrementar_i;
+    incrementar_i -> condicion_lectura;
+    
+    condicion_lectura -> mensaje_salida [label="No"];
+    mensaje_salida -> repet_asign;
+    repet_asign -> print_repet;
+    print_repet -> init_i2;
+    init_i2 -> condicion_principal;
+    
+    // Ciclo principal de procesamiento
+    condicion_principal -> condicion_diferente [label="Sí"];
+    
+    condicion_diferente -> actualizar_repet [label="Sí"];
+    actualizar_repet -> print_elemento;
+    print_elemento -> incrementar_i2;
+    
+    condicion_diferente -> incrementar_i2 [label="No"];
+    
+    incrementar_i2 -> condicion_principal;
+    
+    condicion_principal -> salida [label="No"];
+    salida -> fin;
+}

@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 2.1 - Temperatura de un Grillo</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 2.1 - Temperatura de un Grillo</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 77</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- Problema 2.1 -->
+      <article id="problema-2-1" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 2.1</span>
+          <h2 id="ejercicio-title">Cálculo de Temperatura usando Sonidos de Grillo</h2>
+          
+          <p class="exercise-description">
+            En este problema utilizarás condicionales para calcular la temperatura en grados Fahrenheit 
+            basándote en el número de sonidos emitidos por un grillo en un minuto. Aprenderás a aplicar 
+            estructuras de decisión (if) y fórmulas matemáticas en Java.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>El número de sonidos emitidos por un grillo en un minuto es una función de la temperatura. 
+            Como resultado de esto, es posible determinar el nivel de la temperatura haciendo uso de un 
+            grillo como termómetro.</p>
+
+            <h3>Datos de Entrada</h3>
+            <ul>
+              <li><strong>N:</strong> Variable de tipo entero que representa el número de sonidos emitidos por el grillo en un minuto.</li>
+            </ul>
+
+            <h3>Consideraciones y Fórmulas</h3>
+            <div class="formula-box">
+              <p><strong>Cálculo de la Temperatura:</strong></p>
+              <p style="font-size: 1.1em; text-align: center; font-weight: bold;">
+                T = N / 4 + 40
+              </p>
+              <p style="text-align: center; color: #666;">Donde: T es la temperatura en grados Fahrenheit, N es el número de sonidos por minuto</p>
+            </div>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Declarar variables de tipo <code>int</code> para N y de tipo <code>double</code> para T.</li>
+              <li>Leer el número de sonidos emitidos por el grillo (N).</li>
+              <li>Validar que N sea mayor que 0 (estructura condicional if).</li>
+              <li>Si N > 0, calcular la temperatura usando: <code>T = N / 4.0 + 40</code></li>
+              <li>Mostrar la temperatura calculada en grados Fahrenheit.</li>
+              <li>Si N ≤ 0, mostrar un mensaje de error indicando que N debe ser positivo.</li>
+              <li>Documentar claramente los valores de entrada y salida.</li>
+            </ul>
+
+            <h3>Explicación de Variables</h3>
+            <ul>
+              <li><strong>N:</strong> Variable de tipo entero. Almacena el número de sonidos emitidos por minuto.</li>
+              <li><strong>T:</strong> Variable de tipo real (double). Almacena la temperatura en grados Fahrenheit.</li>
+            </ul>
+
+            <h3>Tabla de Valores de Prueba</h3>
+            <p>A continuación se muestra una tabla con diferentes valores de entrada y sus resultados esperados:</p>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>Número de Corrida</th>
+                  <th>N (Sonidos)</th>
+                  <th>T (Temperatura)</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>8</td>
+                  <td>42.00</td>
+                  <td>Válido</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>15</td>
+                  <td>43.75</td>
+                  <td>Válido</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>11</td>
+                  <td>42.75</td>
+                  <td>Válido</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>25</td>
+                  <td>46.25</td>
+                  <td>Válido</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>-5</td>
+                  <td>-</td>
+                  <td>Error: N debe ser positivo</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>50</td>
+                  <td>52.50</td>
+                  <td>Válido</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <pre><code class="code-block">Ingrese el número de sonidos del grillo: 20
+
+RESULTADOS:
+Número de sonidos: 20
+Temperatura del grillo: 45.00 grados Fahrenheit</code></pre>
+
+            <h3>Casos de Error</h3>
+            <pre><code class="code-block">Ingrese el número de sonidos del grillo: -5
+
+ERROR: El número de sonidos debe ser positivo (N > 0)</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Esta es la primera vez que utilizamos una estructura condicional (if) en este curso.</li>
+              <li>La validación de entrada es importante para evitar resultados no válidos.</li>
+              <li>La fórmula utiliza división por 4.0 para garantizar un resultado decimal.</li>
+              <li>Es importante usar <code>double</code> para T para mantener la precisión decimal.</li>
+              <li>Se pueden usar Scanner para leer datos o pasar como argumentos del programa.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>En este ejercicio utilizaremos una estructura condicional <code>if</code> para validar que 
+            N sea mayor que 0 antes de realizar el cálculo. Si N es menor o igual a 0, mostraremos un 
+            mensaje de error.</p>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Estructuras Condicionales</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - Problema 2.1</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/3.png" alt="Diagrama de Flujo Problema 2.1" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

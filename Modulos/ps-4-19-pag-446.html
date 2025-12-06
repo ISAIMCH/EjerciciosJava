@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 4.19 - Análisis de Calificaciones de Exámenes</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 4.19 - Análisis de Calificaciones de Exámenes</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 447</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- PS 4.19 -->
+      <article id="ps-4-19" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 4.19</span>
+          <h2 id="ejercicio-title">Análisis de Calificaciones de 6 Exámenes para 30 Alumnos</h2>
+          
+          <p class="exercise-description">
+            Se tiene información sobre las calificaciones de 6 exámenes de un grupo de 30 alumnos. 
+            Se requiere calcular el promedio de calificaciones de cada examen, el promedio de cada alumno, 
+            e identificar cuál es el examen con el mayor promedio de calificación.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>Se tiene información sobre las calificaciones de 6 exámenes de un grupo de 30 alumnos. 
+            Los datos sobre estos exámenes se proporcionan de la siguiente manera:</p>
+            
+            <div class="formula-box">
+              <p>CAL₁,₁ CAL₁,₂ ...... CAL₁,₆</p>
+              <p>CAL₂,₁ CAL₂,₂ ...... CAL₂,₆</p>
+              <p>.....................</p>
+              <p>CAL₃₀,₁ CAL₃₀,₂ ...... CAL₃₀,₆</p>
+              <p style="margin-top: 10px;"><strong>Donde:</strong> CALᵢ,ⱼ es una variable de tipo real que representa la calificación que obtuvo el alumno i en el examen j (1 ≤ i ≤ 30, 1 ≤ j ≤ 6).</p>
+            </div>
+
+            <p>Escriba un diagrama de flujo que permita calcular lo siguiente:</p>
+            <ul>
+              <li><strong>a) El promedio de calificaciones de cada uno de los 6 exámenes.</strong></li>
+              <li><strong>b) El promedio de calificaciones de cada alumno.</strong></li>
+              <li><strong>c) El tipo (número) de examen que tuvo el mayor promedio de calificación. Escriba también dicho promedio.</strong></li>
+            </ul>
+
+            <h3>Explicación del Enunciado</h3>
+            <p>
+              Se debe procesar una matriz de 30 x 6 (30 alumnos, 6 exámenes) calculando:
+            </p>
+            <ul>
+              <li><strong>Promedio por examen:</strong> Suma de todas las calificaciones de un examen dividido entre 30 alumnos.</li>
+              <li><strong>Promedio por alumno:</strong> Suma de las 6 calificaciones de un alumno dividido entre 6.</li>
+              <li><strong>Examen con mayor promedio:</strong> Comparar todos los promedios de exámenes e identificar cuál es el máximo.</li>
+            </ul>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Declarar una matriz de 30 x 6 para almacenar las calificaciones.</li>
+              <li>Usar bucles anidados para procesar filas (alumnos) y columnas (exámenes).</li>
+              <li>Calcular el promedio de cada examen sumando todas las calificaciones en esa columna.</li>
+              <li>Calcular el promedio de cada alumno sumando todas sus 6 calificaciones.</li>
+              <li>Identificar el examen con el mayor promedio y almacenar su número y valor.</li>
+              <li>Mostrar todos los resultados de manera organizada.</li>
+            </ul>
+
+            <h3>Explicación de Variables</h3>
+            <div class="formula-box">
+              <ul>
+                <li><strong>CAL[i][j]:</strong> Matriz de 30x6 con calificaciones (tipo double).</li>
+                <li><strong>PROMEDIOS_EXAMEN[j]:</strong> Arreglo para almacenar el promedio de cada examen.</li>
+                <li><strong>PROMEDIO_ALUMNO:</strong> Variable para calcular promedio temporal del alumno actual.</li>
+                <li><strong>SUMA:</strong> Variable acumuladora temporal.</li>
+                <li><strong>EXAMEN_MAXIMO:</strong> Número del examen con mayor promedio.</li>
+                <li><strong>PROMEDIO_MAXIMO:</strong> Valor del mayor promedio de examen.</li>
+                <li><strong>i:</strong> Índice para filas (alumnos).</li>
+                <li><strong>j:</strong> Índice para columnas (exámenes).</li>
+              </ul>
+            </div>
+
+            <h3>Casos de Prueba</h3>
+            <table class="test-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Descripción</th>
+                  <th>Alumnos</th>
+                  <th>Exámenes</th>
+                  <th>Validación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Calcular promedios correctamente</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Suma/contador válido</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Identificar examen máximo</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Máximo correcto</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Calcular promedio examen 1</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Suma/30 válida</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Calcular promedio alumno 1</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Suma/6 válida</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Matriz con todos iguales</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Todos promedios iguales</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Detectar máximo en última columna</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Examen 6 es máximo</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Detectar máximo en primera columna</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Examen 1 es máximo</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Valores bajos en matriz</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Promedios bajos válidos</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Valores altos en matriz</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Promedios altos válidos</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Valores decimales precisos</td>
+                  <td>30</td>
+                  <td>6</td>
+                  <td>Precisión 2 decimales</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px; font-family: 'Courier New', monospace; color: #333; line-height: 1.8;">
+              <p><strong>Ingrese las 30 calificaciones de 6 exámenes (matriz 30x6)</strong></p>
+              <p style="margin-top: 15px;"><strong>RESULTADOS:</strong></p>
+              <p>Promedio Examen 1: 7.5</p>
+              <p>Promedio Examen 2: 8.2</p>
+              <p>Promedio Examen 3: 7.8</p>
+              <p>Promedio Examen 4: 8.5</p>
+              <p>Promedio Examen 5: 7.9</p>
+              <p>Promedio Examen 6: 8.0</p>
+              <p style="margin-top: 10px;">Promedio Alumno 1: 8.0</p>
+              <p>Promedio Alumno 2: 7.6</p>
+              <p>... (28 alumnos más)</p>
+              <p style="margin-top: 10px;"><strong>Examen con Mayor Promedio:</strong> Examen 4</p>
+              <p><strong>Promedio Máximo:</strong> 8.5</p>
+            </div>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos clave para resolver este ejercicio:</p>
+            <ul>
+              <li>Usar bucles anidados: externo para alumnos, interno para exámenes.</li>
+              <li>Acumular sumas por columna para calcular promedios de exámenes.</li>
+              <li>Acumular sumas por fila para calcular promedios de alumnos.</li>
+              <li>Comparar promedios de exámenes para identificar el máximo.</li>
+              <li>Usar variables double para precisión en cálculos de promedios.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>Usa bucles anidados con el externo para filas (alumnos) e interno para columnas (exámenes). 
+            Para calcular el promedio de cada examen, suma todos los valores de esa columna. Para el máximo, 
+            inicializa con -1 y compara cada promedio calculado.</p>
+
+            <h3>Consideraciones</h3>
+            <ul>
+              <li>Maneja correctamente los dos bucles anidados para acceder a matriz[i][j].</li>
+              <li>Asegúrate de inicializar correctamente los acumuladores.</li>
+              <li>Valida que los promedios se calculen correctamente dividiendo entre 30 (exámenes) y 6 (alumnos).</li>
+              <li>El diagrama de flujo muestra la lógica completa del algoritmo.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Ejercicio de Programación Estructurada en Java - Procesamiento de Matrices</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Diagrama de Flujo - PS 4.19</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/15.png" alt="Diagrama de Flujo PS 4.19">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+digraph Ejemplo_1_5_PAG_23 {
+    rankdir=TB;
+    node [fontname="Arial" fontsize=10];
+    
+    // Inicio/Fin (Óvalo - ellipse)
+    inicio [shape=ellipse label="Inicio" style=filled fillcolor="#4472C4" fontcolor=white];
+    
+    // Procesos (Rectángulos - box)
+    asig1 [shape=box label="I = 3" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig2 [shape=box label="J = 8" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig3 [shape=box label="ACUM = J" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig4 [shape=box label="REA = I / J" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig5 [shape=box label="SUM = (I + J) / 8" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig6 [shape=box label="CAR = 'a'" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig7 [shape=box label="BAND = false" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig8 [shape=box label="BAND = (J > I)" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig9 [shape=box label="REA = I / (double)J" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig10 [shape=box label="SUM = (I + J) / (double)8" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig11 [shape=box label="I = (int)Math.pow(2, 0)" style=filled fillcolor="#4472C4" fontcolor=white];
+    asig12 [shape=box label="BAND = true || (3 == 8)" style=filled fillcolor="#4472C4" fontcolor=white];
+    
+    // Errores (Rectángulos - box en naranja)
+    asig13 [shape=box label="Error: Asignación 13\nNo se puede usar char\nen multiplicación" style=filled fillcolor="#ED7D31" fontcolor=white];
+    asig14 [shape=box label="Error: Asignación 14\nNo se puede usar char\nen multiplicación" style=filled fillcolor="#ED7D31" fontcolor=white];
+    
+    // Salida de datos (Paralelogramo - parallelogram con egg shape)
+    salida [shape=egg label="Mostrar RESULTADOS FINALES\nI=1, J=8, ACUM=8\nREA=0.375, SUM=1.375\nCAR=a, BAND=true" style=filled fillcolor="#70AD47" fontcolor=white];
+    
+    // Fin
+    fin [shape=ellipse label="Fin" style=filled fillcolor="#4472C4" fontcolor=white];
+    
+    // Conexiones con flechas
+    inicio -> asig1;
+    asig1 -> asig2;
+    asig2 -> asig3;
+    asig3 -> asig4;
+    asig4 -> asig5;
+    asig5 -> asig6;
+    asig6 -> asig7;
+    asig7 -> asig8;
+    asig8 -> asig9;
+    asig9 -> asig10;
+    asig10 -> asig11;
+    asig11 -> asig12;
+    asig12 -> asig13;
+    asig13 -> asig14;
+    asig14 -> salida;
+    salida -> fin;
+}

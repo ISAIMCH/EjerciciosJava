@@ -1,0 +1,91 @@
+digraph Problema5_2 {
+    rankdir=TB;
+    node [fontname="Arial", fontsize=11, style=filled, fillcolor=white];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos principales - Inicio
+    inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
+    
+    // Lectura de datos
+    asign_n [shape=box, label="LEER N\n(Número de empleados)", fillcolor="#B3E5FC"];
+    leer_empleados [shape=box, label="LEER EMPLEADOS:\nNÚMERO, NOMBRE\nVENTAS[1..12], SALARIO", fillcolor="#B3E5FC"];
+    
+    // Inciso a) - Empleado con mayores ventas
+    asign_max_vtas [shape=box, label="MAXVENTAS = 0\nEMPLEADOMÁX = 0\nI = 0", fillcolor="#B3E5FC"];
+    cond_i1 [shape=diamond, label="¿I < N?", fillcolor="#FFD54F"];
+    asign_suma_vtas [shape=box, label="SUMA = 0\nJ = 0", fillcolor="#B3E5FC"];
+    cond_j1 [shape=diamond, label="¿J < 12?", fillcolor="#FFD54F"];
+    sum_vtas [shape=box, label="SUMA = SUMA +\nEMPLEADOS[I].VENTAS[J]", fillcolor="#B3E5FC"];
+    incr_j1 [shape=box, label="J = J + 1", fillcolor="#B3E5FC"];
+    comp_max_vtas [shape=diamond, label="¿SUMA >\nMAXVENTAS?", fillcolor="#FFD54F"];
+    upd_max_vtas [shape=box, label="MAXVENTAS = SUMA\nEMPLEADOMÁX = I", fillcolor="#B3E5FC"];
+    incr_i1 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
+    print_max_vtas [shape=egg, label="Imprimir EMPLEADÓMÁX\nNOMBRE, MAXVENTAS", fillcolor="#FFE082"];
+    
+    // Inciso b) - Incremento de salarios
+    asign_inc_sal [shape=box, label="I = 0", fillcolor="#B3E5FC"];
+    cond_i2 [shape=diamond, label="¿I < N?", fillcolor="#FFD54F"];
+    asign_suma_vtas2 [shape=box, label="SUMA = 0\nJ = 0", fillcolor="#B3E5FC"];
+    cond_j2 [shape=diamond, label="¿J < 12?", fillcolor="#FFD54F"];
+    sum_vtas2 [shape=box, label="SUMA = SUMA +\nEMPLEADOS[I].VENTAS[J]", fillcolor="#B3E5FC"];
+    incr_j2 [shape=box, label="J = J + 1", fillcolor="#B3E5FC"];
+    comp_1millon [shape=diamond, label="¿SUMA >\n1000000?", fillcolor="#FFD54F"];
+    calc_sal_nuevo [shape=box, label="SALARIOANT =\nEMPLEADOS[I].SALARIO\nEMPLEADOS[I].SALARIO =\nSALARIOANT * 1.1", fillcolor="#B3E5FC"];
+    print_inc_sal [shape=egg, label="Imprimir NOMBRE\nSALARIOANT\nSALARIO NUEVO", fillcolor="#FFE082"];
+    incr_i2 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
+    
+    // Inciso c) - Empleados con ventas bajas en diciembre
+    asign_dic [shape=box, label="I = 0", fillcolor="#B3E5FC"];
+    cond_i3 [shape=diamond, label="¿I < N?", fillcolor="#FFD54F"];
+    comp_dic [shape=diamond, label="¿EMPLEADOS[I].VENTAS[11]\n< 30000?", fillcolor="#FFD54F"];
+    print_dic_bajo [shape=egg, label="Imprimir NÚMERO\nNOMBRE, VENTAS[11]", fillcolor="#FFE082"];
+    incr_i3 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
+    
+    // Salida final
+    fin [shape=ellipse, label="Fin", fillcolor="#4A90E2"];
+
+    // Conexiones - Inicio
+    inicio -> asign_n;
+    asign_n -> leer_empleados;
+    
+    // Conexiones - Inciso a
+    leer_empleados -> asign_max_vtas;
+    asign_max_vtas -> cond_i1;
+    cond_i1 -> asign_suma_vtas [label="Sí"];
+    asign_suma_vtas -> cond_j1;
+    cond_j1 -> sum_vtas [label="Sí"];
+    sum_vtas -> incr_j1;
+    incr_j1 -> cond_j1;
+    cond_j1 -> comp_max_vtas [label="No"];
+    comp_max_vtas -> upd_max_vtas [label="Sí"];
+    upd_max_vtas -> incr_i1;
+    comp_max_vtas -> incr_i1 [label="No"];
+    incr_i1 -> cond_i1;
+    cond_i1 -> print_max_vtas [label="No"];
+    
+    // Conexiones - Inciso b
+    print_max_vtas -> asign_inc_sal;
+    asign_inc_sal -> cond_i2;
+    cond_i2 -> asign_suma_vtas2 [label="Sí"];
+    asign_suma_vtas2 -> cond_j2;
+    cond_j2 -> sum_vtas2 [label="Sí"];
+    sum_vtas2 -> incr_j2;
+    incr_j2 -> cond_j2;
+    cond_j2 -> comp_1millon [label="No"];
+    comp_1millon -> calc_sal_nuevo [label="Sí"];
+    calc_sal_nuevo -> print_inc_sal;
+    print_inc_sal -> incr_i2;
+    comp_1millon -> incr_i2 [label="No"];
+    incr_i2 -> cond_i2;
+    cond_i2 -> asign_dic [label="No"];
+    
+    // Conexiones - Inciso c
+    asign_dic -> cond_i3;
+    cond_i3 -> comp_dic [label="Sí"];
+    comp_dic -> print_dic_bajo [label="Sí"];
+    print_dic_bajo -> incr_i3;
+    comp_dic -> incr_i3 [label="No"];
+    incr_i3 -> cond_i3;
+    cond_i3 -> fin [label="No"];
+}
+

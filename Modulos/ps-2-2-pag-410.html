@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 2.2 - Cotangente de un Ángulo</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 2.2 - Cálculo de la Cotangente de un Ángulo</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 410</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- PS 2.2 -->
+      <article id="ps-2-2" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 2.2</span>
+          <h2 id="ejercicio-title">Cálculo de la Cotangente de un Ángulo</h2>
+          
+          <p class="exercise-description">
+            La cotangente de un ángulo se define como el cociente entre el coseno y el seno de dicho ángulo. 
+            En este problema, desarrollarás un programa de Java estructurado que permita calcular la cotangente de un ángulo, 
+            considerando que se conoce el valor del seno y del coseno del mismo. Recuerda que el seno debe 
+            ser diferente de 0 para que la división sea válida.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>La cotangente de un ángulo se define como el cociente entre el coseno y el seno de dicho ángulo:</p>
+            <div class="formula-box" style="text-align: center;">
+              <p style="font-size: 1.2em; margin: 10px 0;"><strong>cot (α) = cos (α) / sen (α)</strong></p>
+              <p style="color: #666; font-style: italic;">Fórmula 6.21</p>
+            </div>
+            
+            <p>Construya un diagrama de flujo que le permita calcular la cotangente de un ángulo, considerando que se conoce el valor del seno y del coseno del mismo. Recuerde que el seno debe ser diferente de 0.</p>
+
+            <h3>Explicación del Enunciado</h3>
+            <p>
+              <strong>SENO:</strong> Valor del seno del ángulo (tipo real, puede ser positivo o negativo, pero NO debe ser 0).
+            </p>
+            <p>
+              <strong>COSENO:</strong> Valor del coseno del ángulo (tipo real, puede ser positivo o negativo).
+            </p>
+            <p>
+              <strong>COTANGENTE:</strong> Resultado del cálculo (cot α = COSENO / SENO).
+            </p>
+            <p>
+              <strong>Condición importante:</strong> Si SENO = 0, la cotangente no está definida, por lo que debe mostrar un mensaje de error.
+            </p>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Declarar variables de tipo real para almacenar SENO y COSENO.</li>
+              <li>Declarar una variable de tipo real para el resultado de la cotangente.</li>
+              <li>Validar que el seno sea diferente de 0 antes de realizar la división.</li>
+              <li>Si seno = 0, mostrar un mensaje de error indicando que la cotangente no está definida.</li>
+              <li>Si seno ≠ 0, calcular cot (α) = COSENO / SENO.</li>
+              <li>Mostrar el resultado de la cotangente con la precisión adecuada.</li>
+              <li>Usar estructuras condicionales (if-else) para validar el seno.</li>
+            </ul>
+
+            <h3>Explicación de Variables</h3>
+            <div class="formula-box">
+              <ul>
+                <li><strong>SENO:</strong> Variable de tipo real que almacena el valor del seno del ángulo.</li>
+                <li><strong>COSENO:</strong> Variable de tipo real que almacena el valor del coseno del ángulo.</li>
+                <li><strong>COTANGENTE:</strong> Variable de tipo real que almacena el resultado del cálculo.</li>
+              </ul>
+            </div>
+
+            <h3>Tabla de Casos de Prueba</h3>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>SENO (Entrada)</th>
+                  <th>COSENO (Entrada)</th>
+                  <th>Verificación</th>
+                  <th>Resultado Esperado</th>
+                  <th>Salida en Pantalla</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>0.8660</td>
+                  <td>0.5000</td>
+                  <td>SENO ≠ 0 ✓</td>
+                  <td>0.5774</td>
+                  <td>La cotangente del ángulo es: 0.5774</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>0.7071</td>
+                  <td>0.7071</td>
+                  <td>SENO ≠ 0 ✓</td>
+                  <td>1.0000</td>
+                  <td>La cotangente del ángulo es: 1.0000</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>0.5000</td>
+                  <td>0.8660</td>
+                  <td>SENO ≠ 0 ✓</td>
+                  <td>1.7320</td>
+                  <td>La cotangente del ángulo es: 1.7320</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>0.0000</td>
+                  <td>1.0000</td>
+                  <td>SENO = 0 ✗</td>
+                  <td>ERROR</td>
+                  <td>Error: La cotangente no está definida</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>1.0000</td>
+                  <td>0.0000</td>
+                  <td>SENO ≠ 0 ✓</td>
+                  <td>0.0000</td>
+                  <td>La cotangente del ángulo es: 0.0000</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <p><strong>Entrada - Cotangente de 60°:</strong></p>
+            <pre><code class="code-block">Ingrese el valor del SENO: 0.8660
+Ingrese el valor del COSENO: 0.5000
+
+La cotangente del ángulo es: 0.5774</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>La cotangente es indefinida cuando el seno es igual a 0.</li>
+              <li>Esto ocurre en ángulos de 0°, 180°, 360°, etc. (múltiplos de π).</li>
+              <li>Siempre valida la condición SENO ≠ 0 antes de realizar la división.</li>
+              <li>Usa variables de tipo <code>double</code> para mayor precisión en los cálculos.</li>
+              <li>La fórmula es: cot (α) = cos (α) / sen (α)</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>La cotangente es el inverso multiplicativo de la tangente: cot (α) = 1 / tan (α). 
+            En Java, puedes calcularla como <code>1.0 / Math.tan()</code>. 
+            Sin embargo, en este ejercicio se espera que implementes la lógica usando la fórmula dada.</p>
+
+            <h3>Consideraciones</h3>
+            <ul>
+              <li>Maneja correctamente la entrada de valores reales desde teclado.</li>
+              <li>Usa condicionales simples (if-else) para validar la condición.</li>
+              <li>Formatea la salida con la precisión adecuada (4 decimales recomendado).</li>
+              <li>Incluye mensajes descriptivos en la salida para una mejor experiencia del usuario.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">PS 2.2 - Cálculo de la Cotangente de un Ángulo - Programación Estructurada en Java</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - PS 2.2</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/10.png" alt="Diagrama de Flujo PS 2.2" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
+            

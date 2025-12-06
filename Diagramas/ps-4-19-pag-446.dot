@@ -1,0 +1,67 @@
+digraph PS_4_19_Calificaciones {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#E8F4F8", fontname="Arial", fontsize=10];
+    
+    INICIO [label="INICIO", fillcolor="#90EE90"];
+    FIN [label="FIN", fillcolor="#FFB6C6"];
+    
+    node [shape=parallelogram, fillcolor="#FFE4B5"];
+    LEER_MATRIZ [label="LEER\nMatriz CAL[30][6]"];
+    
+    node [shape=rectangle, fillcolor="#B0E0E6"];
+    INIT_VARS [label="i = 0\nj = 0\nEXAMEN_MAX = 0\nPROM_MAX = 0"];
+    SUMA_EXAM [label="SUMA_EXAM = 0"];
+    SUMA_ALUMNO [label="SUMA_ALUMNO = 0"];
+    ACUM_EXAM [label="SUMA_EXAM = SUMA_EXAM\n+ CAL[i][j]"];
+    ACUM_ALUMNO [label="SUMA_ALUMNO = SUMA_ALUMNO\n+ CAL[i][j]"];
+    CALC_PROM_EXAM [label="PROM_EXAM = SUMA_EXAM/30"];
+    CALC_PROM_ALUMNO [label="PROM_ALUMNO = SUMA_ALUMNO/6"];
+    INC_J [label="j++"];
+    INC_I [label="i++"];
+    COMP_MAX [label="PROM_EXAM > PROM_MAX?"];
+    UPD_MAX [label="PROM_MAX = PROM_EXAM\nEXAMEN_MAX = j"];
+    
+    node [shape=diamond, fillcolor="#FFFFE0"];
+    COND_J [label="¿j < 6?"];
+    COND_I [label="¿i < 30?"];
+    COND_EXAM [label="¿j < 6?"];
+    
+    node [shape=egg, fillcolor="#FFE4E1"];
+    IMP_PROM_EXAM [label="Imprimir\nPROM_EXAM[j]"];
+    IMP_PROM_ALUMNO [label="Imprimir\nPROM_ALUMNO"];
+    IMP_MAX [label="Imprimir\nEXAMEN_MAX\nPROM_MAX"];
+    
+    INICIO -> LEER_MATRIZ;
+    LEER_MATRIZ -> INIT_VARS;
+    INIT_VARS -> SUMA_EXAM;
+    
+    SUMA_EXAM -> COND_J;
+    COND_J -> ACUM_EXAM [label="Sí"];
+    COND_J -> CALC_PROM_EXAM [label="No"];
+    
+    ACUM_EXAM -> INC_J;
+    INC_J -> COND_J;
+    
+    CALC_PROM_EXAM -> COMP_MAX;
+    COMP_MAX -> UPD_MAX [label="Sí"];
+    COMP_MAX -> IMP_PROM_EXAM [label="No"];
+    UPD_MAX -> IMP_PROM_EXAM;
+    
+    IMP_PROM_EXAM -> INC_J;
+    
+    INIT_VARS -> SUMA_ALUMNO;
+    SUMA_ALUMNO -> COND_I;
+    
+    COND_I -> COND_EXAM [label="Sí"];
+    COND_I -> IMP_MAX [label="No"];
+    
+    COND_EXAM -> ACUM_ALUMNO [label="Sí"];
+    COND_EXAM -> CALC_PROM_ALUMNO [label="No"];
+    
+    ACUM_ALUMNO -> INC_J;
+    CALC_PROM_ALUMNO -> IMP_PROM_ALUMNO;
+    IMP_PROM_ALUMNO -> INC_I;
+    INC_I -> COND_I;
+    
+    IMP_MAX -> FIN;
+}

@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 4.35 - Directorio Telefónico</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+
+    .test-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .test-table th,
+    .test-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .test-table th {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-weight: bold;
+    }
+
+    .test-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    .test-table tr:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 4.35 - Directorio Telefónico</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 454</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- PS 4.35 -->
+      <article id="ps-4-35" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 4.35</span>
+          <h2 id="ejercicio-title">Directorio Telefónico con Búsqueda e Inserción</h2>
+          
+          <p class="exercise-description">
+            Implemente un directorio telefónico que permite buscar contactos en dos arreglos paralelos 
+            (nombres y números telefónicos). Si el contacto existe, muestra el número; si no existe y hay espacio, 
+            permite agregar un nuevo contacto manteniendo el orden alfabético.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>Simule por medio de un diagrama de flujo un directorio telefónico que lea nombres y números 
+            telefónicos en dos arreglos paralelos. Los nombres están ordenados alfabéticamente en orden ascendente.</p>
+            
+            <div class="formula-box">
+              <p><strong>NOMBRE[1..N]:</strong> Arreglo de cadenas con nombres ordenados (1 ≤ N ≤ 1000)</p>
+              <p style="margin-top: 10px;"><strong>TELEFONO[1..N]:</strong> Arreglo de cadenas con números telefónicos paralelo</p>
+              <p style="margin-top: 10px;"><strong>Cuando el usuario lea un nombre:</strong> El programa debe verificar si éste ya estaba en el 
+              directorio, en cuyo caso imprimirá el número de teléfono. De no ser así y si hay capacidad, 
+              pedirá al usuario que escriba el número de teléfono y lo agregará al arreglo.</p>
+            </div>
+
+            <p style="margin-top: 20px;"><strong>Requisitos:</strong></p>
+            <ul>
+              <li><strong>a)</strong> Leer el nombre a buscar en el directorio</li>
+              <li><strong>b)</strong> Buscar el nombre en el arreglo de nombres</li>
+              <li><strong>c)</strong> Si existe, mostrar su número telefónico</li>
+              <li><strong>d)</strong> Si no existe y hay espacio, pedir el número y agregarlo manteniendo orden alfabético</li>
+            </ul>
+
+            <h3>Explicación del Enunciado</h3>
+            <p>
+              Se debe mantener un directorio telefónico con dos arreglos paralelos:
+            </p>
+            <ul>
+              <li><strong>Búsqueda lineal:</strong> Recorrer el arreglo de nombres comparando con el nombre buscado.</li>
+              <li><strong>Si existe:</strong> Mostrar el número telefónico en la misma posición.</li>
+              <li><strong>Si no existe:</strong> Verificar si hay espacio disponible en el arreglo.</li>
+              <li><strong>Inserción ordenada:</strong> Si hay espacio, encontrar la posición correcta y desplazar elementos.</li>
+            </ul>
+
+            <h3>Explicación de Variables</h3>
+            <div class="formula-box">
+              <ul>
+                <li><strong>NOMBRE[]:</strong> Arreglo de cadenas con nombres ordenados alfabéticamente.</li>
+                <li><strong>TELEFONO[]:</strong> Arreglo de cadenas con números telefónicos paralelo a NOMBRE[].</li>
+                <li><strong>nombreBuscado:</strong> Variable String para almacenar el nombre a buscar.</li>
+                <li><strong>posicion:</strong> Variable int para la posición encontrada (-1 si no existe).</li>
+                <li><strong>nuevoTelefono:</strong> Variable String para el número del nuevo contacto.</li>
+                <li><strong>cantidad:</strong> Variable int con la cantidad actual de contactos.</li>
+                <li><strong>i:</strong> Variable int índice para iteración en búsquedas e inserciones.</li>
+                <li><strong>capacidad:</strong> Variable int con la capacidad máxima (hasta 1000).</li>
+              </ul>
+            </div>
+
+            <h3>Casos de Prueba</h3>
+            <table class="test-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Descripción</th>
+                  <th>Entrada</th>
+                  <th>Resultado Esperado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Búsqueda exitosa</td>
+                  <td>Carlos en [Ana, Carlos, Diana]</td>
+                  <td>Retorna posición 1</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Búsqueda fallida</td>
+                  <td>Fernando en [Ana, Carlos, Diana]</td>
+                  <td>Retorna -1</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Primer elemento</td>
+                  <td>Ana (primera en lista)</td>
+                  <td>Posición 0</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Último elemento</td>
+                  <td>Diana (última en lista)</td>
+                  <td>Última posición válida</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Case-insensitive</td>
+                  <td>carlos (minúscula)</td>
+                  <td>Encuentra "Carlos"</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Insertar al inicio</td>
+                  <td>Agregar "Ana" antes de "Carlos"</td>
+                  <td>Ana queda en posición 0</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Insertar en medio</td>
+                  <td>Agregar "Beatriz" entre Ana y Carlos</td>
+                  <td>Mantiene orden alfabético</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Insertar al final</td>
+                  <td>Agregar "Zoe" al final</td>
+                  <td>Zoe queda al final</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Directorio vacío</td>
+                  <td>Búsqueda sin elementos</td>
+                  <td>Retorna -1</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Directorio lleno</td>
+                  <td>Intenta agregar sin espacio</td>
+                  <td>No agrega, capacidad alcanzada</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px; font-family: 'Courier New', monospace; color: #333; line-height: 1.8;">
+              <p><strong>Contactos actuales:</strong></p>
+              <p>Ana - 555-1001</p>
+              <p>Carlos - 555-2002</p>
+              <p>Diana - 555-3003</p>
+              <p>Eduardo - 555-4004</p>
+              <p style="margin-top: 10px;"><strong>Buscando: Carlos</strong></p>
+              <p>✓ Encontrado</p>
+              <p>Número: 555-2002</p>
+              <p style="margin-top: 15px;">---</p>
+              <p style="margin-top: 15px;"><strong>Contactos actuales:</strong></p>
+              <p>Beatriz - 555-5005</p>
+              <p>Fernando - 555-6006</p>
+              <p>Gloria - 555-7007</p>
+              <p style="margin-top: 10px;"><strong>Buscando: Antonio</strong></p>
+              <p>✗ No encontrado</p>
+              <p>Se agregará nuevo contacto: Antonio - 555-8008</p>
+            </div>
+
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos clave para resolver este ejercicio:</p>
+            <ul>
+              <li>Los nombres deben estar ordenados alfabéticamente en todo momento.</li>
+              <li>Usar arreglos paralelos: NOMBRE[] y TELEFONO[] siempre sincronizados.</li>
+              <li>La búsqueda debe ser case-insensitive (sin importar mayúsculas/minúsculas).</li>
+              <li>Al insertar, mantener el orden alfabético desplazando elementos.</li>
+              <li>Verificar siempre que haya capacidad antes de insertar un nuevo contacto.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>Implementa una función de búsqueda lineal que recorra el arreglo de nombres comparando con el valor buscado 
+            (sin importar mayúsculas/minúsculas). Si lo encuentra, retorna la posición; si no, retorna -1. Para insertar, 
+            encuentra la posición correcta para mantener el orden alfabético y desplaza los elementos posteriores.</p>
+
+            <h3>Consideraciones</h3>
+            <ul>
+              <li>Mantén sincronizados los arreglos de nombres y teléfonos en todas las operaciones.</li>
+              <li>Verifica que haya espacio disponible antes de insertar.</li>
+              <li>Usa métodos de comparación case-insensitive como compareTo() en Java.</li>
+              <li>El diagrama de flujo muestra la lógica completa del algoritmo.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- Modal para Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Diagrama de Flujo PS 4.35</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/16.png" alt="Diagrama de Flujo PS 4.35">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+
+</html>

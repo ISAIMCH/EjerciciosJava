@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 3.3 - Conteo de Ceros en una Secuencia</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 3.3 - Conteo de Ceros en una Secuencia</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 113</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- Ejemplo 3.3 -->
+      <article id="ejemplo-3-3" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 3.3</span>
+          <h2 id="ejercicio-title">Conteo de Ceros en una Secuencia de Números</h2>
+          
+          <p class="exercise-description">
+            En este ejemplo trabajarás con estructuras repetitivas (bucles while) para contar el número 
+            de ceros que hay entre un grupo de números enteros. Aprenderás a utilizar ciclos iterativos 
+            con condiciones de terminación y contadores para procesar múltiples datos.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>Escriba un programa en Java que dado como datos N números enteros, obtenga el número 
+            de ceros que hay entre estos números usando una estructura repetitiva while.</p>
+
+            <h3>Datos de Entrada</h3>
+            <ul>
+              <li><strong>N:</strong> Variable de tipo entero que representa el número de datos que se ingresarán.</li>
+              <li><strong>NUM<sub>i</sub>:</strong> Variables de tipo entero que representan los números a procesar (donde 1 ≤ i ≤ N).</li>
+            </ul>
+
+            <h3>Consideraciones</h3>
+            <div class="formula-box">
+              <p><strong>Variables necesarias:</strong></p>
+              <ul>
+                <li><strong>I:</strong> Variable de tipo entero. Representa al contador del ciclo.</li>
+                <li><strong>N:</strong> Variable de tipo entero. Número de datos a ingresar.</li>
+                <li><strong>NUM:</strong> Variable de tipo entero. Almacena el número actual leído.</li>
+                <li><strong>CUECER:</strong> Variable de tipo entero. Cuenta el número de ceros encontrados.</li>
+              </ul>
+            </div>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Declarar variables de tipo <code>int</code> para: N, I, NUM y CUECER.</li>
+              <li>Inicializar CUECER en 0 antes del ciclo.</li>
+              <li>Leer el número total de datos (N).</li>
+              <li>Usar una estructura repetitiva (while) para procesar N números.</li>
+              <li>Leer cada número (NUM) e incrementar I en cada iteración.</li>
+              <li>Si NUM es igual a 0, incrementar CUECER.</li>
+              <li>Mostrar el total de ceros encontrados (CUECER).</li>
+              <li>Documentar claramente los valores de entrada y salida.</li>
+            </ul>
+
+            <h3>Explicación de Variables</h3>
+            <ul>
+              <li><strong>I:</strong> Contador que controla el ciclo repetitivo (incrementa desde 1 hasta N).</li>
+              <li><strong>N:</strong> Número total de valores a procesar.</li>
+              <li><strong>NUM:</strong> Valor actual que se está evaluando.</li>
+              <li><strong>CUECER:</strong> Acumulador que cuenta los ceros encontrados.</li>
+            </ul>
+
+            <h3>Tabla de Valores de Prueba</h3>
+            <p>A continuación se muestra una tabla con diferentes valores de entrada y sus resultados esperados:</p>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>Número de Corrida</th>
+                  <th>N (Cantidad de Números)</th>
+                  <th>Números Ingresados</th>
+                  <th>CUECER (Ceros Encontrados)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>12</td>
+                  <td>8, 0, 5, 15, 0, 0, 25, 0, 45, 0, 0, 41</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>5</td>
+                  <td>10, 20, 30, 40, 50</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>8</td>
+                  <td>0, 0, 0, 1, 2, 3, 0, 0</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>3</td>
+                  <td>0, 0, 0</td>
+                  <td>3</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <pre><code class="code-block">Ingrese la cantidad de números a procesar: 12
+Ingrese número 1: 8
+Ingrese número 2: 0
+Ingrese número 3: 5
+...
+Ingrese número 12: 41
+
+RESULTADO:
+Total de ceros encontrados: 5</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Esta es la primera vez que utilizamos estructura repetitiva (while) en este curso.</li>
+              <li>El contador I debe inicializarse en 1 y incrementarse en cada iteración.</li>
+              <li>CUECER debe inicializarse en 0 antes del ciclo.</li>
+              <li>La condición del while es: <code>i <= n</code> o equivalentemente <code>i < n + 1</code></li>
+              <li>Es importante procesar los datos dentro del ciclo while.</li>
+              <li>El contador de ceros solo se incrementa cuando NUM == 0.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>En este ejemplo utilizaremos una estructura repetitiva <code>while</code> para iterar N veces. 
+            Dentro del ciclo, leeremos un número y verificaremos si es cero. Si lo es, incrementaremos 
+            el contador CUECER. Después de que termine el ciclo, mostraremos el resultado.</p>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Ejemplo de Programación Estructurada en Java - Estructuras Repetitivas</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - Ejemplo 3.3</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/4.png" alt="Diagrama de Flujo Ejemplo 3.3" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
+        

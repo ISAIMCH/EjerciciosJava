@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio 1.5 - Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicio 1.5 - Operaciones Aritméticas Básicas</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 23</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- Ejemplo 1.5 -->
+      <article id="ejemplo-1-5" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 1.5</span>
+          <h2 id="ejercicio-title">Operaciones Aritméticas con Variables de Diferentes Tipos</h2>
+          
+          <p class="exercise-description">
+            En este ejercicio trabajarás con variables de diferentes tipos de datos (enteros, reales y booleanos) 
+            y realizarás operaciones aritméticas básicas. Aprenderás cómo Java maneja las conversiones de tipos 
+            y el comportamiento de las operaciones cuando intervienen datos de diferentes tipos numéricos.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>Supongamos que las variables <code>I</code>, <code>ACUM</code> y <code>J</code> son de tipo entero, 
+            <code>REA</code> y <code>SUM</code> de tipo real, <code>CAR</code> de tipo carácter y <code>BAND</code> 
+            de tipo booleano. Considérense también que tenemos que realizar las siguientes asignaciones:</p>
+            <ol>
+              <li><code>I = 0</code></li>
+              <li><code>I = I + 1</code></li>
+              <li><code>ACUM = 0</code></li>
+              <li><code>J = 5 ** 2 div 3</code></li>
+              <li><code>CAR = 'a'</code></li>
+              <li><code>ACUM = J div I</code></li>
+              <li><code>REA = ACUM / 3</code></li>
+              <li><code>BAND = (8 > 5) v (15 < 2 ** 3)</code></li>
+              <li><code>SUM = ACUM * 5 / J ** 2</code></li>
+              <li><code>I = I * 3</code></li>
+              <li><code>REA = REA / 5</code></li>
+              <li><code>BAND = BAND o (I = J)</code></li>
+              <li><code>I = REA</code></li>
+              <li><code>CAR = J</code></li>
+            </ol>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Declarar todas las variables con sus tipos de datos correctos (<code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code>).</li>
+              <li>Realizar todas las asignaciones en el orden indicado.</li>
+              <li>Manejar correctamente las operaciones aritméticas:
+                <ul>
+                  <li>División entera (<code>/</code> con operandos int)</li>
+                  <li>División real (<code>/</code> con al menos un operando double)</li>
+                  <li>Potenciación (<code>Math.pow()</code> en Java)</li>
+                </ul>
+              </li>
+              <li>Documentar el valor de cada variable después de cada asignación.</li>
+              <li>Capturar y documentar los errores que ocurran (asignaciones inválidas de tipos).</li>
+            </ul>
+            
+            <h3>Tabla de Valores de Variables</h3>
+            <p>A continuación se muestra la evolución de los valores de las variables según cada asignación:</p>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>Asignación #</th>
+                  <th>I</th>
+                  <th>J</th>
+                  <th>ACUM</th>
+                  <th>REA</th>
+                  <th>SUM</th>
+                  <th>CAR</th>
+                  <th>BAND</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>0</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>1</td>
+                  <td></td>
+                  <td>0</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>1</td>
+                  <td>8</td>
+                  <td>0</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>1</td>
+                  <td>8</td>
+                  <td>0</td>
+                  <td></td>
+                  <td></td>
+                  <td>a</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>1</td>
+                  <td>8</td>
+                  <td>8</td>
+                  <td></td>
+                  <td></td>
+                  <td>a</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>1</td>
+                  <td>8</td>
+                  <td>8</td>
+                  <td>2.666...</td>
+                  <td></td>
+                  <td>a</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>1</td>
+                  <td>8</td>
+                  <td>8</td>
+                  <td>2.666...</td>
+                  <td></td>
+                  <td>a</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>1</td>
+                  <td>8</td>
+                  <td>8</td>
+                  <td>2.666...</td>
+                  <td>0.625</td>
+                  <td>a</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>3</td>
+                  <td>8</td>
+                  <td>8</td>
+                  <td>2.666...</td>
+                  <td>0.625</td>
+                  <td>a</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>3</td>
+                  <td>8</td>
+                  <td>8</td>
+                  <td>0.533...</td>
+                  <td>0.625</td>
+                  <td>a</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>3</td>
+                  <td>8</td>
+                  <td>8</td>
+                  <td>0.533...</td>
+                  <td>0.625</td>
+                  <td>a</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>Error</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>Error</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Error</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <h3>Resultado esperado</h3>
+            <pre><code class="code-block">Después de ejecutar todas las asignaciones válidas:
+
+I: 3
+J: 8
+ACUM: 8
+REA: 0.5333333333333333
+SUM: 0.625
+CAR: a
+BAND: false
+
+Notas:
+- Las asignaciones 13 y 14 generarán errores de compilación
+- No pueden ser ejecutadas sin realizar conversiones explícitas</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Java no permite conversiones automáticas de <code>double</code> a <code>int</code> (asignación 13).</li>
+              <li>Java no permite asignar valores numéricos directamente a <code>char</code> (asignación 14).</li>
+              <li>La división de dos enteros produce un entero (trunca decimales).</li>
+              <li>Usa <code>Math.pow()</code> para potenciación y convierte el resultado a <code>int</code> si es necesario.</li>
+              <li>Los operadores lógicos en Java son <code>||</code> (OR) y <code>&&</code> (AND).</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>Para convertir explícitamente tipos, usa casting: <code>(int) 2.5</code> produce <code>2</code>. 
+            Pero recuerda que asignar directamente sin casting causará un error de compilación.</p>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Ejercicio de Programación Estructurada en Java - Fundamentos de Tipos de Datos</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - Ejemplo 1.5</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/1.png" alt="Diagrama de Flujo Ejemplo 1.5" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+digraph Problema_2_1_PAG_77 {
+    rankdir=TB;
+    node [fontname="Arial" fontsize=10];
+    
+    // Inicio/Fin (Óvalo - ellipse)
+    inicio [shape=ellipse label="Inicio" style=filled fillcolor="#4472C4" fontcolor=white];
+    
+    // Entrada de datos (Rectángulos - box)
+    entrada [shape=box label="Leer N" style=filled fillcolor="#4472C4" fontcolor=white];
+    
+    // Decisión (Rombo - diamond)
+    decision [shape=diamond label="N > 0?" style=filled fillcolor="#FFC000" fontcolor=black];
+    
+    // Procesos (Rectángulos - box)
+    proceso [shape=box label="T = N / 4.0 + 40" style=filled fillcolor="#4472C4" fontcolor=white];
+    
+    // Salida válida (Egg shape)
+    salida_valida [shape=egg label="Mostrar RESULTADOS\nN, T" style=filled fillcolor="#70AD47" fontcolor=white];
+    
+    // Salida error (Egg shape en naranja)
+    salida_error [shape=egg label="Mostrar ERROR\nN debe ser positivo" style=filled fillcolor="#ED7D31" fontcolor=white];
+    
+    // Fin
+    fin [shape=ellipse label="Fin" style=filled fillcolor="#4472C4" fontcolor=white];
+    
+    // Conexiones con flechas
+    inicio -> entrada;
+    entrada -> decision;
+    
+    // Rama Sí (N > 0)
+    decision -> proceso [label="Sí"];
+    proceso -> salida_valida;
+    salida_valida -> fin;
+    
+    // Rama No (N ≤ 0)
+    decision -> salida_error [label="No"];
+    salida_error -> fin;
+}

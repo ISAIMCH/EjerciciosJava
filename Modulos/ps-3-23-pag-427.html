@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PS 3.23 - Lectura de Calificaciones con Bucles</title>
+  <link rel="stylesheet" href="../styles_desc.css">
+  <style>
+    .diagram-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .diagram-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #667eea;
+    }
+
+    .close-btn {
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #667eea;
+    }
+
+    .diagram-image {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .diagram-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .formula-box {
+      background: #f5f5f5;
+      padding: 15px;
+      border-left: 4px solid #667eea;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>PS 3.23 - Lectura de Calificaciones con Bucles</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 427</p>
+    </header>
+
+    <main class="exercises-main">
+      <!-- PS 3.23 -->
+      <article id="ps-3-23" class="exercise-card" aria-labelledby="ejercicio-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">PS 3.23</span>
+          <h2 id="ejercicio-title">Lectura de Calificaciones de 35 Alumnos</h2>
+          
+          <p class="exercise-description">
+            En este problema, necesitas leer las calificaciones de 35 alumnos, donde cada alumno tiene 5 calificaciones. 
+            Utilizarás bucles anidados para procesar todos los datos. Este ejercicio es una extensión del problema anterior 
+            que ahora considera múltiples alumnos con múltiples calificaciones por medio de ciclos.
+          </p>
+
+          <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Enunciado</h3>
+            <p>Resuelva el ejercicio anterior, pero considere que las cinco calificaciones del alumno se leerán dentro de un ciclo.</p>
+            <div class="formula-box">
+              <p><strong>Datos:</strong> MAT<sub>i</sub>, CAL<sub>i,1</sub>, CAL<sub>i,2</sub>, ..., CAL<sub>i,5</sub>, ..., MAT<sub>35</sub>, CAL<sub>35,1</sub>, ..., CAL<sub>35,5</sub></p>
+            </div>
+            
+            <p><strong>Donde:</strong></p>
+            <ul>
+              <li>MAT<sub>i</sub> es una variable de tipo entero que representa la matrícula del alumno i (1 ≤ i ≤ 35).</li>
+              <li>CAL<sub>i,j</sub> es una variable de tipo real que representa la calificación j del alumno i (1 ≤ j ≤ 5, 1 ≤ i ≤ 35).</li>
+            </ul>
+
+            <h3>Explicación del Enunciado</h3>
+            <p>
+              <strong>MAT (Matrícula):</strong> Identificador único del alumno (tipo entero, rango 1 a 35).
+            </p>
+            <p>
+              <strong>CAL (Calificaciones):</strong> Array de 5 calificaciones reales por alumno (valores entre 0 y 100).
+            </p>
+            <p>
+              <strong>Bucles anidados:</strong> Se necesitan dos bucles: uno para los 35 alumnos y otro para las 5 calificaciones de cada alumno.
+            </p>
+
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Declarar un arreglo o variable para almacenar las 5 calificaciones de cada alumno.</li>
+              <li>Utilizar un bucle externo (for) para procesar los 35 alumnos (i = 1 a 35).</li>
+              <li>Utilizar un bucle interno (for) para leer las 5 calificaciones de cada alumno (j = 1 a 5).</li>
+              <li>Leer la matrícula del alumno (MAT<sub>i</sub>).</li>
+              <li>Dentro del bucle interno, leer cada una de las 5 calificaciones (CAL<sub>i,j</sub>).</li>
+              <li>Calcular el promedio de las 5 calificaciones para cada alumno.</li>
+              <li>Mostrar la matrícula, las 5 calificaciones y el promedio de cada alumno.</li>
+              <li>Usar estructuras de control (bucles for anidados) para automatizar el proceso.</li>
+            </ul>
+
+            <h3>Explicación de Variables</h3>
+            <div class="formula-box">
+              <ul>
+                <li><strong>MAT:</strong> Variable de tipo entero que almacena la matrícula del alumno actual.</li>
+                <li><strong>CAL[]:</strong> Arreglo de tipo real que almacena las 5 calificaciones del alumno.</li>
+                <li><strong>i:</strong> Variable de control del bucle externo (alumnos, 1 a 35).</li>
+                <li><strong>j:</strong> Variable de control del bucle interno (calificaciones, 1 a 5).</li>
+                <li><strong>promedio:</strong> Variable de tipo real que almacena el promedio de las 5 calificaciones.</li>
+              </ul>
+            </div>
+
+            <h3>Tabla de Casos de Prueba</h3>
+            <table class="values-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>MAT</th>
+                  <th>CAL1</th>
+                  <th>CAL2</th>
+                  <th>CAL3</th>
+                  <th>CAL4</th>
+                  <th>CAL5</th>
+                  <th>Promedio Esperado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1001</td>
+                  <td>85.5</td>
+                  <td>90.0</td>
+                  <td>78.5</td>
+                  <td>88.0</td>
+                  <td>92.5</td>
+                  <td>86.9000</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>1002</td>
+                  <td>75.0</td>
+                  <td>80.0</td>
+                  <td>85.0</td>
+                  <td>70.0</td>
+                  <td>82.0</td>
+                  <td>78.4000</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>1003</td>
+                  <td>100.0</td>
+                  <td>95.0</td>
+                  <td>98.0</td>
+                  <td>100.0</td>
+                  <td>96.0</td>
+                  <td>97.8000</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>1004</td>
+                  <td>60.0</td>
+                  <td>65.0</td>
+                  <td>70.0</td>
+                  <td>75.0</td>
+                  <td>80.0</td>
+                  <td>70.0000</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>1005</td>
+                  <td>50.0</td>
+                  <td>55.0</td>
+                  <td>60.0</td>
+                  <td>65.0</td>
+                  <td>70.0</td>
+                  <td>60.0000</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Resultado Esperado</h3>
+            <p><strong>Entrada - Para el primer alumno (MAT=1001):</strong></p>
+            <pre><code class="code-block">Ingrese la matrícula del alumno: 1001
+Ingrese la calificación 1: 85.5
+Ingrese la calificación 2: 90.0
+Ingrese la calificación 3: 78.5
+Ingrese la calificación 4: 88.0
+Ingrese la calificación 5: 92.5
+
+Alumno MAT=1001 | CAL: 85.50 90.00 78.50 88.00 92.50 | Promedio: 86.9000</code></pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Usa bucles anidados (for dentro de for) para procesar los datos.</li>
+              <li>El bucle externo itera sobre los 35 alumnos.</li>
+              <li>El bucle interno itera sobre las 5 calificaciones de cada alumno.</li>
+              <li>Calcula el promedio sumando las 5 calificaciones y dividiendo entre 5.</li>
+              <li>La estructura de bucles es clave para procesar grandes volúmenes de datos.</li>
+            </ul>
+            
+            <h3>Tip</h3>
+            <p>Para calcular el promedio, suma las 5 calificaciones dentro del bucle interno y luego divide el resultado entre 5 después de que el bucle interno termina. 
+            Considera usar variables acumuladoras para facilitar el cálculo.</p>
+
+            <h3>Consideraciones</h3>
+            <ul>
+              <li>Gestiona correctamente los bucles anidados y sus variables de control (i, j).</li>
+              <li>Asegúrate de reiniciar acumuladores si es necesario para cada alumno.</li>
+              <li>Formatea la salida de manera clara mostrando matricula, calificaciones y promedio.</li>
+              <li>Valida que los datos de entrada sean válidos (calificaciones entre 0 y 100).</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">PS 3.23 - Lectura de Calificaciones de 35 Alumnos - Programación Estructurada en Java</p>
+    </footer>
+  </div>
+
+  <!-- Modal para el Diagrama -->
+  <div id="diagramModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📊 Diagrama de Flujo - PS 3.23</h2>
+        <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
+      </div>
+      <div class="diagram-image">
+        <img src="../Img/11.png" alt="Diagrama de Flujo PS 3.23" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'block';
+    }
+
+    function closeDiagramModal() {
+      document.getElementById('diagramModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('diagramModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

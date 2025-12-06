@@ -1,0 +1,59 @@
+digraph PS_3_24_MejorPeorAlumno {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#E8F4F8", fontname="Arial", fontsize=10];
+    
+    INICIO [label="INICIO", fillcolor="#90EE90"];
+    FIN [label="FIN", fillcolor="#FFB6C6"];
+    
+    node [shape=diamond, fillcolor="#FFFFE0"];
+    DECISION_I [label="¿i ≤ 35?"];
+    DECISION_J [label="¿j ≤ 5?"];
+    DECISION_MAX [label="¿PROM >\nMAX_PROM?"];
+    DECISION_MIN [label="¿PROM <\nMIN_PROM?"];
+    
+    node [shape=parallelogram, fillcolor="#FFE4B5"];
+    LEER_MAT [label="LEER\nMAT"];
+    LEER_CAL [label="LEER\nCAL[j]"];
+    
+    node [shape=rectangle, fillcolor="#B0E0E6"];
+    INICIALIZAR [label="i = 1\nMAX_PROM = -1\nMIN_PROM = 101"];
+    INICIALIZAR_J [label="j = 1\nSUMA = 0"];
+    INCREMENTAR_J [label="j = j + 1"];
+    INCREMENTAR_I [label="i = i + 1"];
+    CALCULAR_PROM [label="PROM =\nSUMA / 5"];
+    ACUMULAR [label="SUMA =\nSUMA + CAL[j]"];
+    ASIGNAR_MAX [label="MAX_PROM = PROM\nMAT_MAX = MAT"];
+    ASIGNAR_MIN [label="MIN_PROM = PROM\nMAT_MIN = MAT"];
+    
+    node [shape=egg, fillcolor="#FFE4E1"];
+    IMPRIMIR [label="Imprimir\nMAT_MAX, MAX_PROM\nMAT_MIN, MIN_PROM"];
+    
+    INICIO -> INICIALIZAR;
+    INICIALIZAR -> DECISION_I;
+    
+    DECISION_I -> LEER_MAT [label="Sí"];
+    LEER_MAT -> INICIALIZAR_J;
+    
+    INICIALIZAR_J -> DECISION_J;
+    
+    DECISION_J -> LEER_CAL [label="Sí"];
+    LEER_CAL -> ACUMULAR;
+    ACUMULAR -> INCREMENTAR_J;
+    INCREMENTAR_J -> DECISION_J;
+    
+    DECISION_J -> CALCULAR_PROM [label="No"];
+    CALCULAR_PROM -> DECISION_MAX;
+    
+    DECISION_MAX -> ASIGNAR_MAX [label="Sí"];
+    DECISION_MAX -> DECISION_MIN [label="No"];
+    ASIGNAR_MAX -> DECISION_MIN;
+    
+    DECISION_MIN -> ASIGNAR_MIN [label="Sí"];
+    DECISION_MIN -> INCREMENTAR_I [label="No"];
+    ASIGNAR_MIN -> INCREMENTAR_I;
+    
+    INCREMENTAR_I -> DECISION_I;
+    
+    DECISION_I -> IMPRIMIR [label="No"];
+    IMPRIMIR -> FIN;
+}

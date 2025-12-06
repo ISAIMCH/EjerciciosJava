@@ -1,0 +1,71 @@
+digraph Problema3_14 {
+    rankdir=TB;
+    node [fontname="Arial", fontsize=11, style=filled, fillcolor=white];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos principales
+    inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
+    leer_precios [shape=box, label="Leer precios\nP1, P2, P3, P4, P5", fillcolor="#B3E5FC"];
+    inicializar [shape=box, label="AP1=0, AP2=0, AP3=0\nAP4=0, AP5=0\nRECAU=0", fillcolor="#B3E5FC"];
+    
+    // Ciclo externo WHILE
+    condicion_clave [shape=diamond, label="¿CLAVE\n!= -1?", fillcolor="#FFD54F"];
+    leer_datos [shape=parallelogram, label="Leer CLAVE, CANT", fillcolor="#FFE082"];
+    validar_clave [shape=diamond, label="¿CLAVE\n(1-5)?", fillcolor="#FFD54F"];
+    
+    // Decisión por CLAVE
+    decision_clave [shape=diamond, label="¿Cuál\nCLAVE?", fillcolor="#FFD54F"];
+    
+    // Procesos para cada localidad
+    opcion_1 [shape=box, label="PRE = P1 * CANT\nAP1 = AP1 + CANT", fillcolor="#C8E6C9"];
+    opcion_2 [shape=box, label="PRE = P2 * CANT\nAP2 = AP2 + CANT", fillcolor="#C8E6C9"];
+    opcion_3 [shape=box, label="PRE = P3 * CANT\nAP3 = AP3 + CANT", fillcolor="#C8E6C9"];
+    opcion_4 [shape=box, label="PRE = P4 * CANT\nAP4 = AP4 + CANT", fillcolor="#C8E6C9"];
+    opcion_5 [shape=box, label="PRE = P5 * CANT\nAP5 = AP5 + CANT", fillcolor="#C8E6C9"];
+    
+    // Acumular recaudación
+    acumular_recau [shape=box, label="RECAU = RECAU + PRE", fillcolor="#B3E5FC"];
+    mostrar_venta [shape=parallelogram, label="Mostrar\nCLAVE, CANT, PRE", fillcolor="#FFE082"];
+    
+    // Rechazar venta inválida
+    rechazar [shape=box, label="Mostrar error\nCLAVE inválida", fillcolor="#FFCCBC"];
+    
+    // Salida final
+    mostrar_resultado [shape=egg, label="Mostrar resultados\nAP1, AP2, AP3\nAP4, AP5, RECAU", fillcolor="#81C784"];
+    fin [shape=ellipse, label="Fin", fillcolor="#4A90E2"];
+
+    // Conexiones principales
+    inicio -> leer_precios;
+    leer_precios -> inicializar;
+    inicializar -> condicion_clave;
+    
+    // Ciclo WHILE principal
+    condicion_clave -> leer_datos [label="Sí"];
+    leer_datos -> validar_clave;
+    
+    // Validación
+    validar_clave -> decision_clave [label="Sí"];
+    validar_clave -> rechazar [label="No"];
+    rechazar -> condicion_clave;
+    
+    // Decisión por localidad
+    decision_clave -> opcion_1 [label="1"];
+    decision_clave -> opcion_2 [label="2"];
+    decision_clave -> opcion_3 [label="3"];
+    decision_clave -> opcion_4 [label="4"];
+    decision_clave -> opcion_5 [label="5"];
+    
+    // Todas las opciones convergen
+    opcion_1 -> acumular_recau;
+    opcion_2 -> acumular_recau;
+    opcion_3 -> acumular_recau;
+    opcion_4 -> acumular_recau;
+    opcion_5 -> acumular_recau;
+    
+    acumular_recau -> mostrar_venta;
+    mostrar_venta -> condicion_clave;
+    
+    // Salida
+    condicion_clave -> mostrar_resultado [label="No"];
+    mostrar_resultado -> fin;
+}

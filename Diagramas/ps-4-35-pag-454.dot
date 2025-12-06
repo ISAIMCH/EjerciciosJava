@@ -1,0 +1,55 @@
+digraph DirectorioTelefonico {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#E8F4F8", fontname="Arial", fontsize=10];
+    
+    INICIO [label="INICIO", fillcolor="#90EE90"];
+    FIN [label="FIN", fillcolor="#FFB6C6"];
+    
+    node [shape=parallelogram, fillcolor="#FFE4B5"];
+    LEER [label="LEER\nnombre buscado"];
+    LEER_TEL [label="LEER\nnuevo teléfono"];
+    
+    node [shape=rectangle, fillcolor="#B0E0E6"];
+    INICIALIZAR [label="posicion = -1"];
+    INICIAR_BUSCA [label="i = 0"];
+    ASIGNAR_POS [label="posicion = i"];
+    INSERTAR [label="Insertar en posición\ncorrecta (alfabético)"];
+    INC_I [label="i++"];
+    
+    node [shape=diamond, fillcolor="#FFFFE0"];
+    ENCONTRADO [label="nombre ==\nbuscado?"];
+    EXISTE [label="posicion\n!= -1?"];
+    VERIFICAR_CAP [label="Hay\ncapacidad?"];
+    COND_I [label="i < tamaño?"];
+    
+    node [shape=egg, fillcolor="#FFE4E1"];
+    IMPRIMIR_TEL [label="Imprimir\nnombre y teléfono"];
+    IMPRIMIR_INSERT [label="Imprimir\nContacto agregado"];
+    IMPRIMIR_LLENO [label="Imprimir\nDirectorio lleno"];
+    
+    INICIO -> LEER;
+    LEER -> INICIALIZAR;
+    INICIALIZAR -> INICIAR_BUSCA;
+    INICIAR_BUSCA -> COND_I;
+    
+    COND_I -> ENCONTRADO [label="Sí"];
+    ENCONTRADO -> ASIGNAR_POS [label="Sí"];
+    ASIGNAR_POS -> EXISTE;
+    ENCONTRADO -> INC_I [label="No"];
+    INC_I -> COND_I;
+    
+    COND_I -> EXISTE [label="No"];
+    EXISTE -> IMPRIMIR_TEL [label="Sí"];
+    EXISTE -> VERIFICAR_CAP [label="No"];
+    
+    IMPRIMIR_TEL -> FIN;
+    
+    VERIFICAR_CAP -> LEER_TEL [label="Sí"];
+    VERIFICAR_CAP -> IMPRIMIR_LLENO [label="No"];
+    
+    LEER_TEL -> INSERTAR;
+    INSERTAR -> IMPRIMIR_INSERT;
+    
+    IMPRIMIR_INSERT -> FIN;
+    IMPRIMIR_LLENO -> FIN;
+}

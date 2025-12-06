@@ -1,0 +1,39 @@
+digraph Ejemplo3_3 {
+    rankdir=TB;
+    node [fontname="Arial", fontsize=11, style=filled, fillcolor=white];
+    edge [fontname="Arial", fontsize=10];
+
+    // Nodos principales
+    inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
+    declaracion [shape=box, label="Declarar variables\nI, N, NUM, CUECER", fillcolor="#B3E5FC"];
+    inicializar [shape=box, label="CUECER = 0\nI = 1", fillcolor="#B3E5FC"];
+    entrada [shape=parallelogram, label="Leer N", fillcolor="#FFE082"];
+    
+    // Ciclo WHILE
+    condicion [shape=diamond, label="¿I <= N?", fillcolor="#FFD54F"];
+    lectura [shape=parallelogram, label="Leer NUM", fillcolor="#FFE082"];
+    decision [shape=diamond, label="¿NUM\n== 0?", fillcolor="#FFD54F"];
+    incrementar_cuecer [shape=box, label="CUECER = CUECER + 1", fillcolor="#B3E5FC"];
+    incrementar_i [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
+    
+    // Salida
+    salida [shape=egg, label="Mostrar\nCUECER", fillcolor="#81C784"];
+    fin [shape=ellipse, label="Fin", fillcolor="#4A90E2"];
+
+    // Conexiones
+    inicio -> declaracion;
+    declaracion -> inicializar;
+    inicializar -> entrada;
+    entrada -> condicion;
+    
+    // Ciclo while
+    condicion -> lectura [label="Sí"];
+    lectura -> decision;
+    decision -> incrementar_cuecer [label="Sí"];
+    decision -> incrementar_i [label="No"];
+    incrementar_cuecer -> incrementar_i;
+    incrementar_i -> condicion;
+    
+    condicion -> salida [label="No"];
+    salida -> fin;
+}

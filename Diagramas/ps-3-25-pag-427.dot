@@ -1,0 +1,58 @@
+digraph PS_3_25_Selectividad {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#E8F4F8", fontname="Arial", fontsize=10];
+    
+    INICIO [label="INICIO", fillcolor="#90EE90"];
+    FIN [label="FIN", fillcolor="#FFB6C6"];
+    
+    node [shape=diamond, fillcolor="#FFFFE0"];
+    DECISION_NOM [label="¿NOMBRE\n= 'X'?"];
+    DECISION_SEXO [label="¿SEXO\n= 'F'?"];
+    DECISION_CRITERI_F [label="¿ALTURA > 1.73\nY 50 ≤ PESO ≤ 90?"];
+    DECISION_CRITERI_M [label="¿ALTURA ≥ 1.83\nY 73 ≤ PESO ≤ 110?"];
+    
+    node [shape=parallelogram, fillcolor="#FFE4B5"];
+    LEER_DATOS [label="LEER\nNOMBRE, SEXO, EDAD\nPESO, ALTURA"];
+    
+    node [shape=rectangle, fillcolor="#B0E0E6"];
+    INICIALIZAR [label="AptasF = 0\nAptosM = 0\nTotalF = 0\nTotalM = 0"];
+    CONTAR_F [label="TotalF++"];
+    CONTAR_M [label="TotalM++"];
+    AGREGAR_APTA [label="AptasF++"];
+    AGREGAR_APTO [label="AptosM++"];
+    CALC_PORC [label="PorcF = (AptasF/TotalF)*100\nPorcM = (AptosM/TotalM)*100"];
+    
+    node [shape=egg, fillcolor="#FFE4E1"];
+    IMP_APTA [label="Imprimir\nNOMBRE, PESO, ALTURA"];
+    IMP_APTO [label="Imprimir\nNOMBRE, PESO, ALTURA"];
+    IMP_RESULTADOS [label="Imprimir\nPorcF, PorcM"];
+    
+    INICIO -> INICIALIZAR;
+    INICIALIZAR -> LEER_DATOS;
+    
+    LEER_DATOS -> DECISION_NOM;
+    DECISION_NOM -> CALC_PORC [label="Sí"];
+    
+    DECISION_NOM -> DECISION_SEXO [label="No"];
+    
+    DECISION_SEXO -> CONTAR_F [label="Sí"];
+    CONTAR_F -> DECISION_CRITERI_F;
+    
+    DECISION_SEXO -> CONTAR_M [label="No"];
+    CONTAR_M -> DECISION_CRITERI_M;
+    
+    DECISION_CRITERI_F -> AGREGAR_APTA [label="Sí"];
+    AGREGAR_APTA -> IMP_APTA;
+    
+    DECISION_CRITERI_F -> LEER_DATOS [label="No"];
+    IMP_APTA -> LEER_DATOS;
+    
+    DECISION_CRITERI_M -> AGREGAR_APTO [label="Sí"];
+    AGREGAR_APTO -> IMP_APTO;
+    
+    DECISION_CRITERI_M -> LEER_DATOS [label="No"];
+    IMP_APTO -> LEER_DATOS;
+    
+    CALC_PORC -> IMP_RESULTADOS;
+    IMP_RESULTADOS -> FIN;
+}

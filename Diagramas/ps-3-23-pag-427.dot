@@ -1,0 +1,48 @@
+digraph PS_3_23_Calificaciones {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#E8F4F8", fontname="Arial", fontsize=10];
+    
+    INICIO [label="INICIO", fillcolor="#90EE90"];
+    FIN [label="FIN", fillcolor="#FFB6C6"];
+    
+    node [shape=diamond, fillcolor="#FFFFE0"];
+    DECISION_I [label="¿i ≤ 35?"];
+    DECISION_J [label="¿j ≤ 5?"];
+    
+    node [shape=parallelogram, fillcolor="#FFE4B5"];
+    LEER_MAT [label="LEER\nMAT"];
+    LEER_CAL [label="LEER\nCAL[j]"];
+    
+    node [shape=rectangle, fillcolor="#B0E0E6"];
+    INICIALIZAR_I [label="i = 1"];
+    INICIALIZAR_J [label="j = 1"];
+    INCREMENTAR_J [label="j = j + 1"];
+    INCREMENTAR_I [label="i = i + 1"];
+    CALCULAR_PROM [label="PROM =\nSUMA / 5"];
+    ACUMULAR [label="SUMA =\nSUMA + CAL[j]"];
+    REINICIAR_SUMA [label="SUMA = 0"];
+    
+    node [shape=egg, fillcolor="#FFE4E1"];
+    IMPRIMIR [label="Imprimir\nMAT, CAL[], PROM"];
+    
+    INICIO -> INICIALIZAR_I;
+    INICIALIZAR_I -> DECISION_I;
+    
+    DECISION_I -> LEER_MAT [label="Sí"];
+    LEER_MAT -> REINICIAR_SUMA;
+    REINICIAR_SUMA -> INICIALIZAR_J;
+    
+    INICIALIZAR_J -> DECISION_J;
+    
+    DECISION_J -> LEER_CAL [label="Sí"];
+    LEER_CAL -> ACUMULAR;
+    ACUMULAR -> INCREMENTAR_J;
+    INCREMENTAR_J -> DECISION_J;
+    
+    DECISION_J -> CALCULAR_PROM [label="No"];
+    CALCULAR_PROM -> IMPRIMIR;
+    IMPRIMIR -> INCREMENTAR_I;
+    INCREMENTAR_I -> DECISION_I;
+    
+    DECISION_I -> FIN [label="No"];
+}

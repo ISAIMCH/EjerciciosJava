@@ -1,0 +1,46 @@
+digraph PS_4_3_Analisis_Signos {
+    rankdir=TB;
+    node [shape=ellipse, style=filled, fillcolor="#E8F4F8", fontname="Arial", fontsize=10];
+    
+    INICIO [label="INICIO", fillcolor="#90EE90"];
+    FIN [label="FIN", fillcolor="#FFB6C6"];
+    
+    node [shape=rectangle, fillcolor="#B0E0E6"];
+    INIT_CONT [label="positivos = 0\nnegativos = 0\nceros = 0"];
+    INC_POS [label="positivos++"];
+    INC_NEG [label="negativos++"];
+    INC_CERO [label="ceros++"];
+    INC_I [label="i++"];
+    
+    node [shape=parallelogram, fillcolor="#FFE4B5"];
+    LEER_ARR [label="LEER\nARREGLO[]"];
+    
+    node [shape=diamond, fillcolor="#FFFFE0"];
+    COND_LOOP [label="¿i < n?"];
+    COND_SIGNO [label="¿ARREGLO[i]\n> 0?"];
+    COND_NEG [label="¿ARREGLO[i]\n< 0?"];
+    
+    node [shape=egg, fillcolor="#FFE4E1"];
+    MOSTRAR [label="Imprimir\npositivos\nnegativos\nceros"];
+    
+    INICIO -> LEER_ARR;
+    LEER_ARR -> INIT_CONT;
+    INIT_CONT -> COND_LOOP;
+    
+    COND_LOOP -> COND_SIGNO [label="Sí"];
+    COND_LOOP -> MOSTRAR [label="No"];
+    
+    COND_SIGNO -> INC_POS [label="Sí"];
+    COND_SIGNO -> COND_NEG [label="No"];
+    
+    COND_NEG -> INC_NEG [label="Sí"];
+    COND_NEG -> INC_CERO [label="No"];
+    
+    INC_POS -> INC_I;
+    INC_NEG -> INC_I;
+    INC_CERO -> INC_I;
+    
+    INC_I -> COND_LOOP;
+    
+    MOSTRAR -> FIN;
+}
