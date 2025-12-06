@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Problema 1.6 - Volumen y Área de un Cilindro</title>
+  <title>Problema 1.6 - Cálculo de Segundos en Días</title>
   <link rel="stylesheet" href="../styles_desc.css">
   <style>
     .diagram-btn {
@@ -111,7 +111,7 @@
 <body>
   <div class="container">
     <header class="page-header">
-      <h1>Problema 1.6 - Volumen y Área de un Cilindro</h1>
+      <h1>Problema 1.6 - Cálculo de Segundos en Días</h1>
       <p class="subtitle">Programación Estructurada en Java - Página 44</p>
     </header>
 
@@ -120,12 +120,13 @@
       <article id="problema-1-6" class="exercise-card" aria-labelledby="ejercicio-title">
         <header class="exercise-header">
           <span class="exercise-badge">Problema 1.6</span>
-          <h2 id="ejercicio-title">Cálculo de Volumen y Área de un Cilindro</h2>
+          <h2 id="ejercicio-title">Conversión de Días a Segundos</h2>
           
           <p class="exercise-description">
-            En este problema trabajarás con operaciones aritméticas más complejas para calcular propiedades 
-            geométricas de un cilindro. Aprenderás a aplicar fórmulas matemáticas en código Java y a manejar 
-            números reales con precisión.
+            En este problema aprenderás a realizar conversiones de unidades de tiempo. 
+            Dado un número determinado de días, calcularás cuántos segundos equivalen a ese período. 
+            Este es un ejercicio fundamental que te ayudará a comprender operaciones aritméticas básicas 
+            y el manejo de variables numéricas.
           </p>
 
           <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
@@ -134,47 +135,36 @@
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Enunciado</h3>
-            <p>Crea un programa en Java tal que dado como datos el radio y la altura de un cilindro, 
-            calcule e imprima el área y su volumen.</p>
+            <p>Construya un diagrama de flujo que calcule e imprima el número de segundos 
+            que hay en un determinado número de días.</p>
 
             <h3>Datos de Entrada</h3>
             <ul>
-              <li><strong>RADIO:</strong> Variable de tipo real que representa el radio de un cilindro.</li>
-              <li><strong>ALTU:</strong> Variable de tipo real que representa la altura del cilindro.</li>
+              <li><strong>DIAS:</strong> Variable de tipo entero que expresa el número de días.</li>
             </ul>
 
             <h3>Consideraciones y Fórmulas</h3>
             <div class="formula-box">
-              <p><strong>Volumen de un cilindro:</strong></p>
+              <p><strong>Conversión de Días a Segundos:</strong></p>
               <p style="font-size: 1.1em; text-align: center; font-weight: bold;">
-                Volumen = π · radio² · altura
+                SEG = DIAS * 24 * 60 * 60
               </p>
-              <p style="text-align: center; color: #666;">Donde: π = 3.1416</p>
-            </div>
-
-            <div class="formula-box">
-              <p><strong>Área de la superficie de un cilindro:</strong></p>
-              <p style="font-size: 1.1em; text-align: center; font-weight: bold;">
-                Área = 2 · π · radio · altura
-              </p>
-              <p style="text-align: center; color: #666;">Nota: Esta fórmula calcula el área lateral del cilindro</p>
+              <p style="text-align: center; color: #666;">Donde: 1 día = 24 horas, 1 hora = 60 minutos, 1 minuto = 60 segundos</p>
             </div>
 
             <h3>Requisitos</h3>
             <ul>
-              <li>Declarar variables de tipo <code>double</code> para: RADIO, ALTU, VOL y ARE.</li>
-              <li>Leer los valores del radio y la altura del cilindro.</li>
-              <li>Calcular el volumen usando: <code>VOL = 3.1416 * (RADIO * RADIO) * ALTU</code></li>
-              <li>Calcular el área usando: <code>ARE = 2 * 3.1416 * RADIO * ALTU</code></li>
-              <li>Mostrar los resultados del volumen y área en la consola.</li>
-              <li>Documentar claramente los valores de entrada y salida.</li>
+              <li>Declarar variables de tipo <code>int</code> para: DIAS y SEG.</li>
+              <li>Leer el valor del número de días.</li>
+              <li>Calcular los segundos usando: <code>SEG = DIAS * 24 * 60 * 60</code></li>
+              <li>Mostrar el resultado en la consola.</li>
+              <li>Documentar claramente el valor de entrada y salida.</li>
             </ul>
 
             <h3>Explicación de Variables</h3>
             <ul>
-              <li><strong>RADIO y ALTU:</strong> Variables de tipo real.</li>
-              <li><strong>VOL:</strong> Variable de tipo real. Almacena el volumen del cilindro.</li>
-              <li><strong>ARE:</strong> Variable de tipo real. Almacena el área del cilindro.</li>
+              <li><strong>DIAS:</strong> Variable de tipo entero.</li>
+              <li><strong>SEG:</strong> Variable de tipo entero. Almacena el número de segundos que hay en un número determinado de días.</li>
             </ul>
 
             <h3>Tabla de Valores de Prueba</h3>
@@ -183,81 +173,67 @@
               <thead>
                 <tr>
                   <th>Número de Corrida</th>
-                  <th>RADIO</th>
-                  <th>ALTU</th>
-                  <th>VOL (Esperado)</th>
-                  <th>ARE (Esperado)</th>
+                  <th>DIAS</th>
+                  <th>SEG (Esperado)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td>45.22</td>
-                  <td>11.60</td>
-                  <td>74519.51</td>
-                  <td>3295.87</td>
+                  <td>7</td>
+                  <td>604800</td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>17.50</td>
-                  <td>8.45</td>
-                  <td>8129.87</td>
-                  <td>929.13</td>
+                  <td>15</td>
+                  <td>1296000</td>
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>69.30</td>
-                  <td>72.40</td>
-                  <td>1092335.19</td>
-                  <td>31524.83</td>
+                  <td>116</td>
+                  <td>10022400</td>
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>125.50</td>
-                  <td>117.40</td>
-                  <td>5809067.69</td>
-                  <td>92574.78</td>
+                  <td>28</td>
+                  <td>2419200</td>
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td>85.90</td>
-                  <td>257.70</td>
-                  <td>5973813.15</td>
-                  <td>139087.62</td>
+                  <td>3</td>
+                  <td>259200</td>
                 </tr>
               </tbody>
             </table>
 
             <h3>Resultado Esperado</h3>
-            <pre><code class="code-block">Ingrese el radio del cilindro: 45.22
-Ingrese la altura del cilindro: 11.60
+            <pre><code class="code-block">En: 7 días, hay: SEG: "segundos".
 
-RESULTADOS:
-Volumen del cilindro: 74519.51 unidades³
-Área del cilindro: 3295.87 unidades²</code></pre>
+Donde SEG = 604800</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>El valor de π (pi) se aproxima a 3.1416 en este ejercicio.</li>
-              <li>Todas las variables deben ser de tipo <code>double</code> para mantener precisión.</li>
-              <li>La potenciación en Java se usa como: <code>radio * radio</code> (en lugar de radio^2).</li>
-              <li>Es importante formatear la salida para mostrar los valores con claridad.</li>
+              <li>La conversión usa la fórmula: 1 día = 24 * 60 * 60 segundos = 86400 segundos.</li>
+              <li>Las variables deben ser de tipo <code>int</code> para almacenar valores enteros.</li>
+              <li>El resultado se obtiene multiplicando el número de días por 86400.</li>
+              <li>Este es un ejercicio básico de operaciones aritméticas simples.</li>
               <li>Se pueden usar Scanner para leer datos o pasar como argumentos del programa.</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>En este ejercicio utilizaremos la constante <code>PI = 3.1416</code> definida en el programa. 
-            Esta es una aproximación suficientemente precisa para los cálculos geométricos solicitados.</p>
+            <p>En este ejercicio realizaremos una conversión de unidades de tiempo. 
+            Es fundamental entender que 1 día = 24 horas = 1440 minutos = 86400 segundos. 
+            Esta conversión es muy útil en muchas aplicaciones que manejan tiempo.</p>
           </aside>
         </div>
       </article>
     </main>
 
     <footer class="page-footer">
-      <p class="note-text">Problema de Programación Estructurada en Java - Cálculos Geométricos</p>
+      <p class="note-text">Problema de Programación Estructurada en Java - Conversión de Unidades de Tiempo</p>
     </footer>
   </div>
 
@@ -265,11 +241,11 @@ Volumen del cilindro: 74519.51 unidades³
   <div id="diagramModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>📊 Diagrama de Flujo - Problema 1.6</h2>
+        <h2>📊 Diagrama de Flujo - Problema 1.6 (Segundos en Días)</h2>
         <button class="close-btn" onclick="closeDiagramModal()">&times;</button>
       </div>
       <div class="diagram-image">
-        <img src="../Img/2.png" alt="Diagrama de Flujo Problema 1.6" />
+        <img src="../Img/2.png" alt="Diagrama de Flujo Problema 1.6 - Conversión de Días a Segundos" />
       </div>
     </div>
   </div>
