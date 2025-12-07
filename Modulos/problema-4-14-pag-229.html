@@ -169,161 +169,68 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>
-              Se tienen los costos de producción de varios departamentos correspondientes a varios meses. 
-              Construya un programa en Java que solicite por consola la cantidad de meses y departamentos, 
-              luego los costos de producción, y finalmente proporcione la siguiente información:
-            </p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que procese una matriz bidimensional de costos de producción para calcular el máximo costo por departamento, promedios, y hacer análisis comparativos.</p>
+
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li><strong>a)</strong> Mayor costo de producción del departamento 1.</li>
-              <li><strong>b)</strong> Promedio de los costos de producción del departamento 2.</li>
-              <li><strong>c)</strong> Mayor y menor costo de producción en el departamento 2.</li>
-              <li><strong>d)</strong> Cuál fue el departamento con el menor costo en el último mes.</li>
+              <li><strong>meses:</strong> tipo entero (<code>int</code>) - Cantidad de meses (solicitado por consola)</li>
+              <li><strong>deptos:</strong> tipo entero (<code>int</code>) - Cantidad de departamentos (solicitado por consola)</li>
+              <li><strong>PROD[][]:</strong> tipo real (<code>double[][]</code>) - Matriz de costos (filas = meses, columnas = deptos)</li>
+              <li><strong>i, j:</strong> tipo entero (<code>int</code>) - Índices para filas y columnas</li>
             </ul>
 
-            <div class="formula-box">
-              <strong>Datos de entrada (solicitados por consola):</strong>
-              <p><strong>meses:</strong> Cantidad de meses a procesar.</p>
-              <p><strong>deptos:</strong> Cantidad de departamentos.</p>
-              <p><strong>PROD [meses][deptos]:</strong> Arreglo bidimensional de tipo real que almacena los costos 
-              de producción de cada departamento en cada mes.</p>
-            </div>
-
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              <strong>meses:</strong> Se solicita por consola la cantidad de meses a procesar.
-            </p>
-            <p>
-              <strong>deptos:</strong> Se solicita por consola la cantidad de departamentos.
-            </p>
-            <p>
-              <strong>PROD:</strong> Es un arreglo bidimensional dinámico de tipo real (matriz), cuyas dimensiones 
-              dependen de los valores ingresados por el usuario. Filas = meses, Columnas = departamentos.
-            </p>
-            <p>
-              Los valores se solicitan por consola para cada combinación de mes y departamento, permitiendo 
-              flexibilidad en el tamaño del arreglo según los datos del usuario.
-            </p>
-
-            <h3>Requisitos</h3>
+            <h3>Operaciones a Realizar</h3>
             <ul>
               <li>Solicitar por consola la cantidad de meses y departamentos.</li>
-              <li>Crear un arreglo bidimensional dinámico con las dimensiones ingresadas.</li>
-              <li>Solicitar por consola los costos para cada mes y departamento.</li>
-              <li>Usar ciclos para buscar el mayor costo del departamento 1.</li>
-              <li>Calcular la suma y el promedio de los costos del departamento 2.</li>
+              <li>Crear una matriz bidimensional con las dimensiones ingresadas.</li>
+              <li>Solicitar los costos para cada mes y departamento.</li>
+              <li>Buscar el mayor costo del departamento 1.</li>
+              <li>Calcular el promedio de costos del departamento 2.</li>
               <li>Encontrar el mayor y menor costo del departamento 2.</li>
               <li>Identificar el departamento con el menor costo en el último mes.</li>
-              <li>Mostrar todos los resultados en pantalla de forma clara.</li>
-              <li>Utilizar variables auxiliares para almacenar máximos, mínimos y promedios.</li>
+              <li>Mostrar todos los resultados en pantalla.</li>
             </ul>
 
-            <h3>Ejemplo de Entrada (Propuesto)</h3>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>Mes</th>
-                  <th>Departamento 1</th>
-                  <th>Departamento 2</th>
-                  <th>Departamento 3</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1500.00</td>
-                  <td>2000.00</td>
-                  <td>1800.00</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>1600.00</td>
-                  <td>2100.00</td>
-                  <td>1900.00</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>1700.00</td>
-                  <td>2200.00</td>
-                  <td>2000.00</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Resultado Esperado</h3>
+            <pre><code class="code-block">Ingrese cantidad de meses: 3
+Ingrese cantidad de departamentos: 3
 
-            <h3>Explicación de Variables</h3>
-            <div class="formula-box">
-              <ul>
-                <li><strong>meses:</strong> Cantidad de meses ingresados por el usuario.</li>
-                <li><strong>deptos:</strong> Cantidad de departamentos ingresados por el usuario.</li>
-                <li><strong>i, j:</strong> Variables de control de ciclos e índices de matriz.</li>
-                <li><strong>PROD[][]:</strong> Matriz dinámica de costos (dimensiones: meses × deptos).</li>
-                <li><strong>MAYDUL:</strong> Mayor costo del departamento 1 (índice 0).</li>
-                <li><strong>MES:</strong> Mes con mayor costo en departamento 1.</li>
-                <li><strong>SUM:</strong> Suma de costos del departamento 2 (índice 1).</li>
-                <li><strong>PROMEDIO:</strong> Promedio: SUM / meses.</li>
-                <li><strong>MESMAY:</strong> Mes con mayor costo en departamento 2.</li>
-                <li><strong>MESMEN:</strong> Mes con menor costo en departamento 2.</li>
-                <li><strong>MAYBEB:</strong> Mayor costo en departamento 2.</li>
-                <li><strong>MENBEB:</strong> Menor costo en departamento 2.</li>
-                <li><strong>MENOR:</strong> Menor costo en el último mes (fila meses-1).</li>
-                <li><strong>DEP:</strong> Departamento con menor costo en último mes.</li>
-              </ul>
-            </div>
+Ingrese los costos:
+Mes 1, Departamento 1: 1500
+Mes 1, Departamento 2: 2000
+Mes 1, Departamento 3: 1800
+Mes 2, Departamento 1: 1600
+Mes 2, Departamento 2: 2100
+Mes 2, Departamento 3: 1900
+Mes 3, Departamento 1: 1700
+Mes 3, Departamento 2: 2200
+Mes 3, Departamento 3: 2000
 
-            <h3>Resultado Esperado (Ejemplo)</h3>
-            <pre><code class="code-block">===== INCISO A) MAYOR COSTO DEPARTAMENTO 1 =====
-Mes: 7
-Costo: 1900.0
-
-===== INCISO B) PROMEDIO COSTO DEPARTAMENTO 2 =====
-Promedio: 2187.50
-
-===== INCISO C) MAYOR Y MENOR COSTO DEPARTAMENTO 2 =====
-Mayor: 2400.0 (Mes 7)
-Menor: 2000.0 (Mes 1)
-
-===== INCISO D) MENOR COSTO ÚLTIMO MES =====
-Departamento: 1
-Costo: 1600.0</code></pre>
-
+RESULTADO:
+Mayor costo Departamento 1: 1700.00
+Promedio Departamento 2: 2100.00
+Mayor costo Departamento 2: 2200.00
+Menor costo Departamento 2: 2000.00
+Departamento con menor costo (último mes): 3</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Este problema utiliza <span class="highlight">arreglos bidimensionales dinámicos</span> (matrices).</li>
+              <li>Este problema utiliza arreglos bidimensionales dinámicos.</li>
               <li>Las dimensiones se definen en tiempo de ejecución según los datos del usuario.</li>
-              <li>Se usan <span class="highlight">múltiples ciclos</span> para procesar filas y columnas.</li>
-              <li>Es necesario realizar <span class="highlight">búsquedas de máximos y mínimos</span> en el arreglo.</li>
-              <li>Se debe calcular el <span class="highlight">promedio</span> de columnas o filas.</li>
+              <li>Se usan múltiples ciclos para procesar filas y columnas.</li>
+              <li>Es necesario realizar búsquedas de máximos y mínimos en el arreglo.</li>
+              <li>Se debe calcular el promedio de columnas o filas.</li>
               <li>Es importante guardar tanto el valor como el índice cuando se encuentra un máximo o mínimo.</li>
-              <li>Se trabaja con datos de tipo <span class="highlight">double</span> para precisión monetaria.</li>
+              <li>Se trabaja con datos de tipo double para precisión monetaria.</li>
               <li>El programa solicita datos por consola, no tiene valores hardcodeados.</li>
             </ul>
             
-            <h3>Tip - Entrada por Consola</h3>
-            <p>
-              Usa <code>Scanner</code> para leer:
-            </p>
-            <ol>
-              <li>La cantidad de meses: <code>scanner.nextInt()</code></li>
-              <li>La cantidad de departamentos: <code>scanner.nextInt()</code></li>
-              <li>Para cada mes y departamento: El valor de costo con <code>scanner.nextDouble()</code></li>
-            </ol>
-            <p>No olvides cerrar el Scanner: <code>scanner.close()</code></p>
-
-            <h3>Consideración Importante - Dimensiones Dinámicas</h3>
-            <p>
-              Los arreglos dinámicos permiten que el programa sea flexible:
-            </p>
-            <ul>
-              <li>Puedes procesar 12 meses × 3 departamentos, o 6 meses × 5 departamentos, etc.</li>
-              <li>Usa las variables <code>meses</code> y <code>deptos</code> en los ciclos: <code>while (i &lt; meses)</code></li>
-              <li>Acceso al último elemento: <code>PROD[meses-1][j]</code> en lugar de <code>PROD[11][j]</code></li>
-              <li>El promedio se calcula como <code>SUM / meses</code>, no como <code>SUM / 12</code></li>
-            </ul>
+            <h3>Tip</h3>
+            <p>Usa Scanner para leer la cantidad de meses y departamentos. Luego crea la matriz con esas dimensiones. Para encontrar máximos y mínimos, inicializa con valores extremos y compara cada valor procesado. Para calcular promedios, suma todos los valores de una columna y divide entre la cantidad de filas.</p>
           </aside>
         </div>
       </article>

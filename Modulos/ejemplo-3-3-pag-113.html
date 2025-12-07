@@ -133,85 +133,27 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Escriba un programa en Java que dado como datos N números enteros, obtenga el número 
-            de ceros que hay entre estos números usando una estructura repetitiva while.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que lea N números enteros y cuente cuántos ceros hay entre ellos, utilizando una estructura repetitiva (while).</p>
 
-            <h3>Datos de Entrada</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li><strong>N:</strong> Variable de tipo entero que representa el número de datos que se ingresarán.</li>
-              <li><strong>NUM<sub>i</sub>:</strong> Variables de tipo entero que representan los números a procesar (donde 1 ≤ i ≤ N).</li>
+              <li><strong>N:</strong> tipo entero (<code>int</code>) - Número de datos a ingresar</li>
+              <li><strong>I:</strong> tipo entero (<code>int</code>) - Contador del ciclo</li>
+              <li><strong>NUM:</strong> tipo entero (<code>int</code>) - Almacena el número actual leído</li>
+              <li><strong>CUECER:</strong> tipo entero (<code>int</code>) - Cuenta los ceros encontrados</li>
             </ul>
 
-            <h3>Consideraciones</h3>
-            <div class="formula-box">
-              <p><strong>Variables necesarias:</strong></p>
-              <ul>
-                <li><strong>I:</strong> Variable de tipo entero. Representa al contador del ciclo.</li>
-                <li><strong>N:</strong> Variable de tipo entero. Número de datos a ingresar.</li>
-                <li><strong>NUM:</strong> Variable de tipo entero. Almacena el número actual leído.</li>
-                <li><strong>CUECER:</strong> Variable de tipo entero. Cuenta el número de ceros encontrados.</li>
-              </ul>
-            </div>
-
-            <h3>Requisitos</h3>
+            <h3>Operaciones a Realizar</h3>
             <ul>
-              <li>Declarar variables de tipo <code>int</code> para: N, I, NUM y CUECER.</li>
-              <li>Inicializar CUECER en 0 antes del ciclo.</li>
               <li>Leer el número total de datos (N).</li>
-              <li>Usar una estructura repetitiva (while) para procesar N números.</li>
-              <li>Leer cada número (NUM) e incrementar I en cada iteración.</li>
+              <li>Inicializar el contador CUECER en 0.</li>
+              <li>Inicializar el contador I en 1.</li>
+              <li>Usar una estructura repetitiva <strong>while</strong> que se ejecute N veces.</li>
+              <li>En cada iteración: leer NUM e incrementar I.</li>
               <li>Si NUM es igual a 0, incrementar CUECER.</li>
-              <li>Mostrar el total de ceros encontrados (CUECER).</li>
-              <li>Documentar claramente los valores de entrada y salida.</li>
+              <li>Mostrar el total de ceros encontrados.</li>
             </ul>
-
-            <h3>Explicación de Variables</h3>
-            <ul>
-              <li><strong>I:</strong> Contador que controla el ciclo repetitivo (incrementa desde 1 hasta N).</li>
-              <li><strong>N:</strong> Número total de valores a procesar.</li>
-              <li><strong>NUM:</strong> Valor actual que se está evaluando.</li>
-              <li><strong>CUECER:</strong> Acumulador que cuenta los ceros encontrados.</li>
-            </ul>
-
-            <h3>Tabla de Valores de Prueba</h3>
-            <p>A continuación se muestra una tabla con diferentes valores de entrada y sus resultados esperados:</p>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>Número de Corrida</th>
-                  <th>N (Cantidad de Números)</th>
-                  <th>Números Ingresados</th>
-                  <th>CUECER (Ceros Encontrados)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>12</td>
-                  <td>8, 0, 5, 15, 0, 0, 25, 0, 45, 0, 0, 41</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>5</td>
-                  <td>10, 20, 30, 40, 50</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>8</td>
-                  <td>0, 0, 0, 1, 2, 3, 0, 0</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>3</td>
-                  <td>0, 0, 0</td>
-                  <td>3</td>
-                </tr>
-              </tbody>
-            </table>
 
             <h3>Resultado Esperado</h3>
             <pre><code class="code-block">Ingrese la cantidad de números a procesar: 12
@@ -226,10 +168,10 @@ Total de ceros encontrados: 5</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Esta es la primera vez que utilizamos estructura repetitiva (while) en este curso.</li>
+              <li>Esta es la primera vez que utilizamos estructura repetitiva <code>while</code>.</li>
               <li>El contador I debe inicializarse en 1 y incrementarse en cada iteración.</li>
               <li>CUECER debe inicializarse en 0 antes del ciclo.</li>
               <li>La condición del while es: <code>i <= n</code> o equivalentemente <code>i < n + 1</code></li>
@@ -238,9 +180,7 @@ Total de ceros encontrados: 5</code></pre>
             </ul>
             
             <h3>Tip</h3>
-            <p>En este ejemplo utilizaremos una estructura repetitiva <code>while</code> para iterar N veces. 
-            Dentro del ciclo, leeremos un número y verificaremos si es cero. Si lo es, incrementaremos 
-            el contador CUECER. Después de que termine el ciclo, mostraremos el resultado.</p>
+            <p>En este ejemplo utilizaremos una estructura repetitiva <code>while</code> para iterar N veces. Dentro del ciclo, leeremos un número y verificaremos si es cero. Si lo es, incrementaremos el contador CUECER. Después de que termine el ciclo, mostraremos el resultado.</p>
           </aside>
         </div>
       </article>

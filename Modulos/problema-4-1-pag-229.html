@@ -139,138 +139,39 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>
-              Escriba un programa en Java que reciba como entrada un arreglo unidimensional ordenado de enteros 
-              (posiblemente repetidos) y genere como salida una lista de los números enteros, pero sin repeticiones.
-            </p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que reciba un arreglo ordenado de números enteros (posiblemente con repeticiones) y genere una lista sin duplicados.</p>
 
-            <div class="formula-box">
-              <strong>Datos de entrada:</strong>
-              <p>VEC [1..N] - Arreglo unidimensional de enteros ordenado</p>
-              <p>N - Número de elementos (1 ≤ N ≤ 500)</p>
-            </div>
-
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              <strong>VEC:</strong> Es un arreglo unidimensional de tipo entero, cuya capacidad máxima es de 500 elementos.
-            </p>
-            <p>
-              <strong>N:</strong> Variable de tipo entero que indica el número de elementos a procesar. 
-              Su valor debe estar comprendido en el intervalo [1, 500].
-            </p>
-            <p>
-              <strong>REPET:</strong> Variable de tipo entero. Se utiliza como auxiliar para almacenar el valor impreso. 
-              Con este valor se comparan los siguientes números para determinar si hay repetidos.
-            </p>
-            <p>
-              <strong>I:</strong> Variable de tipo entero. Se usa como índice del arreglo y como variable de control 
-              en diferentes ciclos.
-            </p>
-
-            <h3>Requisitos</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li>Leer el número de elementos N (validar que esté entre 1 y 500).</li>
+              <li><strong>N:</strong> tipo entero (<code>int</code>) - Número de elementos del arreglo (1 ≤ N ≤ 500)</li>
+              <li><strong>VEC[]:</strong> tipo entero (<code>int[]</code>) - Arreglo unidimensional ordenado</li>
+              <li><strong>I:</strong> tipo entero (<code>int</code>) - Índice del arreglo</li>
+              <li><strong>REPET:</strong> tipo entero (<code>int</code>) - Valor anterior impreso para comparación</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer el número de elementos N (validar entre 1 y 500).</li>
               <li>Leer los N elementos del arreglo VEC.</li>
-              <li>Usar estructuras repetitivas anidadas (mientras dentro de mientras).</li>
-              <li>Inicializar la variable REPET con el primer elemento del arreglo.</li>
-              <li>Comparar cada elemento con REPET para detectar cambios.</li>
-              <li>Si el elemento es diferente a REPET, imprimir ese elemento y actualizar REPET.</li>
-              <li>Continuar hasta procesar todos los elementos del arreglo.</li>
+              <li>Inicializar REPET con el primer elemento del arreglo.</li>
+              <li>Usar un ciclo para recorrer todos los elementos.</li>
+              <li>Comparar cada elemento con REPET.</li>
+              <li>Si el elemento es diferente, imprimirlo y actualizar REPET.</li>
               <li>Mostrar la lista de números sin repeticiones.</li>
-              <li>El arreglo de entrada debe estar ordenado.</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
+            <h3>Requisito Importante</h3>
             <div class="formula-box">
-              <ul>
-                <li><strong>N:</strong> Número de elementos del arreglo (1 ≤ N ≤ 500).</li>
-                <li><strong>I:</strong> Índice del arreglo y variable de control del ciclo.</li>
-                <li><strong>VEC:</strong> Arreglo unidimensional de enteros.</li>
-                <li><strong>REPET:</strong> Variable auxiliar que almacena el valor anterior para comparación.</li>
-              </ul>
+              <p>⚠️ El arreglo de entrada <strong>DEBE estar ordenado</strong> para que este algoritmo funcione correctamente.</p>
             </div>
-
-            <h3>Ejemplo de Ejecución</h3>
-            <p><strong>Entrada:</strong></p>
-            <pre>N = 12
-VEC = [5, 5, 5, 10, 10, 15, 20, 20, 20, 20, 25, 30]</pre>
-
-            <p><strong>Proceso:</strong></p>
-            <ul>
-              <li>REPET = 5 (primer elemento)</li>
-              <li>VEC[1]=5 es igual a REPET → no imprimir, continuar</li>
-              <li>VEC[2]=5 es igual a REPET → no imprimir, continuar</li>
-              <li>VEC[3]=10 es diferente de REPET → imprimir 10, REPET=10</li>
-              <li>VEC[4]=10 es igual a REPET → no imprimir, continuar</li>
-              <li>VEC[5]=15 es diferente de REPET → imprimir 15, REPET=15</li>
-              <li>... y así sucesivamente</li>
-            </ul>
-
-            <p><strong>Salida esperada:</strong></p>
-            <pre>Lista de números sin repeticiones:
-5
-10
-15
-20
-25
-30</pre>
-
-            <h3>Tabla de Pruebas</h3>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>Número de Corrida</th>
-                  <th>N</th>
-                  <th>Arreglo VEC</th>
-                  <th>Salida Esperada</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>6</td>
-                  <td>[1, 1, 2, 2, 3, 3]</td>
-                  <td>1, 2, 3</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>5</td>
-                  <td>[5, 5, 5, 5, 5]</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>8</td>
-                  <td>[10, 20, 30, 40, 50, 60, 70, 80]</td>
-                  <td>10, 20, 30, 40, 50, 60, 70, 80</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>12</td>
-                  <td>[5, 5, 5, 10, 10, 15, 20, 20, 20, 20, 25, 30]</td>
-                  <td>5, 10, 15, 20, 25, 30</td>
-                </tr>
-              </tbody>
-            </table>
 
             <h3>Resultado Esperado</h3>
-            <pre><code class="code-block">Ingrese número de elementos del arreglo: 12
-Ingrese los 12 elementos ordenados:
-Ingrese valor 1: 5
-Ingrese valor 2: 5
-Ingrese valor 3: 5
-Ingrese valor 4: 10
-Ingrese valor 5: 10
-Ingrese valor 6: 15
-Ingrese valor 7: 20
-Ingrese valor 8: 20
-Ingrese valor 9: 20
-Ingrese valor 10: 20
-Ingrese valor 11: 25
-Ingrese valor 12: 30
+            <pre><code class="code-block">Ingrese la cantidad de elementos: 12
+Ingrese los elementos ordenados:
+5 5 5 10 10 15 20 20 20 20 25 30
 
-Lista de números sin repeticiones:
+Lista sin repeticiones:
 5
 10
 15
@@ -280,31 +181,20 @@ Lista de números sin repeticiones:
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Este problema utiliza <span class="highlight">arreglos unidimensionales</span>.</li>
+              <li>Este problema utiliza arreglos unidimensionales.</li>
               <li>El arreglo de entrada <strong>debe estar ordenado</strong>.</li>
-              <li>Se usan <span class="highlight">ciclos anidados</span> para comparar elementos.</li>
+              <li>Se usan ciclos para recorrer y comparar elementos.</li>
               <li>La variable REPET actúa como "guardián" del valor anterior impreso.</li>
               <li>Solo se imprime un elemento cuando es diferente del anterior.</li>
               <li>La capacidad máxima del arreglo es 500 elementos.</li>
-              <li>Validar que N esté entre 1 y 500.</li>
+              <li>Valida que N esté entre 1 y 500.</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>
-              La clave de este algoritmo es comparar cada elemento con el valor anterior impreso (REPET). 
-              Si son iguales, simplemente continuamos al siguiente elemento sin imprimir. Si son diferentes, 
-              imprimimos el nuevo valor y actualizamos REPET. Esto garantiza que no haya duplicados en la salida.
-            </p>
-
-            <h3>Consideración Importante</h3>
-            <p>
-              El arreglo de entrada debe estar <strong>ordenado</strong>. Si los elementos no están ordenados, 
-              este algoritmo no funcionará correctamente. Por ejemplo, si tenemos [1, 3, 2, 3], el algoritmo 
-              imprimiría [1, 3, 2, 3] en lugar de eliminar el 3 duplicado.
-            </p>
+            <p>La clave de este algoritmo es comparar cada elemento con el valor anterior impreso (REPET). Si son iguales, continuamos sin imprimir. Si son diferentes, imprimimos el nuevo valor y actualizamos REPET. Esto garantiza que no haya duplicados en la salida.</p>
           </aside>
         </div>
       </article>

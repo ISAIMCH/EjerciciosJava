@@ -132,145 +132,41 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Lea dinámicamente la cantidad de alumnos y exámenes, junto con sus calificaciones. 
-            Calcule el promedio de calificaciones de cada examen, el promedio de cada alumno, 
-            e identifique cuál es el examen con el mayor promedio de calificación.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que procese una matriz de calificaciones para calcular promedios por examen, promedios por alumno, e identificar el examen con mayor promedio.</p>
 
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              Se debe procesar una matriz de 30 x 6 (30 alumnos, 6 exámenes) calculando:
-            </p>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li><strong>Promedio por examen:</strong> Suma de todas las calificaciones de un examen dividido entre 30 alumnos.</li>
-              <li><strong>Promedio por alumno:</strong> Suma de las 6 calificaciones de un alumno dividido entre 6.</li>
-              <li><strong>Examen con mayor promedio:</strong> Comparar todos los promedios de exámenes e identificar cuál es el máximo.</li>
+              <li><strong>CAL[i][j]:</strong> matriz de tipo real (<code>double</code>) - Calificaciones (alumnos x exámenes)</li>
+              <li><strong>PROMEDIOS_EXAMEN[]:</strong> arreglo de tipo real - Promedio de cada examen</li>
+              <li><strong>PROMEDIO_ALUMNO:</strong> tipo real - Promedio temporal del alumno actual</li>
+              <li><strong>EXAMEN_MAXIMO, PROMEDIO_MAXIMO:</strong> tipo entero/real - Examen y promedio mayor</li>
+              <li><strong>i, j:</strong> tipo entero - Índices para filas (alumnos) y columnas (exámenes)</li>
             </ul>
 
-            <h3>Requisitos</h3>
+            <h3>Operaciones a Realizar</h3>
             <ul>
-              <li>Declarar una matriz de 30 x 6 para almacenar las calificaciones.</li>
-              <li>Usar bucles anidados para procesar filas (alumnos) y columnas (exámenes).</li>
-              <li>Calcular el promedio de cada examen sumando todas las calificaciones en esa columna.</li>
-              <li>Calcular el promedio de cada alumno sumando todas sus 6 calificaciones.</li>
-              <li>Identificar el examen con el mayor promedio y almacenar su número y valor.</li>
-              <li>Mostrar todos los resultados de manera organizada.</li>
+              <li>Leer cantidad de alumnos y exámenes.</li>
+              <li>Leer la matriz de calificaciones usando bucles anidados.</li>
+              <li>Calcular promedio de cada examen: sumar columna j y dividir entre cantidad de alumnos.</li>
+              <li>Calcular promedio de cada alumno: sumar fila i y dividir entre cantidad de exámenes.</li>
+              <li>Encontrar el examen con mayor promedio comparando todos los promedios de exámenes.</li>
+              <li>Mostrar promedios por examen, promedios por alumno, y el examen máximo.</li>
             </ul>
-
-            <h3>Explicación de Variables</h3>
-            <div class="formula-box">
-              <ul>
-                <li><strong>CAL[i][j]:</strong> Matriz de 30x6 con calificaciones (tipo double).</li>
-                <li><strong>PROMEDIOS_EXAMEN[j]:</strong> Arreglo para almacenar el promedio de cada examen.</li>
-                <li><strong>PROMEDIO_ALUMNO:</strong> Variable para calcular promedio temporal del alumno actual.</li>
-                <li><strong>SUMA:</strong> Variable acumuladora temporal.</li>
-                <li><strong>EXAMEN_MAXIMO:</strong> Número del examen con mayor promedio.</li>
-                <li><strong>PROMEDIO_MAXIMO:</strong> Valor del mayor promedio de examen.</li>
-                <li><strong>i:</strong> Índice para filas (alumnos).</li>
-                <li><strong>j:</strong> Índice para columnas (exámenes).</li>
-              </ul>
-            </div>
-
-            <h3>Casos de Prueba</h3>
-            <table class="test-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Descripción</th>
-                  <th>Alumnos</th>
-                  <th>Exámenes</th>
-                  <th>Validación</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Calcular promedios correctamente</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Suma/contador válido</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Identificar examen máximo</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Máximo correcto</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Calcular promedio examen 1</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Suma/30 válida</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Calcular promedio alumno 1</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Suma/6 válida</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Matriz con todos iguales</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Todos promedios iguales</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Detectar máximo en última columna</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Examen 6 es máximo</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Detectar máximo en primera columna</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Examen 1 es máximo</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Valores bajos en matriz</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Promedios bajos válidos</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>Valores altos en matriz</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Promedios altos válidos</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>Valores decimales precisos</td>
-                  <td>30</td>
-                  <td>6</td>
-                  <td>Precisión 2 decimales</td>
-                </tr>
-              </tbody>
-            </table>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Ejemplo de ejecución - 2 alumnos con 3 exámenes:</strong></p>
-            <pre><code class="code-block">Ingrese la cantidad de alumnos: 2
-Ingrese la cantidad de exámenes: 3
-Ingrese las 3 calificaciones del alumno 1:
+            <pre><code class="code-block">Ingrese cantidad de alumnos: 2
+Ingrese cantidad de exámenes: 3
+Ingrese calificaciones del alumno 1:
   Examen 1: 8.5
   Examen 2: 7.5
   Examen 3: 8.0
-Ingrese las 3 calificaciones del alumno 2:
+Ingrese calificaciones del alumno 2:
   Examen 1: 7.5
   Examen 2: 8.5
   Examen 3: 8.5
 
 === RESULTADOS ===
-
 Promedios por Examen:
 Examen 1: 8.00
 Examen 2: 8.00
@@ -281,33 +177,21 @@ Alumno 1: 8.00
 Alumno 2: 8.17
 
 Examen con Mayor Promedio:
-Examen: 3
-Promedio: 8.25</code></pre>
+Examen: 3 | Promedio: 8.25</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas Rápidas</h3>
-            <p class="note-text">Puntos clave para resolver este ejercicio:</p>
+            <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Usar bucles anidados: externo para alumnos, interno para exámenes.</li>
-              <li>Acumular sumas por columna para calcular promedios de exámenes.</li>
-              <li>Acumular sumas por fila para calcular promedios de alumnos.</li>
-              <li>Comparar promedios de exámenes para identificar el máximo.</li>
-              <li>Usar variables double para precisión en cálculos de promedios.</li>
+              <li>Usa bucles anidados: externo para alumnos, interno para exámenes.</li>
+              <li>Para promedios de examen: suma la columna j completa, divide entre número de alumnos.</li>
+              <li>Para promedios de alumno: suma la fila i completa, divide entre número de exámenes.</li>
+              <li>Inicializa PROMEDIO_MAXIMO = -1 para capturar el primer máximo correctamente.</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>Usa bucles anidados con el externo para filas (alumnos) e interno para columnas (exámenes). 
-            Para calcular el promedio de cada examen, suma todos los valores de esa columna. Para el máximo, 
-            inicializa con -1 y compara cada promedio calculado.</p>
-
-            <h3>Consideraciones</h3>
-            <ul>
-              <li>Maneja correctamente los dos bucles anidados para acceder a matriz[i][j].</li>
-              <li>Asegúrate de inicializar correctamente los acumuladores.</li>
-              <li>Valida que los promedios se calculen correctamente dividiendo entre 30 (exámenes) y 6 (alumnos).</li>
-              <li>El diagrama de flujo muestra la lógica completa del algoritmo.</li>
-            </ul>
+            <p>Estructura: bucle externo para alumnos → bucle interno para exámenes → leer CAL[i][j]. Después de llenar la matriz, usa dos bucles separados: uno para sumar columnas (promedios exámenes) y otro para sumar filas (promedios alumnos). Finalmente, compara todos los promedios de exámenes.</p>
           </aside>
         </div>
       </article>

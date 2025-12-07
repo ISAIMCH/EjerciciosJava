@@ -134,149 +134,53 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>La tangente de un ángulo se define como el cociente entre el seno y el coseno de dicho ángulo:</p>
-            <div class="formula-box" style="text-align: center;">
-              <p style="font-size: 1.2em; margin: 10px 0;"><strong>tan (α) = sen (α) / cos (α)</strong></p>
-              <p style="color: #666; font-style: italic;">Fórmula 6.20</p>
-            </div>
-            
-            <p>Construya un diagrama de flujo que le permita calcular la tangente de un ángulo, considerando que se conoce el valor del seno y del coseno del mismo. Recuerde que el coseno debe ser diferente de 0.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que calcule la tangente de un ángulo dividiendo el seno entre el coseno, validando que el coseno sea diferente de cero.</p>
 
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              <strong>SENO:</strong> Valor del seno del ángulo (tipo real, solicitado por consola).
-            </p>
-            <p>
-              <strong>COSENO:</strong> Valor del coseno del ángulo (tipo real, solicitado por consola, pero NO debe ser 0).
-            </p>
-            <p>
-              <strong>TANGENTE:</strong> Resultado del cálculo (tan α = SENO / COSENO).
-            </p>
-            <p>
-              <strong>Validación importante:</strong> Si COSENO = 0, la tangente no está definida, por lo que debe mostrar un mensaje de error.
-            </p>
-
-            <h3>Requisitos</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li>Declarar variables de tipo real para almacenar SENO y COSENO.</li>
-              <li>Declarar una variable de tipo real para el resultado de la tangente.</li>
-              <li>Validar que el coseno sea diferente de 0 antes de realizar la división.</li>
-              <li>Si coseno = 0, mostrar un mensaje de error indicando que la tangente no está definida.</li>
-              <li>Si coseno ≠ 0, calcular tan (α) = SENO / COSENO.</li>
-              <li>Mostrar el resultado de la tangente con la precisión adecuada.</li>
-              <li>Usar estructuras condicionales (if-else) para validar el coseno.</li>
+              <li><strong>SENO:</strong> tipo real (<code>double</code>) - Valor del seno del ángulo</li>
+              <li><strong>COSENO:</strong> tipo real (<code>double</code>) - Valor del coseno del ángulo</li>
+              <li><strong>TANGENTE:</strong> tipo real (<code>double</code>) - Resultado de la tangente</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer el valor del seno.</li>
+              <li>Leer el valor del coseno.</li>
+              <li>Validar que el coseno sea diferente de 0 usando una estructura condicional <code>if</code>.</li>
+              <li>Si coseno ≠ 0: Calcular TANGENTE = SENO / COSENO</li>
+              <li>Si coseno = 0: Mostrar un mensaje de error.</li>
+              <li>Mostrar el resultado.</li>
+            </ul>
+
+            <h3>Fórmula</h3>
             <div class="formula-box">
-              <ul>
-                <li><strong>SENO:</strong> Variable de tipo real que almacena el valor del seno del ángulo.</li>
-                <li><strong>COSENO:</strong> Variable de tipo real que almacena el valor del coseno del ángulo.</li>
-                <li><strong>TANGENTE:</strong> Variable de tipo real que almacena el resultado del cálculo.</li>
-              </ul>
+              <p style="text-align: center; font-size: 1.1em; font-weight: bold;">tan (α) = sen (α) / cos (α)</p>
+              <p style="text-align: center; color: #666;">La tangente es indefinida cuando cos (α) = 0</p>
             </div>
 
-            <h3>Tabla de Casos de Prueba</h3>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>SENO (Entrada)</th>
-                  <th>COSENO (Entrada)</th>
-                  <th>Validación</th>
-                  <th>Resultado Esperado</th>
-                  <th>Salida</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>0.8660</td>
-                  <td>0.5000</td>
-                  <td>COSENO ≠ 0 ✓</td>
-                  <td>1.7320</td>
-                  <td>La tangente del ángulo es: 1.7320</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>0.7071</td>
-                  <td>0.7071</td>
-                  <td>COSENO ≠ 0 ✓</td>
-                  <td>1.0000</td>
-                  <td>La tangente del ángulo es: 1.0000</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>0.5000</td>
-                  <td>0.8660</td>
-                  <td>COSENO ≠ 0 ✓</td>
-                  <td>0.5774</td>
-                  <td>La tangente del ángulo es: 0.5774</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>1.0000</td>
-                  <td>0.0000</td>
-                  <td>COSENO = 0 ✗</td>
-                  <td>ERROR</td>
-                  <td>Error: La tangente no está definida (COSENO = 0)</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>0.0000</td>
-                  <td>1.0000</td>
-                  <td>COSENO ≠ 0 ✓</td>
-                  <td>0.0000</td>
-                  <td>La tangente del ángulo es: 0.0000</td>
-                </tr>
-              </tbody>
-            </table>
-
             <h3>Resultado Esperado</h3>
-            <p><strong>Ejemplo de ejecución - Tangente de 60°:</strong></p>
             <pre><code class="code-block">Ingrese el valor del SENO: 0.8660
 Ingrese el valor del COSENO: 0.5000
+
+RESULTADO:
 La tangente del ángulo es: 1.7320</code></pre>
-            
-            <p><strong>Ejemplo de ejecución - Caso de error:</strong></p>
-            <pre><code class="code-block">Ingrese el valor del SENO: 1.0000
-Ingrese el valor del COSENO: 0.0000
-Error: La tangente no está definida (COSENO = 0)</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
               <li>La tangente es indefinida cuando el coseno es igual a 0.</li>
               <li>Esto ocurre en ángulos de 90°, 270°, etc. (múltiplos de π/2).</li>
-              <li>Siempre valida la condición COSENO ≠ 0 antes de realizar la división.</li>
+              <li>Siempre valida la condición coseno ≠ 0 antes de realizar la división.</li>
               <li>Usa variables de tipo <code>double</code> para mayor precisión en los cálculos.</li>
               <li>La fórmula es: tan (α) = sen (α) / cos (α)</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>
-              En Java, el programa solicita valores del usuario mediante <code>Scanner</code>:
-            </p>
-            <pre><code class="code-block">Scanner scanner = new Scanner(System.in);
-System.out.print("Ingrese el valor del SENO: ");
-double seno = scanner.nextDouble();
-System.out.print("Ingrese el valor del COSENO: ");
-double coseno = scanner.nextDouble();
-scanner.close();</code></pre>
-            <p>
-              Luego valida con condicional <code>if (coseno != 0)</code> antes de realizar la división.
-            </p>
-
-            <h3>Consideraciones</h3>
-            <ul>
-              <li>Maneja correctamente la entrada de valores reales desde teclado.</li>
-              <li>Usa condicionales simples (if-else) para validar la condición.</li>
-              <li>Formatea la salida con la precisión adecuada (4 decimales recomendado).</li>
-              <li>Incluye mensajes descriptivos en la salida para una mejor experiencia del usuario.</li>
-            </ul>
+            <p>El programa solicita valores del usuario mediante Scanner. Luego valida con condicional <code>if (coseno != 0)</code> antes de realizar la división. Si la condición es falsa, muestra un mensaje de error indicando que la tangente no está definida.</p>
           </aside>
         </div>
       </article>

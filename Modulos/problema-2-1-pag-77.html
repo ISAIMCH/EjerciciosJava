@@ -133,111 +133,43 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>El número de sonidos emitidos por un grillo en un minuto es una función de la temperatura. 
-            Como resultado de esto, es posible determinar el nivel de la temperatura haciendo uso de un 
-            grillo como termómetro.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que calcule la temperatura en grados Fahrenheit basándose en el número de sonidos emitidos por un grillo en un minuto, utilizando una estructura condicional.</p>
 
-            <h3>Datos de Entrada</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li><strong>N:</strong> Variable de tipo entero que representa el número de sonidos emitidos por el grillo en un minuto.</li>
+              <li><strong>N:</strong> tipo entero (<code>int</code>) - Número de sonidos emitidos por minuto</li>
+              <li><strong>T:</strong> tipo real (<code>double</code>) - Temperatura en grados Fahrenheit (resultado)</li>
             </ul>
 
-            <h3>Consideraciones y Fórmulas</h3>
-            <div class="formula-box">
-              <p><strong>Cálculo de la Temperatura:</strong></p>
-              <p style="font-size: 1.1em; text-align: center; font-weight: bold;">
-                T = N / 4 + 40
-              </p>
-              <p style="text-align: center; color: #666;">Donde: T es la temperatura en grados Fahrenheit, N es el número de sonidos por minuto</p>
-            </div>
-
-            <h3>Requisitos</h3>
+            <h3>Operaciones a Realizar</h3>
             <ul>
-              <li>Declarar variables de tipo <code>int</code> para N y de tipo <code>double</code> para T.</li>
               <li>Leer el número de sonidos emitidos por el grillo (N).</li>
-              <li>Validar que N sea mayor que 0 (estructura condicional if).</li>
-              <li>Si N > 0, calcular la temperatura usando: <code>T = N / 4.0 + 40</code></li>
-              <li>Mostrar la temperatura calculada en grados Fahrenheit.</li>
-              <li>Si N ≤ 0, mostrar un mensaje de error indicando que N debe ser positivo.</li>
-              <li>Documentar claramente los valores de entrada y salida.</li>
+              <li>Validar que N sea mayor que 0 usando una estructura condicional <code>if</code>.</li>
+              <li>Si N > 0: Calcular T = N / 4.0 + 40</li>
+              <li>Si N ≤ 0: Mostrar un mensaje de error.</li>
+              <li>Mostrar la temperatura calculada.</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
-            <ul>
-              <li><strong>N:</strong> Variable de tipo entero. Almacena el número de sonidos emitidos por minuto.</li>
-              <li><strong>T:</strong> Variable de tipo real (double). Almacena la temperatura en grados Fahrenheit.</li>
-            </ul>
-
-            <h3>Tabla de Valores de Prueba</h3>
-            <p>A continuación se muestra una tabla con diferentes valores de entrada y sus resultados esperados:</p>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>Número de Corrida</th>
-                  <th>N (Sonidos)</th>
-                  <th>T (Temperatura)</th>
-                  <th>Resultado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>8</td>
-                  <td>42.00</td>
-                  <td>Válido</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>15</td>
-                  <td>43.75</td>
-                  <td>Válido</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>11</td>
-                  <td>42.75</td>
-                  <td>Válido</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>25</td>
-                  <td>46.25</td>
-                  <td>Válido</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>-5</td>
-                  <td>-</td>
-                  <td>Error: N debe ser positivo</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>50</td>
-                  <td>52.50</td>
-                  <td>Válido</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Fórmula de Conversión</h3>
+            <div class="formula-box">
+              <p style="text-align: center; font-size: 1.1em; font-weight: bold;">T = N / 4.0 + 40</p>
+              <p style="text-align: center; color: #666;">Donde: T es la temperatura en Fahrenheit, N es el número de sonidos por minuto</p>
+            </div>
 
             <h3>Resultado Esperado</h3>
             <pre><code class="code-block">Ingrese el número de sonidos del grillo: 20
 
-RESULTADOS:
-Número de sonidos: 20
-Temperatura del grillo: 45.00 grados Fahrenheit</code></pre>
-
-            <h3>Casos de Error</h3>
-            <pre><code class="code-block">Ingrese el número de sonidos del grillo: -5
-
-ERROR: El número de sonidos debe ser positivo (N > 0)</code></pre>
+RESULTADO:
+Numero de sonidos: 20
+Temperatura: 45.00 grados Fahrenheit</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Esta es la primera vez que utilizamos una estructura condicional (if) en este curso.</li>
+              <li>Esta es la primera vez que utilizamos una estructura condicional <code>if</code>.</li>
               <li>La validación de entrada es importante para evitar resultados no válidos.</li>
               <li>La fórmula utiliza división por 4.0 para garantizar un resultado decimal.</li>
               <li>Es importante usar <code>double</code> para T para mantener la precisión decimal.</li>
@@ -245,9 +177,7 @@ ERROR: El número de sonidos debe ser positivo (N > 0)</code></pre>
             </ul>
             
             <h3>Tip</h3>
-            <p>En este ejercicio utilizaremos una estructura condicional <code>if</code> para validar que 
-            N sea mayor que 0 antes de realizar el cálculo. Si N es menor o igual a 0, mostraremos un 
-            mensaje de error.</p>
+            <p>En este ejercicio utilizaremos una estructura condicional <code>if-else</code> para validar que N sea mayor que 0 antes de realizar el cálculo. Si N es menor o igual a 0, mostraremos un mensaje de error.</p>
           </aside>
         </div>
       </article>

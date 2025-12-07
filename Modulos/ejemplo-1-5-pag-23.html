@@ -115,9 +115,8 @@
           <h2 id="ejercicio-title">Operaciones Aritméticas con Variables de Diferentes Tipos</h2>
           
           <p class="exercise-description">
-            En este ejercicio trabajarás con variables de diferentes tipos de datos (enteros, reales y booleanos) 
-            y realizarás operaciones aritméticas básicas. Aprenderás cómo Java maneja las conversiones de tipos 
-            y el comportamiento de las operaciones cuando intervienen datos de diferentes tipos numéricos.
+            Trabajarás con variables de diferentes tipos de datos (enteros, reales, caracteres y booleanos). 
+            Realizarás operaciones aritméticas básicas y aprenderás cómo Java maneja las conversiones de tipos.
           </p>
 
           <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
@@ -125,231 +124,65 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Supongamos que las variables <code>I</code>, <code>ACUM</code> y <code>J</code> son de tipo entero, 
-            <code>REA</code> y <code>SUM</code> de tipo real, <code>CAR</code> de tipo carácter y <code>BAND</code> 
-            de tipo booleano. Considérense también que tenemos que realizar las siguientes asignaciones:</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que declare variables de diferentes tipos y realice operaciones aritméticas con ellas, observando cómo se comportan los tipos en Java.</p>
+
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>I, ACUM, J:</strong> tipo entero (<code>int</code>)</li>
+              <li><strong>REA, SUM:</strong> tipo real (<code>double</code>)</li>
+              <li><strong>CAR:</strong> tipo carácter (<code>char</code>)</li>
+              <li><strong>BAND:</strong> tipo booleano (<code>boolean</code>)</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <p>Realiza estas asignaciones en orden y registra el valor de cada variable después de cada paso:</p>
             <ol>
-              <li><code>I = 0</code></li>
-              <li><code>I = I + 1</code></li>
-              <li><code>ACUM = 0</code></li>
-              <li><code>J = 5 ** 2 div 3</code></li>
-              <li><code>CAR = 'a'</code></li>
-              <li><code>ACUM = J div I</code></li>
-              <li><code>REA = ACUM / 3</code></li>
-              <li><code>BAND = (8 > 5) v (15 < 2 ** 3)</code></li>
-              <li><code>SUM = ACUM * 5 / J ** 2</code></li>
-              <li><code>I = I * 3</code></li>
-              <li><code>REA = REA / 5</code></li>
-              <li><code>BAND = BAND o (I = J)</code></li>
-              <li><code>I = REA</code></li>
-              <li><code>CAR = J</code></li>
+              <li>Asigna 0 a I</li>
+              <li>Incrementa I en 1</li>
+              <li>Asigna 0 a ACUM</li>
+              <li>Calcula J = (5 elevado a 2) dividido entre 3 (usa división entera)</li>
+              <li>Asigna 'a' a CAR</li>
+              <li>Calcula ACUM = J dividido entre I (división entera)</li>
+              <li>Calcula REA = ACUM dividido entre 3 (división real)</li>
+              <li>Calcula BAND = (8 > 5) OR (15 < 2 elevado a 3)</li>
+              <li>Calcula SUM = (ACUM × 5) dividido entre (J elevado a 2)</li>
+              <li>Multiplica I por 3</li>
+              <li>Divide REA entre 5</li>
+              <li>Calcula BAND = BAND OR (I = J)</li>
+              <li>Intenta asignar REA a I (¿qué sucede?)</li>
+              <li>Intenta asignar J a CAR (¿qué sucede?)</li>
             </ol>
 
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Declarar todas las variables con sus tipos de datos correctos (<code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code>).</li>
-              <li>Realizar todas las asignaciones en el orden indicado.</li>
-              <li>Manejar correctamente las operaciones aritméticas:
-                <ul>
-                  <li>División entera (<code>/</code> con operandos int)</li>
-                  <li>División real (<code>/</code> con al menos un operando double)</li>
-                  <li>Potenciación (<code>Math.pow()</code> en Java)</li>
-                </ul>
-              </li>
-              <li>Documentar el valor de cada variable después de cada asignación.</li>
-              <li>Capturar y documentar los errores que ocurran (asignaciones inválidas de tipos).</li>
-            </ul>
-            
-            <h3>Tabla de Valores de Variables</h3>
-            <p>A continuación se muestra la evolución de los valores de las variables según cada asignación:</p>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>Asignación #</th>
-                  <th>I</th>
-                  <th>J</th>
-                  <th>ACUM</th>
-                  <th>REA</th>
-                  <th>SUM</th>
-                  <th>CAR</th>
-                  <th>BAND</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>0</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>1</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>1</td>
-                  <td></td>
-                  <td>0</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>1</td>
-                  <td>8</td>
-                  <td>0</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>1</td>
-                  <td>8</td>
-                  <td>0</td>
-                  <td></td>
-                  <td></td>
-                  <td>a</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>1</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td></td>
-                  <td></td>
-                  <td>a</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>1</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td>2.666...</td>
-                  <td></td>
-                  <td>a</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>1</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td>2.666...</td>
-                  <td></td>
-                  <td>a</td>
-                  <td>true</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>1</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td>2.666...</td>
-                  <td>0.625</td>
-                  <td>a</td>
-                  <td>true</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>3</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td>2.666...</td>
-                  <td>0.625</td>
-                  <td>a</td>
-                  <td>true</td>
-                </tr>
-                <tr>
-                  <td>11</td>
-                  <td>3</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td>0.533...</td>
-                  <td>0.625</td>
-                  <td>a</td>
-                  <td>true</td>
-                </tr>
-                <tr>
-                  <td>12</td>
-                  <td>3</td>
-                  <td>8</td>
-                  <td>8</td>
-                  <td>0.533...</td>
-                  <td>0.625</td>
-                  <td>a</td>
-                  <td>false</td>
-                </tr>
-                <tr>
-                  <td>13</td>
-                  <td>Error</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>14</td>
-                  <td>Error</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>Error</td>
-                </tr>
-              </tbody>
-            </table>
-            
-            <h3>Resultado esperado</h3>
-            <pre><code class="code-block">Después de ejecutar todas las asignaciones válidas:
+            <h3>Resultado Esperado</h3>
+            <pre><code class="code-block">Ingrese la cantidad de números a procesar: 12
+Ingrese número 1: 8
+Ingrese número 2: 0
+Ingrese número 3: 5
+...
+Ingrese número 12: 41
 
-I: 3
-J: 8
-ACUM: 8
-REA: 0.5333333333333333
-SUM: 0.625
-CAR: a
-BAND: false
-
-Notas:
-- Las asignaciones 13 y 14 generarán errores de compilación
-- No pueden ser ejecutadas sin realizar conversiones explícitas</code></pre>
+RESULTADO:
+Total de ceros encontrados: 5</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
-            <p class="note-text">Puntos importantes:</p>
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Sigue estos pasos:</p>
             <ul>
-              <li>Java no permite conversiones automáticas de <code>double</code> a <code>int</code> (asignación 13).</li>
-              <li>Java no permite asignar valores numéricos directamente a <code>char</code> (asignación 14).</li>
-              <li>La división de dos enteros produce un entero (trunca decimales).</li>
-              <li>Usa <code>Math.pow()</code> para potenciación y convierte el resultado a <code>int</code> si es necesario.</li>
+              <li>✓ Declara primero todas las variables al inicio del programa.</li>
+              <li>✓ Realiza las asignaciones en el orden especificado.</li>
+              <li>✓ Imprime el valor de cada variable después de cada operación importante.</li>
+              <li>✓ Cuando llegues a las operaciones 13 y 14, observa los mensajes de error.</li>
+              <li>✓ Intenta usar casting para convertir tipos (ejemplo: <code>(int) REA</code>).</li>
+              <li>⚠️ Las últimas 2 operaciones causarán errores en Java (no permite esas conversiones automáticas).</li>
+              <li>La división entre dos enteros siempre produce un entero (se pierden decimales).</li>
+              <li>Para potenciación, usa <code>Math.pow(base, exponente)</code> y convierte a entero si es necesario.</li>
               <li>Los operadores lógicos en Java son <code>||</code> (OR) y <code>&&</code> (AND).</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>Para convertir explícitamente tipos, usa casting: <code>(int) 2.5</code> produce <code>2</code>. 
-            Pero recuerda que asignar directamente sin casting causará un error de compilación.</p>
+            <p>Java es un lenguaje fuertemente tipado. Esto significa que no puede convertir automáticamente tipos que causan pérdida de información (como de <code>double</code> a <code>int</code>).</p>
           </aside>
         </div>
       </article>

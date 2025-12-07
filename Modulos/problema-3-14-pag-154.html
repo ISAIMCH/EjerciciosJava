@@ -139,172 +139,60 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>
-              En un estadio se tienen 5 tipos diferentes de localidades, las cuales se identifican por una clave 
-              numérica que es un valor comprendido entre 1 y 5. Los precios de cada localidad y los datos referentes 
-              a las ventas de boletos para el próximo juego se proporcionan como sigue:
-            </p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que procese ventas de boletos en un estadio con 5 tipos de localidades diferentes, utilizando ciclos anidados para calcular la recaudación total y la cantidad de boletos vendidos por localidad.</p>
 
-            <div class="formula-box">
-              <strong>Datos de entrada:</strong>
-              <p>P1, P2, P3, P4, P5 (precios de cada localidad)</p>
-              <p>Para cada venta:</p>
-              <pre>CLAVE₁  CANT₁
-CLAVE₂  CANT₂
-  ...
--1      -1</pre>
-            </div>
-
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              <strong>P1, P2, P3, P4 y P5:</strong> Son variables de tipo real que representan los precios de las 
-              localidades 1, 2, 3, 4 y 5, respectivamente.
-            </p>
-            <p>
-              <strong>CLAVE:</strong> Es una variable de tipo entero que representa el tipo de localidad de la venta 
-              (valores válidos: 1 a 5; -1 indica fin de datos).
-            </p>
-            <p>
-              <strong>CANT:</strong> Es una variable de tipo entero que indica la cantidad de boletos vendidos de un 
-              cierto tipo, en la venta actual.
-            </p>
-
-            <h3>Requisitos</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li>Leer los precios de las 5 localidades (P1, P2, P3, P4, P5).</li>
-              <li>Inicializar acumuladores AP1, AP2, AP3, AP4, AP5 en 0 (acumulan boletos vendidos por tipo).</li>
-              <li>Inicializar acumulador RECAU en 0 (recaudación total del estadio).</li>
-              <li>Usar estructura repetitiva anidada (while dentro de while).</li>
-              <li>Leer CLAVE y CANT. Si CLAVE es -1, fin de datos.</li>
-              <li>Validar que CLAVE esté entre 1 y 5, si no es así, rechazar la venta.</li>
-              <li>Para cada venta válida, incrementar el acumulador correspondiente (AP1 a AP5).</li>
-              <li>Calcular PRE = precio de la localidad × cantidad de boletos.</li>
-              <li>Sumar PRE a la recaudación total (RECAU).</li>
-              <li>Mostrar para cada venta: clave, cantidad y total vendido en esa venta.</li>
-              <li>Al final, mostrar cantidad total de boletos vendidos por cada localidad.</li>
-              <li>Mostrar la recaudación total del estadio.</li>
+              <li><strong>P1, P2, P3, P4, P5:</strong> tipo real (<code>double</code>) - Precios de las 5 localidades</li>
+              <li><strong>AP1, AP2, AP3, AP4, AP5:</strong> tipo entero (<code>int</code>) - Acumuladores de boletos vendidos por localidad</li>
+              <li><strong>RECAU:</strong> tipo real (<code>double</code>) - Recaudación total del estadio</li>
+              <li><strong>CLAVE:</strong> tipo entero (<code>int</code>) - Tipo de localidad (1-5 o -1 para terminar)</li>
+              <li><strong>CANT:</strong> tipo entero (<code>int</code>) - Cantidad de boletos en una venta</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
-            <div class="formula-box">
-              <ul>
-                <li><strong>P1, P2, P3, P4, P5:</strong> Precios (reales) de las 5 localidades.</li>
-                <li><strong>AP1, AP2, AP3, AP4, AP5:</strong> Acumuladores (enteros) de boletos vendidos por localidad.</li>
-                <li><strong>RECAU:</strong> Recaudación total (real) del estadio.</li>
-                <li><strong>PRE:</strong> Precio parcial (real) de una venta (precio × cantidad).</li>
-                <li><strong>CLAVE:</strong> Tipo de localidad (-1 para terminar).</li>
-                <li><strong>CANT:</strong> Cantidad de boletos en una venta.</li>
-              </ul>
-            </div>
-
-            <h3>Tabla de Precios</h3>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>P1</th>
-                  <th>P2</th>
-                  <th>P3</th>
-                  <th>P4</th>
-                  <th>P5</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>7.25</td>
-                  <td>15.60</td>
-                  <td>23.00</td>
-                  <td>30.00</td>
-                  <td>75.00</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>Tabla de Ventas Simuladas (Muestra)</h3>
-            <table class="values-table" style="font-size: 0.9em;">
-              <thead>
-                <tr>
-                  <th>CLAVE</th>
-                  <th>CANT</th>
-                  <th>Localidad</th>
-                  <th>Precio Unit.</th>
-                  <th>PRE</th>
-                  <th>AP1</th>
-                  <th>AP2</th>
-                  <th>AP3</th>
-                  <th>AP4</th>
-                  <th>AP5</th>
-                  <th>RECAU</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>2</td>
-                  <td>15.60</td>
-                  <td>46.80</td>
-                  <td>0</td>
-                  <td>3</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>46.80</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>8</td>
-                  <td>5</td>
-                  <td>75.00</td>
-                  <td>600.00</td>
-                  <td>0</td>
-                  <td>3</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>8</td>
-                  <td>646.80</td>
-                </tr>
-                <tr>
-                  <td>-1</td>
-                  <td>-1</td>
-                  <td colspan="8" style="text-align: center;">Fin de datos</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer los precios de las 5 localidades (P1 a P5).</li>
+              <li>Inicializar todos los acumuladores (AP1 a AP5 y RECAU) en 0.</li>
+              <li>Usar un ciclo <code>while</code> externo para procesar múltiples ventas.</li>
+              <li>En cada iteración: leer CLAVE y CANT.</li>
+              <li>Si CLAVE es -1, terminar el programa.</li>
+              <li>Validar que CLAVE esté entre 1 y 5.</li>
+              <li>Calcular el precio total: PRE = precio × cantidad.</li>
+              <li>Sumar PRE a la recaudación total (RECAU).</li>
+              <li>Incrementar el acumulador correspondiente (AP1 a AP5).</li>
+              <li>Mostrar los totales finales.</li>
+            </ul>
 
             <h3>Resultado Esperado</h3>
-            <pre><code class="code-block">Ingrese el precio de la localidad 1: 7.25
-Ingrese el precio de la localidad 2: 15.60
-Ingrese el precio de la localidad 3: 23.00
-Ingrese el precio de la localidad 4: 30.00
-Ingrese el precio de la localidad 5: 75.00
+            <pre><code class="code-block">Ingrese el precio de localidad 1: 7.25
+Ingrese el precio de localidad 2: 15.60
+Ingrese el precio de localidad 3: 23.00
+Ingrese el precio de localidad 4: 30.00
+Ingrese el precio de localidad 5: 75.00
 
 Ingrese clave y cantidad (clave = -1 para terminar):
-Ingrese clave: 2
-Ingrese cantidad: 3
-Localidad: 2, Cantidad: 3, Total: 46.80
-
-Ingrese clave: 5
-Ingrese cantidad: 8
-Localidad: 5, Cantidad: 8, Total: 600.00
-
-Ingrese clave: -1
-Ingrese cantidad: -1
+Clave: 2
+Cantidad: 3
+Clave: 5
+Cantidad: 8
+Clave: -1
 
 RESULTADO:
-CANTIDAD BOLETOS TIPO 1: 0
-CANTIDAD BOLETOS TIPO 2: 3
-CANTIDAD BOLETOS TIPO 3: 0
-CANTIDAD BOLETOS TIPO 4: 0
-CANTIDAD BOLETOS TIPO 5: 8
-RECAUDACION DEL ESTADIO: 646.80</code></pre>
+Boletos Localidad 1: 0
+Boletos Localidad 2: 3
+Boletos Localidad 3: 0
+Boletos Localidad 4: 0
+Boletos Localidad 5: 8
+Recaudación Total: 646.80</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Este problema utiliza <span class="highlight">while anidado</span> (bucle dentro de otro bucle).</li>
+              <li>Este problema utiliza ciclos anidados (while dentro de otra estructura).</li>
               <li>Hay un ciclo externo para procesar múltiples ventas.</li>
               <li>Dentro del ciclo se valida que CLAVE esté entre 1 y 5.</li>
               <li>Se mantienen 5 acumuladores diferentes (AP1 a AP5).</li>
@@ -314,17 +202,7 @@ RECAUDACION DEL ESTADIO: 646.80</code></pre>
             </ul>
             
             <h3>Tip</h3>
-            <p>
-              En este problema es clave usar la variable CLAVE para indexar qué acumulador se debe incrementar. 
-              Puedes usar una estructura de decisión (if-else o switch) para seleccionar el acumulador correcto 
-              basado en el valor de CLAVE. La estructura while externa itera mientras CLAVE no sea -1.
-            </p>
-
-            <h3>Consideración Importante</h3>
-            <p>
-              Recuerda que en una venta solo se venden boletos de <strong>un tipo</strong>. Por lo tanto, solo uno 
-              de los acumuladores (AP1 a AP5) se incrementa por cada venta.
-            </p>
+            <p>En este problema es clave usar la variable CLAVE para indexar qué acumulador se debe incrementar. Puedes usar una estructura de decisión (if-else o switch) para seleccionar el acumulador correcto basado en el valor de CLAVE. Solo se venden boletos de un tipo por venta.</p>
           </aside>
         </div>
       </article>

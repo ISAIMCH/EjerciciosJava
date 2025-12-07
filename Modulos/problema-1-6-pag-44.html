@@ -134,89 +134,40 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Construya un diagrama de flujo que calcule e imprima el número de segundos 
-            que hay en un determinado número de días.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que convierta un número de días a segundos utilizando la fórmula de conversión de unidades de tiempo.</p>
 
-            <h3>Datos de Entrada</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li><strong>DIAS:</strong> Variable de tipo entero que expresa el número de días.</li>
+              <li><strong>DIAS:</strong> tipo entero (<code>int</code>) - Número de días a convertir</li>
+              <li><strong>SEG:</strong> tipo entero (<code>int</code>) - Número de segundos (resultado)</li>
             </ul>
 
-            <h3>Consideraciones y Fórmulas</h3>
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer el valor del número de días.</li>
+              <li>Aplicar la fórmula: SEG = DIAS × 24 × 60 × 60</li>
+              <li>Mostrar el resultado en la consola.</li>
+            </ul>
+
+            <h3>Fórmula de Conversión</h3>
             <div class="formula-box">
-              <p><strong>Conversión de Días a Segundos:</strong></p>
-              <p style="font-size: 1.1em; text-align: center; font-weight: bold;">
-                SEG = DIAS * 24 * 60 * 60
-              </p>
-              <p style="text-align: center; color: #666;">Donde: 1 día = 24 horas, 1 hora = 60 minutos, 1 minuto = 60 segundos</p>
+              <p style="text-align: center; font-size: 1.1em; font-weight: bold;">SEG = DIAS × 24 × 60 × 60</p>
+              <p style="text-align: center; color: #666;">1 día = 86400 segundos</p>
             </div>
 
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Declarar variables de tipo <code>int</code> para: DIAS y SEG.</li>
-              <li>Leer el valor del número de días.</li>
-              <li>Calcular los segundos usando: <code>SEG = DIAS * 24 * 60 * 60</code></li>
-              <li>Mostrar el resultado en la consola.</li>
-              <li>Documentar claramente el valor de entrada y salida.</li>
-            </ul>
-
-            <h3>Explicación de Variables</h3>
-            <ul>
-              <li><strong>DIAS:</strong> Variable de tipo entero.</li>
-              <li><strong>SEG:</strong> Variable de tipo entero. Almacena el número de segundos que hay en un número determinado de días.</li>
-            </ul>
-
-            <h3>Tabla de Valores de Prueba</h3>
-            <p>A continuación se muestra una tabla con diferentes valores de entrada y sus resultados esperados:</p>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>Número de Corrida</th>
-                  <th>DIAS</th>
-                  <th>SEG (Esperado)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>7</td>
-                  <td>604800</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>15</td>
-                  <td>1296000</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>116</td>
-                  <td>10022400</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>28</td>
-                  <td>2419200</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>3</td>
-                  <td>259200</td>
-                </tr>
-              </tbody>
-            </table>
-
             <h3>Resultado Esperado</h3>
-            <pre><code class="code-block">En: 7 días, hay: SEG: "segundos".
+            <pre><code class="code-block">Ingrese el número de días: 7
 
-Donde SEG = 604800</code></pre>
+RESULTADO:
+En 7 días, hay 604800 segundos</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>La conversión usa la fórmula: 1 día = 24 * 60 * 60 segundos = 86400 segundos.</li>
+              <li>La conversión usa la fórmula: 1 día = 24 × 60 × 60 segundos = 86400 segundos.</li>
               <li>Las variables deben ser de tipo <code>int</code> para almacenar valores enteros.</li>
               <li>El resultado se obtiene multiplicando el número de días por 86400.</li>
               <li>Este es un ejercicio básico de operaciones aritméticas simples.</li>
@@ -224,9 +175,7 @@ Donde SEG = 604800</code></pre>
             </ul>
             
             <h3>Tip</h3>
-            <p>En este ejercicio realizaremos una conversión de unidades de tiempo. 
-            Es fundamental entender que 1 día = 24 horas = 1440 minutos = 86400 segundos. 
-            Esta conversión es muy útil en muchas aplicaciones que manejan tiempo.</p>
+            <p>En este ejercicio realizaremos una conversión de unidades de tiempo. Es fundamental entender que 1 día = 24 horas = 1440 minutos = 86400 segundos. Esta conversión es muy útil en muchas aplicaciones que manejan tiempo.</p>
           </aside>
         </div>
       </article>

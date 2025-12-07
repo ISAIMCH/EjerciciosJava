@@ -133,156 +133,32 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Escriba un programa que lea dinámicamente un arreglo unidimensional de números enteros, 
-            y determine cuántos de ellos son positivos, negativos o ceros.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que lea dinámicamente un arreglo de números enteros y clasifique cada elemento como positivo, negativo o cero, mostrando los conteos finales.</p>
 
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              Se debe procesar un arreglo de números enteros y clasificar cada elemento en una de tres categorías:
-            </p>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li><strong>Positivos:</strong> Números mayores que cero (> 0)</li>
-              <li><strong>Negativos:</strong> Números menores que cero (< 0)</li>
-              <li><strong>Ceros:</strong> Números iguales a cero (= 0)</li>
-            </ul>
-            <p>Al final, se deben mostrar los contadores de cada categoría.</p>
-
-            <h3>Requisitos</h3>
-            <ul>
-              <li>Declarar un arreglo unidimensional de tipo entero.</li>
-              <li>Inicializar tres contadores: positivos, negativos y ceros, todos en cero.</li>
-              <li>Utilizar un bucle para recorrer cada elemento del arreglo.</li>
-              <li>Para cada elemento, evaluar su signo y incrementar el contador correspondiente.</li>
-              <li>Mostrar los resultados finales: cantidad de positivos, negativos y ceros.</li>
+              <li><strong>ARRE[]:</strong> arreglo de tipo entero (<code>int</code>) - Array de números a analizar</li>
+              <li><strong>POSITIVOS, NEGATIVOS, CEROS:</strong> tipo entero - Contadores inicializados en 0</li>
+              <li><strong>i, n:</strong> tipo entero - Índice de iteración y tamaño del arreglo</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
-            <div class="formula-box">
-              <ul>
-                <li><strong>ARRE[]:</strong> Arreglo unidimensional de números enteros.</li>
-                <li><strong>POSITIVOS:</strong> Contador de números mayores que cero.</li>
-                <li><strong>NEGATIVOS:</strong> Contador de números menores que cero.</li>
-                <li><strong>CEROS:</strong> Contador de números iguales a cero.</li>
-                <li><strong>i:</strong> Variable índice para recorrer el arreglo.</li>
-                <li><strong>n:</strong> Tamaño del arreglo.</li>
-              </ul>
-            </div>
-
-            <h3>Casos de Prueba</h3>
-            <table class="test-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Descripción</th>
-                  <th>Entrada (Arreglo)</th>
-                  <th>Positivos</th>
-                  <th>Negativos</th>
-                  <th>Ceros</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mixto balanceado</td>
-                  <td>[5, -2, 0, 3, -1, 4]</td>
-                  <td>3</td>
-                  <td>2</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Solo positivos</td>
-                  <td>[1, 2, 3, 4, 5]</td>
-                  <td>5</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Solo negativos</td>
-                  <td>[-1, -2, -3, -4, -5]</td>
-                  <td>0</td>
-                  <td>5</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Solo ceros</td>
-                  <td>[0, 0, 0, 0]</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Arreglo vacío</td>
-                  <td>[]</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Un positivo</td>
-                  <td>[42]</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Un negativo</td>
-                  <td>[-42]</td>
-                  <td>0</td>
-                  <td>1</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Un cero</td>
-                  <td>[0]</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>Múltiples ceros</td>
-                  <td>[5, -3, 0, 7, -1, 0, 2, -8, 0, 4, -6, 1, 0, 9, -2]</td>
-                  <td>6</td>
-                  <td>5</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>Otro caso mixto</td>
-                  <td>[10, -5, 0, 15, -8, 0, 20, -3]</td>
-                  <td>3</td>
-                  <td>3</td>
-                  <td>2</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer la cantidad de números del arreglo.</li>
+              <li>Leer cada número e ingresarlo en el arreglo.</li>
+              <li>Usar un bucle para recorrer cada elemento del arreglo.</li>
+              <li>Para cada elemento, evaluar: si > 0 incrementar POSITIVOS, si < 0 incrementar NEGATIVOS, sino incrementar CEROS.</li>
+              <li>Al terminar el bucle, mostrar los tres contadores.</li>
+            </ul>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Ejemplo de ejecución:</strong></p>
             <pre><code class="code-block">Ingrese la cantidad de números: 10
-Ingrese 10 números (pueden ser positivos, negativos o cero):
-Número 1: -5
-Número 2: 3
-Número 3: 0
-Número 4: -2
-Número 5: 8
-Número 6: 0
-Número 7: -1
-Número 8: 4
-Número 9: 6
-Número 10: -3
+Ingrese 10 números:
+-5 3 0 -2 8 0 -1 4 6 -3
 
 === RESULTADOS ===
-
-Arreglo: -5 3 0 -2 8 0 -1 4 6 -3 
+Arreglo: -5 3 0 -2 8 0 -1 4 6 -3
 Positivos: 4
 Negativos: 4
 Ceros: 2</code></pre>
@@ -290,27 +166,16 @@ Ceros: 2</code></pre>
           
           <aside class="exercise-sidebar">
             <h3>Notas Rápidas</h3>
-            <p class="note-text">Puntos clave para resolver este ejercicio:</p>
+            <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Utilizar estructuras condicionales (if-else) para clasificar cada número.</li>
-              <li>Los contadores se inicializan en cero antes del bucle.</li>
-              <li>Se incrementan dentro del bucle según la condición evaluada.</li>
-              <li>El orden de evaluación es importante: primero > 0, luego < 0, sino es = 0.</li>
-              <li>El arreglo puede estar vacío, en cuyo caso todos los contadores permanecen en cero.</li>
+              <li>Inicializa los tres contadores en 0 antes del bucle.</li>
+              <li>Usa estructuras if-else para clasificar cada número.</li>
+              <li>El orden de evaluación: primero > 0, luego < 0, sino es = 0.</li>
+              <li>Verifica que POSITIVOS + NEGATIVOS + CEROS = n (tamaño total).</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>Utiliza tres contadores inicializados en cero y un bucle simple para recorrer el arreglo. 
-            Dentro del bucle, evalúa cada elemento con condiciones if-else para incrementar el contador adecuado. 
-            El orden importa: primero verifica > 0, luego < 0, y si ninguna se cumple, es 0.</p>
-
-            <h3>Consideraciones</h3>
-            <ul>
-              <li>Maneja correctamente la inicialización de contadores.</li>
-              <li>Asegúrate de que el bucle recorra todo el arreglo.</li>
-              <li>Valida que los contadores sean correctos comparando con el tamaño total del arreglo.</li>
-              <li>El diagrama de flujo muestra la lógica completa del algoritmo.</li>
-            </ul>
+            <p>Estructura el código: inicializa contadores → bucle for para recorrer arreglo → dentro del bucle evalúa con if-else-if → después del bucle muestra contadores.</p>
           </aside>
         </div>
       </article>

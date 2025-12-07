@@ -133,180 +133,68 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Lea dinámicamente la cantidad de candidatos y sus características físicas (nombre, sexo, edad, peso y altura). 
-            Genere listados de candidatas y candidatos con aptitudes para básquet según los criterios especificados y calcule los porcentajes.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que evalúe candidatos según criterios de altura y peso, separando por sexo, y genere listas de aptos para básquet con sus porcentajes.</p>
 
-            <p><strong>Criterios para candidatas (Femenino):</strong></p>
-            <div class="formula-box">
-              <p>ALTURA > 1.73 y 50 ≤ PESO ≤ 90</p>
-            </div>
-            
-            <p><strong>Criterios para candidatos (Masculino):</strong></p>
-            <div class="formula-box">
-              <p>ALTURA ≥ 1.83 y 73 ≤ PESO ≤ 110</p>
-            </div>
-
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              <strong>NOMBRE:</strong> Variable de tipo String que almacena el nombre completo del alumno.
-            </p>
-            <p>
-              <strong>SEXO:</strong> Variable de tipo char que representa el sexo del alumno ('F' para mujer, 'M' para hombre).
-            </p>
-            <p>
-              <strong>EDAD:</strong> Variable de tipo int que representa la edad del alumno.
-            </p>
-            <p>
-              <strong>PESO:</strong> Variable de tipo int que representa el peso del alumno en kg.
-            </p>
-            <p>
-              <strong>ALTURA:</strong> Variable de tipo double que representa la altura del alumno en metros.
-            </p>
-            <p>
-              <strong>Criterios de selección:</strong> Se aplican diferentes rangos según el sexo del alumno para determinar aptitud.
-            </p>
-
-            <h3>Requisitos</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li>Declarar variables para NOMBRE, SEXO, EDAD, PESO y ALTURA de cada alumno.</li>
-              <li>Utilizar un bucle para procesar todos los alumnos (termina cuando se ingrese 'X' como nombre).</li>
-              <li>Verificar el criterio de altura y peso para alumnas: ALTURA > 1.73 y 50 ≤ PESO ≤ 90.</li>
-              <li>Verificar el criterio de altura y peso para alumnos: ALTURA ≥ 1.83 y 73 ≤ PESO ≤ 110.</li>
-              <li>Contar alumnas que cumplen con los criterios.</li>
-              <li>Contar alumnos que cumplen con los criterios.</li>
-              <li>Contar el total de alumnas y alumnos.</li>
-              <li>Calcular porcentajes para cada grupo.</li>
-              <li>Mostrar listas y porcentajes finales.</li>
+              <li><strong>NOMBRE:</strong> tipo String - Nombre del candidato</li>
+              <li><strong>SEXO:</strong> tipo char (<code>'F'</code> o <code>'M'</code>) - Sexo del candidato</li>
+              <li><strong>EDAD:</strong> tipo entero (<code>int</code>) - Edad en años</li>
+              <li><strong>PESO:</strong> tipo entero (<code>int</code>) - Peso en kg</li>
+              <li><strong>ALTURA:</strong> tipo real (<code>double</code>) - Altura en metros</li>
+              <li><strong>AptasF, AptosM, TotalF, TotalM:</strong> tipo entero - Contadores</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
-            <div class="formula-box">
-              <ul>
-                <li><strong>NOMBRE:</strong> String con el nombre del alumno.</li>
-                <li><strong>SEXO:</strong> Char que indica 'F' (femenino) o 'M' (masculino).</li>
-                <li><strong>EDAD:</strong> Entero con la edad en años.</li>
-                <li><strong>PESO:</strong> Entero con el peso en kilogramos.</li>
-                <li><strong>ALTURA:</strong> Double con la altura en metros.</li>
-                <li><strong>AptasF:</strong> Contador de alumnas aptas para básquet.</li>
-                <li><strong>AptosM:</strong> Contador de alumnos aptos para básquet.</li>
-                <li><strong>TotalF:</strong> Total de alumnas.</li>
-                <li><strong>TotalM:</strong> Total de alumnos.</li>
-              </ul>
-            </div>
-
-            <h3>Tabla de Casos de Prueba</h3>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nombre</th>
-                  <th>Sexo</th>
-                  <th>Altura</th>
-                  <th>Peso</th>
-                  <th>¿Apto?</th>
-                  <th>Razón</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>María García</td>
-                  <td>F</td>
-                  <td>1.75</td>
-                  <td>65</td>
-                  <td>Sí</td>
-                  <td>Cumple criterios F</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Juan López</td>
-                  <td>M</td>
-                  <td>1.85</td>
-                  <td>85</td>
-                  <td>Sí</td>
-                  <td>Cumple criterios M</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Ana Martínez</td>
-                  <td>F</td>
-                  <td>1.70</td>
-                  <td>70</td>
-                  <td>No</td>
-                  <td>Altura < 1.73</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Carlos Ruiz</td>
-                  <td>M</td>
-                  <td>1.80</td>
-                  <td>80</td>
-                  <td>No</td>
-                  <td>Altura < 1.83</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Sofía Torres</td>
-                  <td>F</td>
-                  <td>1.80</td>
-                  <td>100</td>
-                  <td>No</td>
-                  <td>Peso > 90</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Usar un bucle que continúe mientras el nombre no sea "X".</li>
+              <li>Leer nombre, sexo, edad, peso y altura de cada candidato.</li>
+              <li>Validar criterios según sexo:
+                <ul style="margin-top: 5px; margin-left: 20px;">
+                  <li>Femenino: ALTURA > 1.73 Y 50 ≤ PESO ≤ 90</li>
+                  <li>Masculino: ALTURA ≥ 1.83 Y 73 ≤ PESO ≤ 110</li>
+                </ul>
+              </li>
+              <li>Contar totales y aptos por sexo.</li>
+              <li>Calcular porcentajes: (aptos / total) × 100.</li>
+              <li>Mostrar listas de candidatos aptos y los porcentajes.</li>
+            </ul>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Ejemplo de ejecución - 5 candidatos:</strong></p>
-            <pre><code class="code-block">Ingrese la cantidad de candidatos: 5
-Ingrese el nombre del candidato 1: María García
-Ingrese el sexo (M/F): F
-Ingrese la edad: 18
-Ingrese el peso (kg): 65
-Ingrese la altura (m): 1.75
-Ingrese el nombre del candidato 2: Juan López
-Ingrese el sexo (M/F): M
-Ingrese la edad: 19
-Ingrese el peso (kg): 85
-Ingrese la altura (m): 1.85
-... (3 candidatos más)
+            <pre><code class="code-block">Ingrese nombre (o X para terminar): María García
+Ingrese sexo (M/F): F
+Ingrese edad, peso (kg), altura (m): 18 65 1.75
+Ingrese nombre: Juan López
+Ingrese sexo (M/F): M
+Ingrese edad, peso (kg), altura (m): 19 85 1.85
+Ingrese nombre: X
 
 === RESULTADOS ===
 
-===== CANDIDATAS APTAS PARA BÁSQUET =====
+CANDIDATAS APTAS PARA BÁSQUET:
 María García - Peso: 65 kg, Altura: 1.75 m
 
-===== CANDIDATOS APTOS PARA BÁSQUET =====
+CANDIDATOS APTOS PARA BÁSQUET:
 Juan López - Peso: 85 kg, Altura: 1.85 m
 
-Porcentaje de Candidatas Aptas: 50.00%
-Porcentaje de Candidatos Aptos: 50.00%</code></pre>
+Porcentaje de Candidatas Aptas: 100.00%
+Porcentaje de Candidatos Aptos: 100.00%</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Usa condiciones complejas con operadores AND (&&) para verificar criterios.</li>
-              <li>Diferencia entre alumnas (F) y alumnos (M) en los criterios.</li>
-              <li>Usa un bucle mientras el nombre no sea "X".</li>
-              <li>Mantén contadores separados para hombres y mujeres.</li>
-              <li>Calcula porcentajes al final: (aptos / total) * 100.</li>
+              <li>Criterios diferentes según sexo: femenino y masculino tienen rangos distintos.</li>
+              <li>Usa operadores AND (&&) para verificar altura Y peso simultáneamente.</li>
+              <li>Nota la diferencia: F requiere ALTURA > 1.73, M requiere ALTURA ≥ 1.83.</li>
+              <li>Mantén contadores separados por sexo y para aptos/totales.</li>
+              <li>Termina el programa cuando se ingrese "X" como nombre.</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>Para evitar confusiones con los criterios, crea dos condiciones separadas: una para verificar 
-            si es alumna (F) y otra para alumno (M). Dentro de cada una, verifica los rangos de altura y peso 
-            específicos. Recuerda que para alumnos ALTURA ≥ 1.83 (con igual) mientras que para alumnas ALTURA > 1.73 (mayor que).</p>
-
-            <h3>Consideraciones</h3>
-            <ul>
-              <li>Valida que los datos de entrada sean válidos (altura > 0, peso > 0, sexo F o M).</li>
-              <li>Controla el término del programa cuando se ingrese "X" como nombre.</li>
-              <li>Muestra listas formateadas y legibles.</li>
-              <li>Calcula porcentajes con decimales para mayor precisión.</li>
-            </ul>
+            <p>Estructura la lógica con dos condiciones if separadas: una para 'F' y otra para 'M'. Dentro de cada una, verifica los rangos específicos. Recuerda usar && para combinar condiciones (altura AND peso deben cumplirse).</p>
           </aside>
         </div>
       </article>

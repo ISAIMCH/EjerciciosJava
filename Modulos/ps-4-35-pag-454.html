@@ -160,124 +160,39 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Simule un directorio telefónico que lea dinámicamente nombres y números telefónicos en dos arreglos paralelos 
-            (entrada por consola). Luego permite buscar un nombre específico y muestra su número si existe, o indica si no fue encontrado.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que simule un directorio telefónico usando arreglos paralelos, permitiendo buscar contactos y mantenerlos en orden alfabético.</p>
 
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              Se debe mantener un directorio telefónico con dos arreglos paralelos:
-            </p>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li><strong>Búsqueda lineal:</strong> Recorrer el arreglo de nombres comparando con el nombre buscado.</li>
-              <li><strong>Si existe:</strong> Mostrar el número telefónico en la misma posición.</li>
-              <li><strong>Si no existe:</strong> Verificar si hay espacio disponible en el arreglo.</li>
-              <li><strong>Inserción ordenada:</strong> Si hay espacio, encontrar la posición correcta y desplazar elementos.</li>
+              <li><strong>NOMBRE[]:</strong> arreglo de tipo String - Nombres ordenados alfabéticamente</li>
+              <li><strong>TELEFONO[]:</strong> arreglo de tipo String - Números telefónicos paralelos a NOMBRE[]</li>
+              <li><strong>nombreBuscado:</strong> tipo String - Nombre a buscar</li>
+              <li><strong>posicion:</strong> tipo entero - Posición encontrada (-1 si no existe)</li>
+              <li><strong>cantidad:</strong> tipo entero - Cantidad actual de contactos</li>
+              <li><strong>capacidad:</strong> tipo entero - Capacidad máxima del directorio</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
-            <div class="formula-box">
-              <ul>
-                <li><strong>NOMBRE[]:</strong> Arreglo de cadenas con nombres ordenados alfabéticamente.</li>
-                <li><strong>TELEFONO[]:</strong> Arreglo de cadenas con números telefónicos paralelo a NOMBRE[].</li>
-                <li><strong>nombreBuscado:</strong> Variable String para almacenar el nombre a buscar.</li>
-                <li><strong>posicion:</strong> Variable int para la posición encontrada (-1 si no existe).</li>
-                <li><strong>nuevoTelefono:</strong> Variable String para el número del nuevo contacto.</li>
-                <li><strong>cantidad:</strong> Variable int con la cantidad actual de contactos.</li>
-                <li><strong>i:</strong> Variable int índice para iteración en búsquedas e inserciones.</li>
-                <li><strong>capacidad:</strong> Variable int con la capacidad máxima (hasta 1000).</li>
-              </ul>
-            </div>
-
-            <h3>Casos de Prueba</h3>
-            <table class="test-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Descripción</th>
-                  <th>Entrada</th>
-                  <th>Resultado Esperado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Búsqueda exitosa</td>
-                  <td>Carlos en [Ana, Carlos, Diana]</td>
-                  <td>Retorna posición 1</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Búsqueda fallida</td>
-                  <td>Fernando en [Ana, Carlos, Diana]</td>
-                  <td>Retorna -1</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Primer elemento</td>
-                  <td>Ana (primera en lista)</td>
-                  <td>Posición 0</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Último elemento</td>
-                  <td>Diana (última en lista)</td>
-                  <td>Última posición válida</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Case-insensitive</td>
-                  <td>carlos (minúscula)</td>
-                  <td>Encuentra "Carlos"</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Insertar al inicio</td>
-                  <td>Agregar "Ana" antes de "Carlos"</td>
-                  <td>Ana queda en posición 0</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Insertar en medio</td>
-                  <td>Agregar "Beatriz" entre Ana y Carlos</td>
-                  <td>Mantiene orden alfabético</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Insertar al final</td>
-                  <td>Agregar "Zoe" al final</td>
-                  <td>Zoe queda al final</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>Directorio vacío</td>
-                  <td>Búsqueda sin elementos</td>
-                  <td>Retorna -1</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>Directorio lleno</td>
-                  <td>Intenta agregar sin espacio</td>
-                  <td>No agrega, capacidad alcanzada</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer la cantidad de contactos iniciales.</li>
+              <li>Leer nombres y teléfonos, almacenándolos en arreglos paralelos (mantener orden alfabético).</li>
+              <li>Leer el nombre a buscar.</li>
+              <li>Realizar búsqueda lineal en el arreglo NOMBRE[] comparando con el nombre buscado.</li>
+              <li>Si se encuentra (posición ≥ 0): mostrar el teléfono correspondiente.</li>
+              <li>Si no se encuentra (posición = -1): mostrar mensaje de no encontrado.</li>
+            </ul>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Ejemplo de ejecución - Búsqueda exitosa:</strong></p>
-            <pre><code class="code-block">Ingrese la cantidad de contactos en el directorio: 3
-Ingrese el nombre del contacto 1: Ana
-Ingrese el teléfono de Ana: 555-1001
-Ingrese el nombre del contacto 2: Carlos
-Ingrese el teléfono de Carlos: 555-2002
-Ingrese el nombre del contacto 3: Diana
-Ingrese el teléfono de Diana: 555-3003
+            <pre><code class="code-block">Ingrese cantidad de contactos: 3
+Contacto 1 - Nombre: Ana | Teléfono: 555-1001
+Contacto 2 - Nombre: Carlos | Teléfono: 555-2002
+Contacto 3 - Nombre: Diana | Teléfono: 555-3003
 
-Ingrese el nombre a buscar: Carlos
+Ingrese nombre a buscar: Carlos
 
 === DIRECTORIO TELEFÓNICO ===
-
-Contactos registrados:
+Contactos:
   Ana - 555-1001
   Carlos - 555-2002
   Diana - 555-3003
@@ -285,50 +200,21 @@ Contactos registrados:
 Buscando: Carlos
 ✓ Encontrado
 Número: 555-2002</code></pre>
-
-            <p style="margin-top: 20px;"><strong>Ejemplo de ejecución - Búsqueda no exitosa:</strong></p>
-            <pre><code class="code-block">Ingrese la cantidad de contactos en el directorio: 2
-Ingrese el nombre del contacto 1: Beatriz
-Ingrese el teléfono de Beatriz: 555-5005
-Ingrese el nombre del contacto 2: Fernando
-Ingrese el teléfono de Fernando: 555-6006
-
-Ingrese el nombre a buscar: Gloria
-
-=== DIRECTORIO TELEFÓNICO ===
-
-Contactos registrados:
-  Beatriz - 555-5005
-  Fernando - 555-6006
-
-Buscando: Gloria
-✗ No encontrado en el directorio</code></pre>
-
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas Rápidas</h3>
-            <p class="note-text">Puntos clave para resolver este ejercicio:</p>
+            <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Los nombres deben estar ordenados alfabéticamente en todo momento.</li>
-              <li>Usar arreglos paralelos: NOMBRE[] y TELEFONO[] siempre sincronizados.</li>
-              <li>La búsqueda debe ser case-insensitive (sin importar mayúsculas/minúsculas).</li>
-              <li>Al insertar, mantener el orden alfabético desplazando elementos.</li>
-              <li>Verificar siempre que haya capacidad antes de insertar un nuevo contacto.</li>
+              <li>Los nombres deben estar siempre ordenados alfabéticamente.</li>
+              <li>Usa arreglos paralelos: NOMBRE[] y TELEFONO[] deben sincronizarse.</li>
+              <li>La búsqueda debe ser case-insensitive (sin importar mayúsculas).</li>
+              <li>Búsqueda lineal: recorrer NOMBRE[] comparando cada elemento hasta encontrar o terminar.</li>
+              <li>Si no encuentra, retorna -1 como posición.</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>Implementa una función de búsqueda lineal que recorra el arreglo de nombres comparando con el valor buscado 
-            (sin importar mayúsculas/minúsculas). Si lo encuentra, retorna la posición; si no, retorna -1. Para insertar, 
-            encuentra la posición correcta para mantener el orden alfabético y desplaza los elementos posteriores.</p>
-
-            <h3>Consideraciones</h3>
-            <ul>
-              <li>Mantén sincronizados los arreglos de nombres y teléfonos en todas las operaciones.</li>
-              <li>Verifica que haya espacio disponible antes de insertar.</li>
-              <li>Usa métodos de comparación case-insensitive como compareTo() en Java.</li>
-              <li>El diagrama de flujo muestra la lógica completa del algoritmo.</li>
-            </ul>
+            <p>Implementa búsqueda lineal: bucle for que recorra el arreglo NOMBRE[] comparando (sin importar mayúsculas). Si encuentra coincidencia, retorna el índice i. Si termina el bucle sin encontrar, retorna -1. Usa el resultado para acceder a TELEFONO[] en la misma posición.</p>
           </aside>
         </div>
       </article>

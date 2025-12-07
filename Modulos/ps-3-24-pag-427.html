@@ -133,131 +133,57 @@
         
         <div class="exercise-content">
           <section class="exercise-main">
-            <h3>Enunciado</h3>
-            <p>Lea dinámicamente la cantidad de alumnos y de calificaciones por alumno. Para cada alumno, lea su matrícula y sus calificaciones.
-            Calcule el promedio de cada alumno y determine cuál es el alumno con el mejor promedio y cuál es el peor promedio.</p>
+            <h3>Objetivo</h3>
+            <p>Crear un programa que identifique al alumno con el mejor promedio y al alumno con el peor promedio, procesando múltiples alumnos y sus calificaciones mediante bucles anidados.</p>
 
-            <h3>Explicación del Enunciado</h3>
-            <p>
-              <strong>MAT (Matrícula):</strong> Identificador único del alumno (tipo entero, rango 1 a 35).
-            </p>
-            <p>
-              <strong>CAL (Calificaciones):</strong> Array de 5 calificaciones reales por alumno (valores entre 0 y 100).
-            </p>
-            <p>
-              <strong>PROMEDIO:</strong> Resultado del cálculo de las 5 calificaciones de cada alumno.
-            </p>
-            <p>
-              <strong>Comparación:</strong> Se necesita identificar el promedio máximo y el promedio mínimo entre todos los alumnos, guardando su matrícula asociada.
-            </p>
-
-            <h3>Requisitos</h3>
+            <h3>Variables a Declarar</h3>
             <ul>
-              <li>Declarar variables para almacenar las 5 calificaciones de cada alumno.</li>
-              <li>Utilizar un bucle externo (for) para procesar los 35 alumnos (i = 1 a 35).</li>
-              <li>Utilizar un bucle interno (for) para leer las 5 calificaciones de cada alumno (j = 1 a 5).</li>
-              <li>Calcular el promedio de las 5 calificaciones para cada alumno.</li>
-              <li>Comparar cada promedio con el máximo y mínimo calculado hasta el momento.</li>
-              <li>Guardar la matrícula del mejor alumno (promedio máximo) y del peor alumno (promedio mínimo).</li>
-              <li>Mostrar solo la matrícula y promedio del mejor alumno.</li>
-              <li>Mostrar solo la matrícula y promedio del peor alumno.</li>
+              <li><strong>MAT:</strong> tipo entero (<code>int</code>) - Matrícula del alumno</li>
+              <li><strong>CAL[]:</strong> arreglo de tipo real (<code>double</code>) - Array de calificaciones</li>
+              <li><strong>PROMEDIO:</strong> tipo real (<code>double</code>) - Promedio calculado</li>
+              <li><strong>MAX_PROM, MIN_PROM:</strong> tipo real - Máximo y mínimo encontrados</li>
+              <li><strong>MAT_MAX, MAT_MIN:</strong> tipo entero - Matrículas de mejor y peor alumno</li>
             </ul>
 
-            <h3>Explicación de Variables</h3>
-            <div class="formula-box">
-              <ul>
-                <li><strong>MAT:</strong> Variable de tipo entero que almacena la matrícula del alumno actual.</li>
-                <li><strong>CAL[]:</strong> Arreglo de tipo real que almacena las 5 calificaciones del alumno.</li>
-                <li><strong>i:</strong> Variable de control del bucle externo (alumnos, 1 a 35).</li>
-                <li><strong>j:</strong> Variable de control del bucle interno (calificaciones, 1 a 5).</li>
-                <li><strong>PROM:</strong> Promedio calculado para el alumno actual.</li>
-                <li><strong>MAX_PROM:</strong> Promedio máximo encontrado hasta el momento.</li>
-                <li><strong>MIN_PROM:</strong> Promedio mínimo encontrado hasta el momento.</li>
-                <li><strong>MAT_MAX:</strong> Matrícula del alumno con el mejor promedio.</li>
-                <li><strong>MAT_MIN:</strong> Matrícula del alumno con el peor promedio.</li>
-              </ul>
-            </div>
-
-            <h3>Tabla de Casos de Prueba</h3>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Alumnos Procesados</th>
-                  <th>Mejor Alumno (MAT)</th>
-                  <th>Mejor Promedio</th>
-                  <th>Peor Alumno (MAT)</th>
-                  <th>Peor Promedio</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>5 alumnos</td>
-                  <td>1003</td>
-                  <td>97.8000</td>
-                  <td>1005</td>
-                  <td>60.0000</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>3 alumnos</td>
-                  <td>2001</td>
-                  <td>92.0000</td>
-                  <td>2003</td>
-                  <td>65.0000</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>10 alumnos</td>
-                  <td>3002</td>
-                  <td>95.6000</td>
-                  <td>3009</td>
-                  <td>50.0000</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Inicializar MAX_PROM = -1 y MIN_PROM = 101 (para garantizar que cualquier promedio válido los actualice).</li>
+              <li>Leer cantidad de alumnos y calificaciones por alumno.</li>
+              <li>Usar bucle externo para cada alumno.</li>
+              <li>Leer matrícula y calificaciones de cada alumno (bucle interno).</li>
+              <li>Calcular el promedio de cada alumno.</li>
+              <li>Comparar con MAX_PROM: si es mayor, actualizar MAX_PROM y MAT_MAX.</li>
+              <li>Comparar con MIN_PROM: si es menor, actualizar MIN_PROM y MAT_MIN.</li>
+              <li>Mostrar solo matrícula y promedio del mejor y peor alumno.</li>
+            </ul>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Ejemplo de ejecución - 3 alumnos con 5 calificaciones cada uno:</strong></p>
             <pre><code class="code-block">Ingrese la cantidad de alumnos: 3
-Ingrese la cantidad de calificaciones por alumno: 5
-Ingrese la matrícula del alumno 1: 1001
-Ingrese 5 calificaciones (separadas por espacio): 85 90 78 88 92
-Ingrese la matrícula del alumno 2: 1002
-Ingrese 5 calificaciones (separadas por espacio): 75 80 85 70 82
-Ingrese la matrícula del alumno 3: 1003
-Ingrese 5 calificaciones (separadas por espacio): 100 95 98 100 96
+Ingrese cantidad de calificaciones: 5
+Ingrese matrícula alumno 1: 1001
+Ingrese 5 calificaciones: 85 90 78 88 92
+Ingrese matrícula alumno 2: 1002
+Ingrese 5 calificaciones: 75 80 85 70 82
+Ingrese matrícula alumno 3: 1003
+Ingrese 5 calificaciones: 100 95 98 100 96
 
 === RESULTADOS ===
-
-Mejor Alumno: MAT=1003 | Promedio: 97.8000
-Peor Alumno: MAT=1002 | Promedio: 78.4000</code></pre>
+Mejor Alumno: MAT=1003 | Promedio: 97.8
+Peor Alumno: MAT=1002 | Promedio: 78.4</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
-            <h3>Notas rápidas</h3>
+            <h3>Notas Rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Usa bucles anidados para procesar todos los alumnos y sus calificaciones.</li>
-              <li>Inicializa MAX_PROM con un valor muy bajo (ej: -1 o Double.MIN_VALUE).</li>
-              <li>Inicializa MIN_PROM con un valor muy alto (ej: 101 o Double.MAX_VALUE).</li>
-              <li>Compara cada promedio calculado con MAX_PROM y MIN_PROM.</li>
-              <li>Guarda la matrícula cuando encuentres un nuevo máximo o mínimo.</li>
+              <li>Inicializa MAX_PROM con valor negativo y MIN_PROM con valor > 100.</li>
+              <li>Compara cada promedio calculado durante el procesamiento.</li>
+              <li>Guarda la matrícula solo cuando encuentres un nuevo máximo o mínimo.</li>
+              <li>Los bucles anidados son esenciales para procesar múltiples alumnos y sus calificaciones.</li>
             </ul>
             
             <h3>Tip</h3>
-            <p>Para evitar problemas al identificar el primer alumno, inicializa MAX_PROM con -1 y MIN_PROM con 101. 
-            Así, el primer promedio calculado será siempre mayor que MAX_PROM y menor que MIN_PROM, asegurando que 
-            se actualicen correctamente.</p>
-
-            <h3>Consideraciones</h3>
-            <ul>
-              <li>Gestiona correctamente los bucles anidados.</li>
-              <li>Asegúrate de que MIN_PROM y MAX_PROM se inicialicen correctamente.</li>
-              <li>Valida que los promedios de entrada sean válidos.</li>
-              <li>Al final, solo imprime los resultados del mejor y peor alumno, no todos los alumnos.</li>
-            </ul>
+            <p>Dentro del bucle externo (alumnos): bucle interno (calificaciones) → calcular promedio → comparar con MAX_PROM e MIN_PROM. Así garantizas que cada promedio se compara con los extremos encontrados hasta ese momento.</p>
           </aside>
         </div>
       </article>
