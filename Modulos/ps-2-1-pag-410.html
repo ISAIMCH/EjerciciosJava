@@ -143,18 +143,25 @@
             
             <p>Construya un diagrama de flujo que le permita calcular la tangente de un ángulo, considerando que se conoce el valor del seno y del coseno del mismo. Recuerde que el coseno debe ser diferente de 0.</p>
 
+            <h3>Datos de Entrada Dinámicos</h3>
+            <p>
+              El programa solicita interactivamente por consola los valores del seno y coseno:
+            </p>
+            <pre><code class="code-block">Ingrese el valor del SENO: <em>&lt;entrada del usuario&gt;</em>
+Ingrese el valor del COSENO: <em>&lt;entrada del usuario&gt;</em></code></pre>
+
             <h3>Explicación del Enunciado</h3>
             <p>
-              <strong>SENO:</strong> Valor del seno del ángulo (tipo real, puede ser positivo o negativo).
+              <strong>SENO:</strong> Valor del seno del ángulo (tipo real, solicitado por consola).
             </p>
             <p>
-              <strong>COSENO:</strong> Valor del coseno del ángulo (tipo real, puede ser positivo, negativo, pero NO debe ser 0).
+              <strong>COSENO:</strong> Valor del coseno del ángulo (tipo real, solicitado por consola, pero NO debe ser 0).
             </p>
             <p>
               <strong>TANGENTE:</strong> Resultado del cálculo (tan α = SENO / COSENO).
             </p>
             <p>
-              <strong>Condición importante:</strong> Si COSENO = 0, la tangente no está definida, por lo que debe mostrar un mensaje de error.
+              <strong>Validación importante:</strong> Si COSENO = 0, la tangente no está definida, por lo que debe mostrar un mensaje de error.
             </p>
 
             <h3>Requisitos</h3>
@@ -184,9 +191,9 @@
                   <th>#</th>
                   <th>SENO (Entrada)</th>
                   <th>COSENO (Entrada)</th>
-                  <th>Verificación</th>
+                  <th>Validación</th>
                   <th>Resultado Esperado</th>
-                  <th>Salida en Pantalla</th>
+                  <th>Salida</th>
                 </tr>
               </thead>
               <tbody>
@@ -220,7 +227,7 @@
                   <td>0.0000</td>
                   <td>COSENO = 0 ✗</td>
                   <td>ERROR</td>
-                  <td>Error: La tangente no está definida</td>
+                  <td>Error: La tangente no está definida (COSENO = 0)</td>
                 </tr>
                 <tr>
                   <td>5</td>
@@ -234,11 +241,15 @@
             </table>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Entrada - Tangente de 60°:</strong></p>
+            <p><strong>Ejemplo de ejecución - Tangente de 60°:</strong></p>
             <pre><code class="code-block">Ingrese el valor del SENO: 0.8660
 Ingrese el valor del COSENO: 0.5000
-
 La tangente del ángulo es: 1.7320</code></pre>
+            
+            <p><strong>Ejemplo de ejecución - Caso de error:</strong></p>
+            <pre><code class="code-block">Ingrese el valor del SENO: 1.0000
+Ingrese el valor del COSENO: 0.0000
+Error: La tangente no está definida (COSENO = 0)</code></pre>
           </section>
           
           <aside class="exercise-sidebar">
@@ -253,8 +264,18 @@ La tangente del ángulo es: 1.7320</code></pre>
             </ul>
             
             <h3>Tip</h3>
-            <p>En Java, puedes usar <code>Math.tan()</code> para obtener directamente la tangente de un ángulo en radianes. 
-            Sin embargo, en este ejercicio se espera que implementes la lógica usando la fórmula dada y estructuras de control adecuadas.</p>
+            <p>
+              En Java, el programa solicita valores del usuario mediante <code>Scanner</code>:
+            </p>
+            <pre><code class="code-block">Scanner scanner = new Scanner(System.in);
+System.out.print("Ingrese el valor del SENO: ");
+double seno = scanner.nextDouble();
+System.out.print("Ingrese el valor del COSENO: ");
+double coseno = scanner.nextDouble();
+scanner.close();</code></pre>
+            <p>
+              Luego valida con condicional <code>if (coseno != 0)</code> antes de realizar la división.
+            </p>
 
             <h3>Consideraciones</h3>
             <ul>

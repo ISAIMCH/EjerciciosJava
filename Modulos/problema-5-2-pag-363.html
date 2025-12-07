@@ -199,9 +199,9 @@
           <section class="exercise-main">
             <h3>Enunciado</h3>
             <p>
-              En una tienda importante de la Ciudad de México se almacena información, relativa a las ventas efectuadas 
-              por sus empleados en los 12 meses del año anterior. Esta información se almacena en un arreglo de registros 
-              con la siguiente estructura.
+              En una tienda importante de la Ciudad de México se almacena información relativa a las ventas efectuadas 
+              por sus empleados en los 12 meses del año anterior. Utilizando <strong>arreglos paralelos</strong> (programación estructurada), 
+              se procesan los datos de empleados de forma eficiente sin usar clases u objetos.
             </p>
             <p>
               El programa, dada información sobre las ventas efectuadas por los empleados de una tienda en el año anterior, 
@@ -214,78 +214,77 @@
             </ul>
 
             <div class="formula-box">
-              <strong>Datos de entrada:</strong>
-              <p><strong>EMPLEADOS [1..N]:</strong> Arreglo unidimensional de registros.</p>
-              <p><strong>Donde:</strong></p>
+              <strong>Datos de entrada (Arreglos Paralelos):</strong>
+              <p>Se utilizan 4 arreglos paralelos para almacenar los datos de N empleados:</p>
               <ul>
-                <li><strong>NUMERO:</strong> Entero. Identificador único del empleado.</li>
-                <li><strong>NOMBRE:</strong> Cadena de caracteres. Nombre del empleado.</li>
-                <li><strong>VENTAS [1..12]:</strong> Arreglo unidimensional de tipo real. Sus 12 elementos representan las ventas en cada mes.</li>
-                <li><strong>SALARIO:</strong> Real. Salario base del empleado.</li>
+                <li><strong>numero[N]:</strong> Arreglo de enteros. Identificadores únicos de empleados.</li>
+                <li><strong>nombre[N]:</strong> Arreglo de cadenas. Nombres de los empleados.</li>
+                <li><strong>ventas[N][12]:</strong> Matriz de reales. Ventas mensuales (12 meses por empleado).</li>
+                <li><strong>salario[N]:</strong> Arreglo de reales. Salarios base de empleados.</li>
               </ul>
             </div>
 
             <h3>Explicación del Enunciado</h3>
             <p>
-              <strong>EMPLEADOS:</strong> Es un arreglo unidimensional de registros, donde cada registro contiene los datos 
-              completos de un empleado incluyendo sus ventas mensuales.
+              Este ejercicio implementa <strong>programación estructurada</strong> utilizando <strong>arreglos paralelos</strong> en lugar de clases u objetos.
             </p>
             <p>
-              <strong>NUMERO:</strong> Campo de tipo entero que identifica de forma única a cada empleado.
+              <strong>numero[i]:</strong> Almacena el ID del empleado i.
             </p>
             <p>
-              <strong>NOMBRE:</strong> Campo de tipo cadena que almacena el nombre completo del empleado.
+              <strong>nombre[i]:</strong> Almacena el nombre del empleado i.
             </p>
             <p>
-              <strong>VENTAS:</strong> Campo que es un arreglo de 12 elementos (uno por cada mes del año) con los montos 
-              vendidos en cada período.
+              <strong>ventas[i][j]:</strong> Almacena la venta del empleado i en el mes j (j=0 a 11, enero a diciembre).
             </p>
             <p>
-              <strong>SALARIO:</strong> Campo de tipo real que almacena el salario actual del empleado. Este valor puede 
-              modificarse en el inciso b) si el empleado cumple la condición.
+              <strong>salario[i]:</strong> Almacena el salario del empleado i. Este valor se modifica en el inciso b) si el empleado cumple la condición.
+            </p>
+            <p>
+              Los índices paralelos permiten que <strong>numero[i], nombre[i], ventas[i][] y salario[i] pertenezcan al mismo empleado</strong>.
             </p>
 
             <h3>Requisitos</h3>
             <ul>
-              <li>Trabajar con un arreglo de registros (estructura compleja).</li>
-              <li>Leer datos de N empleados (validar que 1 ≤ N ≤ 100).</li>
-              <li>Para cada empleado, leer 12 meses de ventas.</li>
+              <li>Utilizar <strong>arreglos paralelos</strong> (programación estructurada, sin clases).</li>
+              <li>Solicitar por consola la cantidad N de empleados.</li>
+              <li>Leer por consola el número, nombre, salario y 12 ventas mensuales de cada empleado.</li>
               <li>Encontrar el empleado con mayores ventas totales del año.</li>
               <li>Calcular la suma total de ventas de cada empleado.</li>
-              <li>Actualizar salarios basándose en un umbral de $1'000,000 en ventas anuales.</li>
-              <li>Buscar empleados con ventas bajas en diciembre (menores a $30,000).</li>
-              <li>Mostrar los resultados de los tres incisos.</li>
+              <li>Incrementar salarios en 10% para empleados con ventas > $1,000,000.</li>
+              <li>Buscar empleados con ventas bajas en diciembre (< $30,000).</li>
+              <li>Mostrar los resultados de los tres incisos de forma automática.</li>
             </ul>
 
-            <h3>Estructura de Datos - Registro EMPLEADO</h3>
+            <h3>Estructura de Datos - Arreglos Paralelos</h3>
             <table class="values-table">
               <thead>
                 <tr>
-                  <th>Campo</th>
+                  <th>Arreglo</th>
                   <th>Tipo</th>
                   <th>Descripción</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>NUMERO</td>
+                  <td>numero[i]</td>
                   <td>Entero</td>
-                  <td>ID único del empleado (1-100)</td>
+                  <td>ID único del empleado i</td>
                 </tr>
                 <tr>
-                  <td>NOMBRE</td>
+                  <td>nombre[i]</td>
                   <td>Cadena</td>
-                  <td>Nombre completo del empleado</td>
+                  <td>Nombre del empleado i</td>
                 </tr>
                 <tr>
-                  <td>VENTAS[1..12]</td>
+                  <td>ventas[i][0..11]</td>
                   <td>Real</td>
-                  <td>Ventas mensuales (enero a diciembre)</td>
+                  <td>Ventas mensuales del empleado i (enero a diciembre)</td>
                 </tr>
                 <tr>
-                  <td>SALARIO</td>
+                  <td>salario[i]</td>
                   <td>Real</td>
-                  <td>Salario del empleado (puede modificarse)</td>
+                  <td>Salario del empleado i (se actualiza en inciso b)</td>
                 </tr>
               </tbody>
             </table>
@@ -293,97 +292,102 @@
             <h3>Explicación de Variables</h3>
             <div class="formula-box">
               <ul>
-                <li><strong>N:</strong> Variable de tipo entero. Indica el total de empleados (1 ≤ N ≤ 100).</li>
-                <li><strong>I:</strong> Variable de tipo entero. Se usa como índice del arreglo y como variable de control de ciclos.</li>
-                <li><strong>EMPLEADOS:</strong> Arreglo unidimensional de registros que almacena la información de todos los empleados.</li>
-                <li><strong>J:</strong> Variable de tipo entero. Se utiliza como índice del arreglo "ventas" (que es un campo del registro) y como variable de control de ciclos.</li>
-                <li><strong>OPCION:</strong> Variable de tipo entero. Se utiliza para leer la opción de trabajo seleccionada por el usuario.</li>
-                <li><strong>MAX:</strong> Variable de tipo real. Se usa en la solución del inciso a, para obtener el número y nombre del empleado que realizó la mayor venta durante el año.</li>
-                <li><strong>EMPLE:</strong> Variable de tipo entero. Almacena la posición en la que se encuentran los datos del empleado con mayores ventas durante el año (inciso a).</li>
-                <li><strong>SUMA:</strong> Variable de tipo real. Se usa para sumar las ventas realizadas por cada empleado a lo largo del año (incisos a y b).</li>
+                <li><strong>N:</strong> Cantidad total de empleados a procesar.</li>
+                <li><strong>I:</strong> Índice para recorrer los empleados (i = 0 a N-1).</li>
+                <li><strong>J:</strong> Índice para recorrer los 12 meses de ventas (j = 0 a 11).</li>
+                <li><strong>numero[], nombre[], ventas[][], salario[]:</strong> Arreglos paralelos que almacenan datos de empleados.</li>
+                <li><strong>maxVentas:</strong> Variable para almacenar el máximo valor de ventas anuales encontrado.</li>
+                <li><strong>empleadoMax:</strong> Índice del empleado con las mayores ventas anuales.</li>
+                <li><strong>suma:</strong> Variable auxiliar para calcular la suma anual de ventas de cada empleado.</li>
+                <li><strong>salarioAnterior:</strong> Almacena el salario antes de aplicar el incremento del 10%.</li>
               </ul>
             </div>
 
-            <h3>Tabla de Pruebas</h3>
+            <h3>Flujo de Ejecución</h3>
             <table class="values-table">
               <thead>
                 <tr>
-                  <th>Opción</th>
+                  <th>Paso</th>
                   <th>Descripción</th>
-                  <th>Resultado</th>
+                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td>Empleado con mayor venta</td>
-                  <td>Muestra número y nombre del empleado con máximas ventas anuales</td>
+                  <td>Entrada de datos</td>
+                  <td>Solicita N y luego lee número, nombre, salario y 12 ventas de cada empleado</td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>Incrementar salarios</td>
-                  <td>Aumenta 10% el salario de empleados con ventas > $1'000,000</td>
+                  <td>Inciso A: Máximas ventas</td>
+                  <td>Encuentra y muestra el empleado con mayores ventas anuales</td>
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>Empleados con ventas bajas en diciembre</td>
-                  <td>Lista empleados con ventas < $30,000 en mes de diciembre</td>
+                  <td>Inciso B: Incremento de salarios</td>
+                  <td>Aumenta 10% el salario de empleados con ventas anuales > $1,000,000</td>
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>Terminar</td>
-                  <td>Finaliza la ejecución del programa</td>
+                  <td>Inciso C: Ventas bajas en diciembre</td>
+                  <td>Lista empleados con ventas < $30,000 en diciembre (índice 11)</td>
                 </tr>
               </tbody>
             </table>
 
-            <h3>Resultado Esperado</h3>
+            <h3>Resultado Esperado (Ejemplo)</h3>
             <div class="result-block">
-              <p>Inciso a) Empleado con mayores ventas:</p>
+              <p><strong>===== INCISO A) EMPLEADO CON MAYORES VENTAS =====</strong></p>
               <p>Número de empleado: 1</p>
               <p>Nombre: Juan</p>
+              <p>Total de ventas: 870000.0</p>
             </div>
             <div class="result-block">
-              <p>Inciso b) Salarios incrementados en 10%:</p>
-              <p>Se incrementó salario a empleados con ventas anuales > $1,000,000</p>
+              <p><strong>===== INCISO B) INCREMENTO DE SALARIOS =====</strong></p>
+              <p>No hay empleados con ventas superiores a $1,000,000</p>
             </div>
             <div class="result-block">
-              <p>Inciso c) Empleados con ventas bajas en diciembre:</p>
-              <p>Número y nombre de empleados con ventas < $30,000 en diciembre:</p>
-              <p>...mostrar resultados...</p>
+              <p><strong>===== INCISO C) EMPLEADOS CON VENTAS BAJAS EN DICIEMBRE =====</strong></p>
+              <p>Número: 4 | Nombre: Ana | Ventas en diciembre: 20000.0</p>
             </div>
 
           </section>
           
           <aside class="exercise-sidebar">
             <h3>Notas rápidas</h3>
-            <p class="note-text">Puntos importantes:</p>
+            <p class="note-text">Puntos importantes sobre Programación Estructurada:</p>
             <ul>
-              <li>Este problema utiliza <span class="highlight">arreglos de registros</span> (estructuras complejas).</li>
-              <li>Cada registro contiene <span class="highlight">múltiples campos</span> de diferentes tipos.</li>
-              <li>Se usan <span class="highlight">ciclos anidados</span> para procesar empleados y sus ventas.</li>
-              <li>Es necesario <span class="highlight">sumar arrays</span> dentro de registros.</li>
-              <li>Se deben realizar <span class="highlight">búsquedas de máximos</span> en valores calculados.</li>
-              <li>Se implementa un <span class="highlight">menú de opciones</span> para las tres operaciones.</li>
-              <li>Se trabaja con datos de tipo <span class="highlight">real (double)</span> para precisión monetaria.</li>
+              <li>Este problema utiliza <span class="highlight">arreglos paralelos</span> (NO clases ni objetos).</li>
+              <li>Los datos relacionados se organizan usando <strong>índices coincidentes</strong>.</li>
+              <li>Se usan <span class="highlight">ciclos anidados</span> para procesar empleados y sus ventas mensuales.</li>
+              <li>Es necesario <span class="highlight">sumar matrices</span> para calcular ventas anuales.</li>
+              <li>Se realizan <span class="highlight">búsquedas de máximos</span> comparando valores numéricos.</li>
+              <li>Los resultados de los tres incisos <span class="highlight">se procesan automáticamente</span> sin menú.</li>
+              <li>Se trabaja con datos de tipo <span class="highlight">double</span> para precisión monetaria.</li>
             </ul>
             
-            <h3>Tip</h3>
+            <h3>Tip - Acceso a Arreglos Paralelos</h3>
             <p>
-              Para acceder a los campos de un registro en un arreglo, usa la notación: 
-              <code>EMPLEADOS[i].VENTAS[j]</code>. Esto te permite acceder a las ventas del mes j 
-              del empleado i. Para sumar todas las ventas de un empleado, necesitas un ciclo anidado.
+              Para acceder a datos relacionados, usa el mismo índice en todos los arreglos paralelos:
             </p>
+            <ul>
+              <li><code>numero[i]</code> - ID del empleado i</li>
+              <li><code>nombre[i]</code> - Nombre del empleado i</li>
+              <li><code>ventas[i][j]</code> - Venta del empleado i en mes j</li>
+              <li><code>salario[i]</code> - Salario del empleado i</li>
+            </ul>
+            <p>Esto mantiene la cohesión de datos sin necesidad de clases.</p>
 
             <h3>Consideración Importante</h3>
             <p>
-              Los registros son estructuras que agrupan múltiples datos relacionados. En este problema:
+              La <strong>Programación Estructurada</strong> utiliza únicamente datos primitivos y arreglos:
             </p>
             <ul>
-              <li>Un empleado es un registro con 4 campos: NUMERO, NOMBRE, VENTAS (que es otro arreglo), y SALARIO.</li>
-              <li>EMPLEADOS es un arreglo de estos registros.</li>
-              <li>Para procesar toda la información, necesitas dos ciclos anidados: uno para empleados y otro para meses.</li>
-              <li>El menú de opciones permite ejecutar diferentes operaciones sobre los mismos datos.</li>
+              <li>✅ Permitido: int[], String[], double[][], double[]</li>
+              <li>❌ NO Permitido: clases personalizadas como <code>class Empleado</code></li>
+              <li>Ventaja: Código simple, directo y fácil de entender.</li>
+              <li>La indexación paralela es la clave para mantener datos relacionados cohesivos.</li>
             </ul>
           </aside>
         </div>

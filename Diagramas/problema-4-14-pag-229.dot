@@ -3,92 +3,92 @@ digraph Problema4_14 {
     node [fontname="Arial", fontsize=11, style=filled, fillcolor=white];
     edge [fontname="Arial", fontsize=10];
 
-    // Nodos principales - Inicio
+    // Nodos principales
     inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
     
-    // Inciso a) - Mayor costo de dulces
-    asign_maydul [shape=box, label="MAYDUL = PROD[0,0]\nMES = 1", fillcolor="#B3E5FC"];
-    init_i1 [shape=box, label="I = 1", fillcolor="#B3E5FC"];
-    cond_i1 [shape=diamond, label="¿I < 12?", fillcolor="#FFD54F"];
-    comp_dulces [shape=diamond, label="¿PROD[I,0] >\nMAYDUL?", fillcolor="#FFD54F"];
-    upd_maydul [shape=box, label="MAYDUL = PROD[I,0]\nMES = I+1", fillcolor="#B3E5FC"];
-    incr_i1 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
-    print_mes_dulces [shape=egg, label="Imprimir MES\n(Mayor dulces)", fillcolor="#FFE082"];
+    // Entrada de datos
+    entrada_meses [shape=box, label="LEER meses", fillcolor="#B3E5FC"];
+    entrada_deptos [shape=box, label="LEER deptos", fillcolor="#B3E5FC"];
+    crear_matriz [shape=box, label="CREAR PROD[meses][deptos]", fillcolor="#B3E5FC"];
+    entrada_datos [shape=box, label="PARA I=0 HASTA meses-1:\n  PARA J=0 HASTA deptos-1:\n    LEER PROD[I][J]", fillcolor="#B3E5FC"];
     
-    // Inciso b) - Promedio bebidas
-    asign_sum [shape=box, label="SUM = 0\nI = 0", fillcolor="#B3E5FC"];
-    cond_i2 [shape=diamond, label="¿I < 12?", fillcolor="#FFD54F"];
-    sum_bebidas [shape=box, label="SUM = SUM + PROD[I,1]", fillcolor="#B3E5FC"];
-    incr_i2 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
-    calc_promedio [shape=box, label="PROMEDIO = SUM / 12", fillcolor="#B3E5FC"];
-    print_promedio [shape=egg, label="Imprimir PROMEDIO", fillcolor="#FFE082"];
+    // Inciso A - Mayor costo departamento 1
+    init_a [shape=box, label="MAYDUL = PROD[0][0]\nMES = 0", fillcolor="#FFE082"];
+    loop_a [shape=diamond, label="¿Para cada mes I?", fillcolor="#FFD54F"];
+    comp_a [shape=diamond, label="¿PROD[I][0] >\nMAYDUL?", fillcolor="#FFD54F"];
+    upd_a [shape=box, label="MAYDUL = PROD[I][0]\nMES = I", fillcolor="#B3E5FC"];
+    print_a [shape=egg, label="Salida A:\nMES, MAYDUL", fillcolor="#A5D6A7"];
     
-    // Inciso c) - Mayor y menor bebidas
-    asign_beb [shape=box, label="MAYBEB = PROD[0,1]\nMENBEB = PROD[0,1]\nMESMAY = 1, MESMEN = 1\nI = 1", fillcolor="#B3E5FC"];
-    cond_i3 [shape=diamond, label="¿I < 12?", fillcolor="#FFD54F"];
-    comp_max_beb [shape=diamond, label="¿PROD[I,1] >\nMAYBEB?", fillcolor="#FFD54F"];
-    upd_max_beb [shape=box, label="MAYBEB = PROD[I,1]\nMESMAY = I+1", fillcolor="#B3E5FC"];
-    comp_min_beb [shape=diamond, label="¿PROD[I,1] <\nMENBEB?", fillcolor="#FFD54F"];
-    upd_min_beb [shape=box, label="MENBEB = PROD[I,1]\nMESMEN = I+1", fillcolor="#B3E5FC"];
-    incr_i3 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
-    print_mayor_menor_beb [shape=egg, label="Imprimir MESMAY, MAYBEB\nMESMEN, MENBEB", fillcolor="#FFE082"];
+    // Inciso B - Promedio departamento 2
+    init_b [shape=box, label="SUM = 0", fillcolor="#FFE082"];
+    loop_b [shape=diamond, label="¿Para cada mes I?", fillcolor="#FFD54F"];
+    acum_b [shape=box, label="SUM = SUM + PROD[I][1]", fillcolor="#B3E5FC"];
+    calc_b [shape=box, label="PROMEDIO = SUM / meses", fillcolor="#B3E5FC"];
+    print_b [shape=egg, label="Salida B:\nPROMEDIO", fillcolor="#A5D6A7"];
     
-    // Inciso d) - Menor costo en diciembre
-    asign_menor [shape=box, label="MENOR = PROD[11,0]\nDEP = 1\nI = 1", fillcolor="#B3E5FC"];
-    cond_i4 [shape=diamond, label="¿I < 3?", fillcolor="#FFD54F"];
-    comp_menor [shape=diamond, label="¿PROD[11,I] <\nMENOR?", fillcolor="#FFD54F"];
-    upd_menor [shape=box, label="MENOR = PROD[11,I]\nDEP = I+1", fillcolor="#B3E5FC"];
-    incr_i4 [shape=box, label="I = I + 1", fillcolor="#B3E5FC"];
-    print_menor_dic [shape=egg, label="Imprimir DEP, MENOR", fillcolor="#FFE082"];
+    // Inciso C - Mayor y menor departamento 2
+    init_c [shape=box, label="MAYBEB = PROD[0][1]\nMENBEB = PROD[0][1]", fillcolor="#FFE082"];
+    loop_c [shape=diamond, label="¿Para cada mes I?", fillcolor="#FFD54F"];
+    comp_max_c [shape=diamond, label="¿PROD[I][1] >\nMAYBEB?", fillcolor="#FFD54F"];
+    upd_max_c [shape=box, label="MAYBEB = PROD[I][1]\nMESMAY = I", fillcolor="#B3E5FC"];
+    comp_min_c [shape=diamond, label="¿PROD[I][1] <\nMENBEB?", fillcolor="#FFD54F"];
+    upd_min_c [shape=box, label="MENBEB = PROD[I][1]\nMESMEN = I", fillcolor="#B3E5FC"];
+    print_c [shape=egg, label="Salida C:\nMAYBEB, MENMEB", fillcolor="#A5D6A7"];
     
-    // Salida final
-    salida [shape=egg, label="Imprimir MES, PROMEDIO\nMESMAY, MAYBEB\nMESMEN, MENBEB\nDEP, MENOR", fillcolor="#C8E6C9"];
+    // Inciso D - Menor en último mes
+    init_d [shape=box, label="MENOR = PROD[meses-1][0]\nDEP = 0", fillcolor="#FFE082"];
+    loop_d [shape=diamond, label="¿Para cada depto J?", fillcolor="#FFD54F"];
+    comp_d [shape=diamond, label="¿PROD[meses-1][J] <\nMENOR?", fillcolor="#FFD54F"];
+    upd_d [shape=box, label="MENOR = PROD[meses-1][J]\nDEP = J", fillcolor="#B3E5FC"];
+    print_d [shape=egg, label="Salida D:\nDEP, MENOR", fillcolor="#A5D6A7"];
+    
+    // Fin
     fin [shape=ellipse, label="Fin", fillcolor="#4A90E2"];
 
-    // Conexiones - Inciso a
-    inicio -> asign_maydul;
-    asign_maydul -> init_i1;
-    init_i1 -> cond_i1;
-    cond_i1 -> comp_dulces [label="Sí"];
-    comp_dulces -> upd_maydul [label="Sí"];
-    upd_maydul -> incr_i1;
-    comp_dulces -> incr_i1 [label="No"];
-    incr_i1 -> cond_i1;
-    cond_i1 -> print_mes_dulces [label="No"];
+    // Conexiones - Entrada
+    inicio -> entrada_meses;
+    entrada_meses -> entrada_deptos;
+    entrada_deptos -> crear_matriz;
+    crear_matriz -> entrada_datos;
     
-    // Conexiones - Inciso b
-    print_mes_dulces -> asign_sum;
-    asign_sum -> cond_i2;
-    cond_i2 -> sum_bebidas [label="Sí"];
-    sum_bebidas -> incr_i2;
-    incr_i2 -> cond_i2;
-    cond_i2 -> calc_promedio [label="No"];
-    calc_promedio -> print_promedio;
+    // Conexiones - Inciso A
+    entrada_datos -> init_a;
+    init_a -> loop_a;
+    loop_a -> comp_a [label="Sí"];
+    comp_a -> upd_a [label="Sí"];
+    upd_a -> loop_a;
+    comp_a -> loop_a [label="No"];
+    loop_a -> print_a [label="No"];
     
-    // Conexiones - Inciso c
-    print_promedio -> asign_beb;
-    asign_beb -> cond_i3;
-    cond_i3 -> comp_max_beb [label="Sí"];
-    comp_max_beb -> upd_max_beb [label="Sí"];
-    upd_max_beb -> comp_min_beb;
-    comp_max_beb -> comp_min_beb [label="No"];
-    comp_min_beb -> upd_min_beb [label="Sí"];
-    upd_min_beb -> incr_i3;
-    comp_min_beb -> incr_i3 [label="No"];
-    incr_i3 -> cond_i3;
-    cond_i3 -> print_mayor_menor_beb [label="No"];
+    // Conexiones - Inciso B
+    print_a -> init_b;
+    init_b -> loop_b;
+    loop_b -> acum_b [label="Sí"];
+    acum_b -> loop_b;
+    loop_b -> calc_b [label="No"];
+    calc_b -> print_b;
     
-    // Conexiones - Inciso d
-    print_mayor_menor_beb -> asign_menor;
-    asign_menor -> cond_i4;
-    cond_i4 -> comp_menor [label="Sí"];
-    comp_menor -> upd_menor [label="Sí"];
-    upd_menor -> incr_i4;
-    comp_menor -> incr_i4 [label="No"];
-    incr_i4 -> cond_i4;
-    cond_i4 -> print_menor_dic [label="No"];
+    // Conexiones - Inciso C
+    print_b -> init_c;
+    init_c -> loop_c;
+    loop_c -> comp_max_c [label="Sí"];
+    comp_max_c -> upd_max_c [label="Sí"];
+    upd_max_c -> comp_min_c;
+    comp_max_c -> comp_min_c [label="No"];
+    comp_min_c -> upd_min_c [label="Sí"];
+    upd_min_c -> loop_c;
+    comp_min_c -> loop_c [label="No"];
+    loop_c -> print_c [label="No"];
     
-    // Conexiones - Salida final
-    print_menor_dic -> salida;
-    salida -> fin;
+    // Conexiones - Inciso D
+    print_c -> init_d;
+    init_d -> loop_d;
+    loop_d -> comp_d [label="Sí"];
+    comp_d -> upd_d [label="Sí"];
+    upd_d -> loop_d;
+    comp_d -> loop_d [label="No"];
+    loop_d -> print_d [label="No"];
+    
+    // Conexiones - Fin
+    print_d -> fin;
 }

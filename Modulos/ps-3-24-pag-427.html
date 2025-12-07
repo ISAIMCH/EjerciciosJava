@@ -123,7 +123,7 @@
           <h2 id="ejercicio-title">Identificar Mejor y Peor Alumno</h2>
           
           <p class="exercise-description">
-            En este problema, necesitas procesar las calificaciones de 35 alumnos con 5 calificaciones cada uno, 
+            En este problema, necesitas procesar dinámicamente la cantidad de alumnos y calificaciones, 
             calcular el promedio de cada alumno y determinar cuál es el alumno con el mejor promedio y cuál es el 
             alumno con el peor promedio. Al final, solo se imprimirán la matrícula y promedio de estos dos alumnos.
           </p>
@@ -134,16 +134,8 @@
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Enunciado</h3>
-            <p>Resuelva el problema anterior con las consideraciones planteadas en el mismo, pero sólo imprima matrícula y promedio del mejor y del peor alumno.</p>
-            <div class="formula-box">
-              <p><strong>Datos:</strong> MAT<sub>1</sub>, CAL<sub>1,1</sub>, ..., CAL<sub>1,5</sub>, ..., MAT<sub>35</sub>, CAL<sub>35,1</sub>, CAL<sub>35,5</sub></p>
-            </div>
-            
-            <p><strong>Donde:</strong></p>
-            <ul>
-              <li>MAT<sub>i</sub> es una variable de tipo entero que representa la matrícula del alumno i (1 ≤ i ≤ 35).</li>
-              <li>CAL<sub>i,j</sub> es una variable de tipo real que representa la calificación j del alumno i (1 ≤ j ≤ 5, 1 ≤ i ≤ 35).</li>
-            </ul>
+            <p>Lea dinámicamente la cantidad de alumnos y de calificaciones por alumno. Para cada alumno, lea su matrícula y sus calificaciones.
+            Calcule el promedio de cada alumno y determine cuál es el alumno con el mejor promedio y cuál es el peor promedio.</p>
 
             <h3>Explicación del Enunciado</h3>
             <p>
@@ -227,15 +219,20 @@
             </table>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Datos procesados (5 alumnos de ejemplo):</strong></p>
-            <pre><code class="code-block">Alumno 1001: Promedio 86.60
-Alumno 1002: Promedio 78.40
-Alumno 1003: Promedio 97.80
-Alumno 1004: Promedio 70.00
-Alumno 1005: Promedio 60.00
+            <p><strong>Ejemplo de ejecución - 3 alumnos con 5 calificaciones cada uno:</strong></p>
+            <pre><code class="code-block">Ingrese la cantidad de alumnos: 3
+Ingrese la cantidad de calificaciones por alumno: 5
+Ingrese la matrícula del alumno 1: 1001
+Ingrese 5 calificaciones (separadas por espacio): 85 90 78 88 92
+Ingrese la matrícula del alumno 2: 1002
+Ingrese 5 calificaciones (separadas por espacio): 75 80 85 70 82
+Ingrese la matrícula del alumno 3: 1003
+Ingrese 5 calificaciones (separadas por espacio): 100 95 98 100 96
+
+=== RESULTADOS ===
 
 Mejor Alumno: MAT=1003 | Promedio: 97.8000
-Peor Alumno: MAT=1005 | Promedio: 60.0000</code></pre>
+Peor Alumno: MAT=1002 | Promedio: 78.4000</code></pre>
           </section>
           
           <aside class="exercise-sidebar">

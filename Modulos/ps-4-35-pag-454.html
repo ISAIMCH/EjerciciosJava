@@ -150,9 +150,9 @@
           <h2 id="ejercicio-title">Directorio Telefónico con Búsqueda e Inserción</h2>
           
           <p class="exercise-description">
-            Implemente un directorio telefónico que permite buscar contactos en dos arreglos paralelos 
-            (nombres y números telefónicos). Si el contacto existe, muestra el número; si no existe y hay espacio, 
-            permite agregar un nuevo contacto manteniendo el orden alfabético.
+            Implemente un directorio telefónico que permite buscar dinámicamente contactos en dos arreglos paralelos 
+            (nombres y números telefónicos). El programa solicita la cantidad de contactos y sus datos por consola, 
+            y luego permite buscar un nombre específico.
           </p>
 
           <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
@@ -161,24 +161,8 @@
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Enunciado</h3>
-            <p>Simule por medio de un diagrama de flujo un directorio telefónico que lea nombres y números 
-            telefónicos en dos arreglos paralelos. Los nombres están ordenados alfabéticamente en orden ascendente.</p>
-            
-            <div class="formula-box">
-              <p><strong>NOMBRE[1..N]:</strong> Arreglo de cadenas con nombres ordenados (1 ≤ N ≤ 1000)</p>
-              <p style="margin-top: 10px;"><strong>TELEFONO[1..N]:</strong> Arreglo de cadenas con números telefónicos paralelo</p>
-              <p style="margin-top: 10px;"><strong>Cuando el usuario lea un nombre:</strong> El programa debe verificar si éste ya estaba en el 
-              directorio, en cuyo caso imprimirá el número de teléfono. De no ser así y si hay capacidad, 
-              pedirá al usuario que escriba el número de teléfono y lo agregará al arreglo.</p>
-            </div>
-
-            <p style="margin-top: 20px;"><strong>Requisitos:</strong></p>
-            <ul>
-              <li><strong>a)</strong> Leer el nombre a buscar en el directorio</li>
-              <li><strong>b)</strong> Buscar el nombre en el arreglo de nombres</li>
-              <li><strong>c)</strong> Si existe, mostrar su número telefónico</li>
-              <li><strong>d)</strong> Si no existe y hay espacio, pedir el número y agregarlo manteniendo orden alfabético</li>
-            </ul>
+            <p>Simule un directorio telefónico que lea dinámicamente nombres y números telefónicos en dos arreglos paralelos 
+            (entrada por consola). Luego permite buscar un nombre específico y muestra su número si existe, o indica si no fue encontrado.</p>
 
             <h3>Explicación del Enunciado</h3>
             <p>
@@ -280,24 +264,45 @@
             </table>
 
             <h3>Resultado Esperado</h3>
-            <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px; font-family: 'Courier New', monospace; color: #333; line-height: 1.8;">
-              <p><strong>Contactos actuales:</strong></p>
-              <p>Ana - 555-1001</p>
-              <p>Carlos - 555-2002</p>
-              <p>Diana - 555-3003</p>
-              <p>Eduardo - 555-4004</p>
-              <p style="margin-top: 10px;"><strong>Buscando: Carlos</strong></p>
-              <p>✓ Encontrado</p>
-              <p>Número: 555-2002</p>
-              <p style="margin-top: 15px;">---</p>
-              <p style="margin-top: 15px;"><strong>Contactos actuales:</strong></p>
-              <p>Beatriz - 555-5005</p>
-              <p>Fernando - 555-6006</p>
-              <p>Gloria - 555-7007</p>
-              <p style="margin-top: 10px;"><strong>Buscando: Antonio</strong></p>
-              <p>✗ No encontrado</p>
-              <p>Se agregará nuevo contacto: Antonio - 555-8008</p>
-            </div>
+            <p><strong>Ejemplo de ejecución - Búsqueda exitosa:</strong></p>
+            <pre><code class="code-block">Ingrese la cantidad de contactos en el directorio: 3
+Ingrese el nombre del contacto 1: Ana
+Ingrese el teléfono de Ana: 555-1001
+Ingrese el nombre del contacto 2: Carlos
+Ingrese el teléfono de Carlos: 555-2002
+Ingrese el nombre del contacto 3: Diana
+Ingrese el teléfono de Diana: 555-3003
+
+Ingrese el nombre a buscar: Carlos
+
+=== DIRECTORIO TELEFÓNICO ===
+
+Contactos registrados:
+  Ana - 555-1001
+  Carlos - 555-2002
+  Diana - 555-3003
+
+Buscando: Carlos
+✓ Encontrado
+Número: 555-2002</code></pre>
+
+            <p style="margin-top: 20px;"><strong>Ejemplo de ejecución - Búsqueda no exitosa:</strong></p>
+            <pre><code class="code-block">Ingrese la cantidad de contactos en el directorio: 2
+Ingrese el nombre del contacto 1: Beatriz
+Ingrese el teléfono de Beatriz: 555-5005
+Ingrese el nombre del contacto 2: Fernando
+Ingrese el teléfono de Fernando: 555-6006
+
+Ingrese el nombre a buscar: Gloria
+
+=== DIRECTORIO TELEFÓNICO ===
+
+Contactos registrados:
+  Beatriz - 555-5005
+  Fernando - 555-6006
+
+Buscando: Gloria
+✗ No encontrado en el directorio</code></pre>
 
           </section>
           

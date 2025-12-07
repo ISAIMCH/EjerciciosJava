@@ -6,26 +6,20 @@ digraph Problema_1_6_PAG_44 {
     inicio [shape=ellipse label="Inicio" style=filled fillcolor="#4472C4" fontcolor=white];
     
     // Entrada de datos (Rectángulos - box)
-    entrada1 [shape=box label="Leer RADIO" style=filled fillcolor="#4472C4" fontcolor=white];
-    entrada2 [shape=box label="Leer ALTU (altura)" style=filled fillcolor="#4472C4" fontcolor=white];
+    entrada [shape=box label="Leer DIAS" style=filled fillcolor="#4472C4" fontcolor=white];
     
-    // Procesos (Rectángulos - box)
-    proc1 [shape=box label="PI = 3.1416" style=filled fillcolor="#4472C4" fontcolor=white];
-    proc2 [shape=box label="VOL = PI * RADIO * RADIO * ALTU" style=filled fillcolor="#4472C4" fontcolor=white];
-    proc3 [shape=box label="ARE = 2 * PI * RADIO * ALTU" style=filled fillcolor="#4472C4" fontcolor=white];
+    // Proceso (Rectángulo - box)
+    proc [shape=box label="SEG = DIAS * 24 * 60 * 60" style=filled fillcolor="#4472C4" fontcolor=white];
     
     // Salida de datos (Egg shape)
-    salida [shape=egg label="Mostrar RESULTADOS\nVolumen (VOL)\nÁrea (ARE)" style=filled fillcolor="#70AD47" fontcolor=white];
+    salida [shape=egg label="Mostrar \"En\", DIAS, \"hay:\"\nSEG, \"segundos\"" style=filled fillcolor="#70AD47" fontcolor=white];
     
     // Fin
     fin [shape=ellipse label="Fin" style=filled fillcolor="#4472C4" fontcolor=white];
     
     // Conexiones con flechas
-    inicio -> entrada1;
-    entrada1 -> entrada2;
-    entrada2 -> proc1;
-    proc1 -> proc2;
-    proc2 -> proc3;
-    proc3 -> salida;
+    inicio -> entrada;
+    entrada -> proc;
+    proc -> salida;
     salida -> fin;
 }

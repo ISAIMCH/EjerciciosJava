@@ -123,9 +123,9 @@
           <h2 id="ejercicio-title">Lectura de Calificaciones de 35 Alumnos</h2>
           
           <p class="exercise-description">
-            En este problema, necesitas leer las calificaciones de 35 alumnos, donde cada alumno tiene 5 calificaciones. 
-            Utilizarás bucles anidados para procesar todos los datos. Este ejercicio es una extensión del problema anterior 
-            que ahora considera múltiples alumnos con múltiples calificaciones por medio de ciclos.
+            En este problema, necesitas leer dinámicamente la cantidad de alumnos y calificaciones, 
+            y luego procesar sus datos. Utilizarás bucles anidados para procesar todos los datos de forma interactiva. 
+            Este ejercicio demuestra cómo trabajar con matrices bidimensionales y entrada dinámica por consola.
           </p>
 
           <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
@@ -134,20 +134,24 @@
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Enunciado</h3>
-            <p>Resuelva el ejercicio anterior, pero considere que las cinco calificaciones del alumno se leerán dentro de un ciclo.</p>
-            <div class="formula-box">
-              <p><strong>Datos:</strong> MAT<sub>i</sub>, CAL<sub>i,1</sub>, CAL<sub>i,2</sub>, ..., CAL<sub>i,5</sub>, ..., MAT<sub>35</sub>, CAL<sub>35,1</sub>, ..., CAL<sub>35,5</sub></p>
-            </div>
-            
-            <p><strong>Donde:</strong></p>
-            <ul>
-              <li>MAT<sub>i</sub> es una variable de tipo entero que representa la matrícula del alumno i (1 ≤ i ≤ 35).</li>
-              <li>CAL<sub>i,j</sub> es una variable de tipo real que representa la calificación j del alumno i (1 ≤ j ≤ 5, 1 ≤ i ≤ 35).</li>
-            </ul>
+            <p>Lea dinámicamente la cantidad de alumnos y de calificaciones por alumno. Para cada alumno, lea su matrícula y sus calificaciones. 
+            Utilize bucles anidados para procesar todos los datos. Calcule y muestre el promedio de cada alumno.</p>
 
             <h3>Explicación del Enunciado</h3>
             <p>
-              <strong>MAT (Matrícula):</strong> Identificador único del alumno (tipo entero, rango 1 a 35).
+              <strong>cantAlumnos:</strong> Cantidad de alumnos a procesar (solicitado por consola).
+            </p>
+            <p>
+              <strong>cantCalificaciones:</strong> Cantidad de calificaciones por alumno (solicitado por consola).
+            </p>
+            <p>
+              <strong>MAT:</strong> Matrícula del alumno (tipo entero, solicitado por consola para cada alumno).
+            </p>
+            <p>
+              <strong>CAL:</strong> Calificaciones del alumno (tipo entero, solicitadas por consola para cada calificación).
+            </p>
+            <p>
+              <strong>Promedio:</strong> Resultado del cálculo (suma de calificaciones / cantCalificaciones).
             </p>
             <p>
               <strong>CAL (Calificaciones):</strong> Array de 5 calificaciones reales por alumno (valores entre 0 y 100).
@@ -248,15 +252,18 @@
             </table>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Entrada - Para el primer alumno (MAT=1001):</strong></p>
-            <pre><code class="code-block">Ingrese la matrícula del alumno: 1001
-Ingrese la calificación 1: 85.5
-Ingrese la calificación 2: 90.0
-Ingrese la calificación 3: 78.5
-Ingrese la calificación 4: 88.0
-Ingrese la calificación 5: 92.5
+            <p><strong>Ejemplo de ejecución - 2 alumnos con 5 calificaciones cada uno:</strong></p>
+            <pre><code class="code-block">Ingrese la cantidad de alumnos: 2
+Ingrese la cantidad de calificaciones por alumno: 5
+Ingrese la matrícula del alumno 1: 1001
+Ingrese 5 calificaciones (separadas por espacio): 85 90 78 88 92
+Ingrese la matrícula del alumno 2: 1002
+Ingrese 5 calificaciones (separadas por espacio): 75 80 85 70 82
 
-Alumno MAT=1001 | CAL: 85.50 90.00 78.50 88.00 92.50 | Promedio: 86.9000</code></pre>
+=== RESULTADOS ===
+
+Alumno MAT=1001 | CAL: 85.00 90.00 78.00 88.00 92.00 | Promedio: 86.6000
+Alumno MAT=1002 | CAL: 75.00 80.00 85.00 70.00 82.00 | Promedio: 78.4000</code></pre>
           </section>
           
           <aside class="exercise-sidebar">

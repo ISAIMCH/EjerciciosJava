@@ -123,9 +123,9 @@
           <h2 id="ejercicio-title">Análisis de Signos en Arreglo Unidimensional</h2>
           
           <p class="exercise-description">
-            Dado un arreglo unidimensional que contiene números enteros, determine cuántos de ellos 
+            Dado un arreglo unidimensional que se lee dinámicamente, determine cuántos de sus elementos 
             son positivos, negativos o ceros. Este ejercicio introduce el procesamiento de arreglos 
-            y el análisis de datos basado en categorías.
+            y el análisis de datos basado en categorías, con entrada interactiva por consola.
           </p>
 
           <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
@@ -134,10 +134,8 @@
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Enunciado</h3>
-            <p>Escriba un diagrama de flujo tal que dado como entrada un arreglo unidimensional que contiene 
-            números enteros, determine cuántos de ellos son positivos, negativos o ceros.</p>
-            
-            <p><strong>Dato:</strong> ARRE [1..300] (arreglo unidimensional de tipo entero)</p>
+            <p>Escriba un programa que lea dinámicamente un arreglo unidimensional de números enteros, 
+            y determine cuántos de ellos son positivos, negativos o ceros.</p>
 
             <h3>Explicación del Enunciado</h3>
             <p>
@@ -268,13 +266,26 @@
             </table>
 
             <h3>Resultado Esperado</h3>
-            <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px; font-family: 'Courier New', monospace; color: #333; line-height: 1.8;">
-              <p><strong>Ingrese el arreglo: -5, 3, 0, -2, 8, 0, -1, 4, 6, -3</strong></p>
-              <p style="margin-top: 15px;"><strong>RESULTADOS:</strong></p>
-              <p>Positivos: 4</p>
-              <p>Negativos: 4</p>
-              <p>Ceros: 2</p>
-            </div>
+            <p><strong>Ejemplo de ejecución:</strong></p>
+            <pre><code class="code-block">Ingrese la cantidad de números: 10
+Ingrese 10 números (pueden ser positivos, negativos o cero):
+Número 1: -5
+Número 2: 3
+Número 3: 0
+Número 4: -2
+Número 5: 8
+Número 6: 0
+Número 7: -1
+Número 8: 4
+Número 9: 6
+Número 10: -3
+
+=== RESULTADOS ===
+
+Arreglo: -5 3 0 -2 8 0 -1 4 6 -3 
+Positivos: 4
+Negativos: 4
+Ceros: 2</code></pre>
           </section>
           
           <aside class="exercise-sidebar">

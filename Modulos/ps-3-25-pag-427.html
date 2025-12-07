@@ -123,10 +123,9 @@
           <h2 id="ejercicio-title">Selección de Alumnos por Aptitud Física para Básquet</h2>
           
           <p class="exercise-description">
-            En una escuela se tienen registros con las características físicas de los alumnos para conocer 
-            la lista de alumnos con aptitudes para practicar básquet. Se deben generar listados de alumnas 
-            con aptitudes para féminas, listados de alumnos con aptitudes para masculino, y calcular los 
-            porcentajes de cada grupo con respecto a la población estudiantil total.
+            En esta actividad, necesitas leer dinámicamente la cantidad de candidatos con sus características físicas 
+            para determinar quiénes tienen aptitudes para practicar básquet. Se deben generar listados de candidatas 
+            y candidatos con aptitudes, y calcular los porcentajes de cada grupo.
           </p>
 
           <button class="diagram-btn" onclick="openDiagramModal()">📊 Ver Diagrama de Flujo</button>
@@ -135,21 +134,18 @@
         <div class="exercise-content">
           <section class="exercise-main">
             <h3>Enunciado</h3>
-            <p>En una escuela en la que se tienen registros con las características físicas de los alumnos, se desea conocer la lista de alumnos con aptitudes para practicar básquet. Haga un diagrama de flujo que obtenga lo siguiente:</p>
-            
-            <p><strong>a) Lista de alumnas con aptitudes físicas para jugar al básquet.</strong></p>
+            <p>Lea dinámicamente la cantidad de candidatos y sus características físicas (nombre, sexo, edad, peso y altura). 
+            Genere listados de candidatas y candidatos con aptitudes para básquet según los criterios especificados y calcule los porcentajes.</p>
+
+            <p><strong>Criterios para candidatas (Femenino):</strong></p>
             <div class="formula-box">
-              <p>Requerimientos: ALTURA > 1.73 y 50 ≤ PESO ≤ 90</p>
+              <p>ALTURA > 1.73 y 50 ≤ PESO ≤ 90</p>
             </div>
             
-            <p><strong>b) Porcentaje de alumnas con estas aptitudes de la población estudiantil femenina.</strong></p>
-            
-            <p><strong>c) Lista de alumnos con aptitudes físicas para jugar al básquet.</strong></p>
+            <p><strong>Criterios para candidatos (Masculino):</strong></p>
             <div class="formula-box">
-              <p>Requerimientos: ALTURA ≥ 1.83 y 73 ≤ PESO ≤ 110</p>
+              <p>ALTURA ≥ 1.83 y 73 ≤ PESO ≤ 110</p>
             </div>
-            
-            <p><strong>d) Porcentaje de alumnos con estas aptitudes de la población estudiantil masculina.</strong></p>
 
             <h3>Explicación del Enunciado</h3>
             <p>
@@ -262,29 +258,30 @@
             </table>
 
             <h3>Resultado Esperado</h3>
-            <p><strong>Entrada de datos:</strong></p>
-            <pre><code class="code-block">Nombre: María García
-Sexo: F
-Edad: 18
-Peso: 65
-Altura: 1.75
+            <p><strong>Ejemplo de ejecución - 5 candidatos:</strong></p>
+            <pre><code class="code-block">Ingrese la cantidad de candidatos: 5
+Ingrese el nombre del candidato 1: María García
+Ingrese el sexo (M/F): F
+Ingrese la edad: 18
+Ingrese el peso (kg): 65
+Ingrese la altura (m): 1.75
+Ingrese el nombre del candidato 2: Juan López
+Ingrese el sexo (M/F): M
+Ingrese la edad: 19
+Ingrese el peso (kg): 85
+Ingrese la altura (m): 1.85
+... (3 candidatos más)
 
-Nombre: Juan López
-Sexo: M
-Edad: 19
-Peso: 85
-Altura: 1.85
+=== RESULTADOS ===
 
-Nombre: X (fin del programa)
-
-===== ALUMNAS APTAS PARA BÁSQUET =====
+===== CANDIDATAS APTAS PARA BÁSQUET =====
 María García - Peso: 65 kg, Altura: 1.75 m
 
-===== ALUMNOS APTOS PARA BÁSQUET =====
+===== CANDIDATOS APTOS PARA BÁSQUET =====
 Juan López - Peso: 85 kg, Altura: 1.85 m
 
-Porcentaje de Alumnas Aptas: 100.00%
-Porcentaje de Alumnos Aptos: 100.00%</code></pre>
+Porcentaje de Candidatas Aptas: 50.00%
+Porcentaje de Candidatos Aptos: 50.00%</code></pre>
           </section>
           
           <aside class="exercise-sidebar">

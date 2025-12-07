@@ -171,133 +171,96 @@
           <section class="exercise-main">
             <h3>Enunciado</h3>
             <p>
-              Se tienen los costos de producción de tres departamentos (dulces, bebidas y conservas), 
-              correspondientes a los 12 meses del año anterior. Construya un programa en Java que 
-              pueda proporcionar la siguiente información:
+              Se tienen los costos de producción de varios departamentos correspondientes a varios meses. 
+              Construya un programa en Java que solicite por consola la cantidad de meses y departamentos, 
+              luego los costos de producción, y finalmente proporcione la siguiente información:
             </p>
             <ul>
-              <li><strong>a)</strong> ¿En qué mes se registró el mayor costo de producción de dulces?</li>
-              <li><strong>b)</strong> Promedio anual de los costos de producción de bebidas.</li>
-              <li><strong>c)</strong> ¿En qué mes se registró el mayor costo de producción en bebidas, y en qué mes el menor costo?</li>
-              <li><strong>d)</strong> ¿Cuál fue el rubro que tuvo el menor costo de producción en diciembre?</li>
+              <li><strong>a)</strong> Mayor costo de producción del departamento 1.</li>
+              <li><strong>b)</strong> Promedio de los costos de producción del departamento 2.</li>
+              <li><strong>c)</strong> Mayor y menor costo de producción en el departamento 2.</li>
+              <li><strong>d)</strong> Cuál fue el departamento con el menor costo en el último mes.</li>
             </ul>
 
             <div class="formula-box">
-              <strong>Datos de entrada:</strong>
-              <p><strong>PROD [1..12,1..3]:</strong> Arreglo bidimensional de tipo real que almacena los costos 
-              de producción de tres departamentos en los 12 meses del año anterior.</p>
-              <p><strong>Columnas:</strong> 1=Dulces, 2=Bebidas, 3=Conservas</p>
-              <p><strong>Filas:</strong> 1-12 representan los meses de enero a diciembre</p>
+              <strong>Datos de entrada (solicitados por consola):</strong>
+              <p><strong>meses:</strong> Cantidad de meses a procesar.</p>
+              <p><strong>deptos:</strong> Cantidad de departamentos.</p>
+              <p><strong>PROD [meses][deptos]:</strong> Arreglo bidimensional de tipo real que almacena los costos 
+              de producción de cada departamento en cada mes.</p>
             </div>
 
             <h3>Explicación del Enunciado</h3>
             <p>
-              <strong>PROD:</strong> Es un arreglo bidimensional de tipo real (matriz), cuyas dimensiones son 
-              12 filas (meses) por 3 columnas (departamentos).
+              <strong>meses:</strong> Se solicita por consola la cantidad de meses a procesar.
             </p>
             <p>
-              <strong>Dulces:</strong> Departamento 1, guarda costos de producción de artículos dulces para cada mes.
+              <strong>deptos:</strong> Se solicita por consola la cantidad de departamentos.
             </p>
             <p>
-              <strong>Bebidas:</strong> Departamento 2, guarda costos de producción de bebidas para cada mes.
+              <strong>PROD:</strong> Es un arreglo bidimensional dinámico de tipo real (matriz), cuyas dimensiones 
+              dependen de los valores ingresados por el usuario. Filas = meses, Columnas = departamentos.
             </p>
             <p>
-              <strong>Conservas:</strong> Departamento 3, guarda costos de producción de conservas para cada mes.
+              Los valores se solicitan por consola para cada combinación de mes y departamento, permitiendo 
+              flexibilidad en el tamaño del arreglo según los datos del usuario.
             </p>
 
             <h3>Requisitos</h3>
             <ul>
-              <li>Utilizar un arreglo bidimensional para almacenar los costos.</li>
-              <li>Usar múltiples ciclos para buscar el mayor costo de dulces.</li>
-              <li>Calcular la suma y el promedio de los costos de bebidas.</li>
-              <li>Encontrar el mayor y menor costo en el departamento de bebidas.</li>
-              <li>Identificar el departamento con el menor costo en diciembre.</li>
-              <li>Mostrar todos los resultados en pantalla.</li>
-              <li>Usar variables auxiliares para almacenar máximos, mínimos y promedios.</li>
+              <li>Solicitar por consola la cantidad de meses y departamentos.</li>
+              <li>Crear un arreglo bidimensional dinámico con las dimensiones ingresadas.</li>
+              <li>Solicitar por consola los costos para cada mes y departamento.</li>
+              <li>Usar ciclos para buscar el mayor costo del departamento 1.</li>
+              <li>Calcular la suma y el promedio de los costos del departamento 2.</li>
+              <li>Encontrar el mayor y menor costo del departamento 2.</li>
+              <li>Identificar el departamento con el menor costo en el último mes.</li>
+              <li>Mostrar todos los resultados en pantalla de forma clara.</li>
+              <li>Utilizar variables auxiliares para almacenar máximos, mínimos y promedios.</li>
             </ul>
 
-            <h3>Tabla de Datos</h3>
+            <h3>Datos de Entrada Dinámicos</h3>
+            <p>
+              El programa solicita por consola:
+            </p>
+            <ol>
+              <li>Cantidad de meses: <em>Variable (ingresada por el usuario)</em></li>
+              <li>Cantidad de departamentos: <em>Variable (ingresada por el usuario)</em></li>
+              <li>Para cada mes y departamento: El costo de producción correspondiente</li>
+            </ol>
+            <p>
+              <strong>Nota:</strong> Los datos se pueden ingresar en tiempo de ejecución, permitiendo procesar 
+              cualquier combinación de meses y departamentos sin necesidad de modificar el código.
+            </p>
+            
+            <h3>Ejemplo de Entrada (Propuesto)</h3>
             <table class="values-table">
               <thead>
                 <tr>
                   <th>Mes</th>
-                  <th>Dulces</th>
-                  <th>Bebidas</th>
-                  <th>Conservas</th>
+                  <th>Departamento 1</th>
+                  <th>Departamento 2</th>
+                  <th>Departamento 3</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1 (Enero)</td>
+                  <td>1</td>
                   <td>1500.00</td>
                   <td>2000.00</td>
                   <td>1800.00</td>
                 </tr>
                 <tr>
-                  <td>2 (Febrero)</td>
+                  <td>2</td>
                   <td>1600.00</td>
                   <td>2100.00</td>
                   <td>1900.00</td>
                 </tr>
                 <tr>
-                  <td>3 (Marzo)</td>
-                  <td>1550.00</td>
-                  <td>2050.00</td>
-                  <td>1850.00</td>
-                </tr>
-                <tr>
-                  <td>4 (Abril)</td>
+                  <td>3</td>
                   <td>1700.00</td>
                   <td>2200.00</td>
                   <td>2000.00</td>
-                </tr>
-                <tr>
-                  <td>5 (Mayo)</td>
-                  <td>1650.00</td>
-                  <td>2150.00</td>
-                  <td>1950.00</td>
-                </tr>
-                <tr>
-                  <td>6 (Junio)</td>
-                  <td>1800.00</td>
-                  <td>2300.00</td>
-                  <td>2100.00</td>
-                </tr>
-                <tr>
-                  <td>7 (Julio)</td>
-                  <td>1900.00</td>
-                  <td>2400.00</td>
-                  <td>2200.00</td>
-                </tr>
-                <tr>
-                  <td>8 (Agosto)</td>
-                  <td>1850.00</td>
-                  <td>2350.00</td>
-                  <td>2150.00</td>
-                </tr>
-                <tr>
-                  <td>9 (Septiembre)</td>
-                  <td>1750.00</td>
-                  <td>2250.00</td>
-                  <td>2050.00</td>
-                </tr>
-                <tr>
-                  <td>10 (Octubre)</td>
-                  <td>1650.00</td>
-                  <td>2150.00</td>
-                  <td>1950.00</td>
-                </tr>
-                <tr>
-                  <td>11 (Noviembre)</td>
-                  <td>1700.00</td>
-                  <td>2200.00</td>
-                  <td>2000.00</td>
-                </tr>
-                <tr>
-                  <td>12 (Diciembre)</td>
-                  <td>1600.00</td>
-                  <td>2100.00</td>
-                  <td>1700.00</td>
                 </tr>
               </tbody>
             </table>
@@ -305,68 +268,38 @@
             <h3>Explicación de Variables</h3>
             <div class="formula-box">
               <ul>
-                <li><strong>I, J:</strong> Variables de tipo entero. Se usan como variables de control de varios ciclos e índices de los arreglos.</li>
-                <li><strong>PROD:</strong> Arreglo bidimensional de tipo real (PROD[1..12,1..3]).</li>
-                <li><strong>MAYDUL:</strong> Variable de tipo real. Almacena el mayor costo de producción de dulces a lo largo del año.</li>
-                <li><strong>MES:</strong> Variable de tipo entero. Almacena el número de mes en el que se registró el mayor costo de dulces.</li>
-                <li><strong>SUM:</strong> Variable de tipo real. Acumula los costos mensuales de bebidas para calcular el promedio anual.</li>
-                <li><strong>PROMEDIO:</strong> Variable de tipo real. Almacena el promedio anual de bebidas (SUM / 12).</li>
-                <li><strong>MESMAY:</strong> Variable de tipo entero. Mes en el que se registró el mayor costo de bebidas.</li>
-                <li><strong>MESMEN:</strong> Variable de tipo entero. Mes en el que se registró el menor costo de bebidas.</li>
-                <li><strong>MAYBEB:</strong> Variable de tipo real. Mayor costo mensual de bebidas.</li>
-                <li><strong>MENBEB:</strong> Variable de tipo real. Menor costo mensual de bebidas.</li>
-                <li><strong>MENOR:</strong> Variable de tipo real. Menor costo de producción en diciembre.</li>
-                <li><strong>DEP:</strong> Variable de tipo entero. Número del departamento con menor costo en diciembre.</li>
+                <li><strong>meses:</strong> Cantidad de meses ingresados por el usuario.</li>
+                <li><strong>deptos:</strong> Cantidad de departamentos ingresados por el usuario.</li>
+                <li><strong>i, j:</strong> Variables de control de ciclos e índices de matriz.</li>
+                <li><strong>PROD[][]:</strong> Matriz dinámica de costos (dimensiones: meses × deptos).</li>
+                <li><strong>MAYDUL:</strong> Mayor costo del departamento 1 (índice 0).</li>
+                <li><strong>MES:</strong> Mes con mayor costo en departamento 1.</li>
+                <li><strong>SUM:</strong> Suma de costos del departamento 2 (índice 1).</li>
+                <li><strong>PROMEDIO:</strong> Promedio: SUM / meses.</li>
+                <li><strong>MESMAY:</strong> Mes con mayor costo en departamento 2.</li>
+                <li><strong>MESMEN:</strong> Mes con menor costo en departamento 2.</li>
+                <li><strong>MAYBEB:</strong> Mayor costo en departamento 2.</li>
+                <li><strong>MENBEB:</strong> Menor costo en departamento 2.</li>
+                <li><strong>MENOR:</strong> Menor costo en el último mes (fila meses-1).</li>
+                <li><strong>DEP:</strong> Departamento con menor costo en último mes.</li>
               </ul>
             </div>
 
-            <h3>Tabla de Pruebas</h3>
-            <table class="values-table">
-              <thead>
-                <tr>
-                  <th>Inciso</th>
-                  <th>Descripción</th>
-                  <th>Resultado Esperado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>a)</td>
-                  <td>Mayor costo de dulces</td>
-                  <td>Mes 7 (Julio): 1900.00</td>
-                </tr>
-                <tr>
-                  <td>b)</td>
-                  <td>Promedio anual de bebidas</td>
-                  <td>2187.50</td>
-                </tr>
-                <tr>
-                  <td>c)</td>
-                  <td>Mayor bebidas</td>
-                  <td>Mes 7 (Julio): 2400.00</td>
-                </tr>
-                <tr>
-                  <td>c)</td>
-                  <td>Menor bebidas</td>
-                  <td>Mes 1 (Enero): 2000.00</td>
-                </tr>
-                <tr>
-                  <td>d)</td>
-                  <td>Menor en diciembre</td>
-                  <td>Depto 1 (Dulces): 1600.00</td>
-                </tr>
-              </tbody>
-            </table>
+            <h3>Resultado Esperado (Ejemplo)</h3>
+            <pre><code class="code-block">===== INCISO A) MAYOR COSTO DEPARTAMENTO 1 =====
+Mes: 7
+Costo: 1900.0
 
-            <h3>Resultado Esperado</h3>
-            <pre><code class="code-block">Se registró el mayor costo de producción de dulces en el mes: 7 (Julio)
+===== INCISO B) PROMEDIO COSTO DEPARTAMENTO 2 =====
+Promedio: 2187.50
 
-Promedio anual de costos de producción de bebidas: 2187.50
+===== INCISO C) MAYOR Y MENOR COSTO DEPARTAMENTO 2 =====
+Mayor: 2400.0 (Mes 7)
+Menor: 2000.0 (Mes 1)
 
-En el mes 7 (Julio), se registró el mayor costo de producción en bebidas: 2400.00
-En el mes 1 (Enero), se registró el menor costo de producción en bebidas: 2000.00
-
-En diciembre, el departamento 1 (Dulces) tuvo el menor costo de producción: 1600.00</code></pre>
+===== INCISO D) MENOR COSTO ÚLTIMO MES =====
+Departamento: 1
+Costo: 1600.0</code></pre>
 
           </section>
           
@@ -374,30 +307,36 @@ En diciembre, el departamento 1 (Dulces) tuvo el menor costo de producción: 160
             <h3>Notas rápidas</h3>
             <p class="note-text">Puntos importantes:</p>
             <ul>
-              <li>Este problema utiliza <span class="highlight">arreglos bidimensionales</span> (matrices).</li>
+              <li>Este problema utiliza <span class="highlight">arreglos bidimensionales dinámicos</span> (matrices).</li>
+              <li>Las dimensiones se definen en tiempo de ejecución según los datos del usuario.</li>
               <li>Se usan <span class="highlight">múltiples ciclos</span> para procesar filas y columnas.</li>
-              <li>Es necesario realizar <span class="highlight">búsquedas de máximos y mínimos</span> en arreglos.</li>
-              <li>Se debe calcular el <span class="highlight">promedio</span> de una columna completa.</li>
-              <li>Es importante guardar tanto el valor como el índice (mes o departamento) cuando se encuentra un máximo o mínimo.</li>
-              <li>Se trabaja con datos de tipo <span class="highlight">real (double)</span> para precisión en dinero.</li>
-              <li>El arreglo tiene estructura fija: 12 meses × 3 departamentos.</li>
+              <li>Es necesario realizar <span class="highlight">búsquedas de máximos y mínimos</span> en el arreglo.</li>
+              <li>Se debe calcular el <span class="highlight">promedio</span> de columnas o filas.</li>
+              <li>Es importante guardar tanto el valor como el índice cuando se encuentra un máximo o mínimo.</li>
+              <li>Se trabaja con datos de tipo <span class="highlight">double</span> para precisión monetaria.</li>
+              <li>El programa solicita datos por consola, no tiene valores hardcodeados.</li>
             </ul>
             
-            <h3>Tip</h3>
+            <h3>Tip - Entrada por Consola</h3>
             <p>
-              Para encontrar máximos y mínimos en una matriz, inicializa la variable con el primer elemento 
-              de la sección a evaluar, luego compara todos los demás con este valor. Cuando encuentres uno mayor 
-              (o menor), actualiza tanto el valor como la posición (índice) para referencia posterior.
+              Usa <code>Scanner</code> para leer:
             </p>
+            <ol>
+              <li>La cantidad de meses: <code>scanner.nextInt()</code></li>
+              <li>La cantidad de departamentos: <code>scanner.nextInt()</code></li>
+              <li>Para cada mes y departamento: El valor de costo con <code>scanner.nextDouble()</code></li>
+            </ol>
+            <p>No olvides cerrar el Scanner: <code>scanner.close()</code></p>
 
-            <h3>Consideración Importante</h3>
+            <h3>Consideración Importante - Dimensiones Dinámicas</h3>
             <p>
-              Los arreglos bidimensionales se pueden recorrer de diferentes formas según la necesidad:
+              Los arreglos dinámicos permiten que el programa sea flexible:
             </p>
             <ul>
-              <li>Por filas: para analizar datos de un mes específico.</li>
-              <li>Por columnas: para analizar datos de un departamento en todos los meses.</li>
-              <li>Elemento específico: PROD[fila][columna] para un mes y departamento particular.</li>
+              <li>Puedes procesar 12 meses × 3 departamentos, o 6 meses × 5 departamentos, etc.</li>
+              <li>Usa las variables <code>meses</code> y <code>deptos</code> en los ciclos: <code>while (i &lt; meses)</code></li>
+              <li>Acceso al último elemento: <code>PROD[meses-1][j]</code> en lugar de <code>PROD[11][j]</code></li>
+              <li>El promedio se calcula como <code>SUM / meses</code>, no como <code>SUM / 12</code></li>
             </ul>
           </aside>
         </div>
