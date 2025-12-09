@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.javatutor.AppTest" time="0.046" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.javatutor.AppTest" time="0.075" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\isaim\OneDrive\Pictures\DENUEVO\App-AppTest\PROBLEMA_5_2_PAG_363\target\test-classes;C:\Users\isaim\OneDrive\Pictures\DENUEVO\App-AppTest\PROBLEMA_5_2_PAG_363\target\classes;C:\Users\isaim\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\isaim\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\isaim\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\isaim\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="java.class.path" value="C:\Users\isaim\OneDrive\Pictures\PAGINAGIT\EjerciciosJava\App-AppTest\PROBLEMA_5_2_PAG_363\target\test-classes;C:\Users\isaim\OneDrive\Pictures\PAGINAGIT\EjerciciosJava\App-AppTest\PROBLEMA_5_2_PAG_363\target\classes;C:\Users\isaim\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\isaim\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\isaim\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\isaim\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -16,9 +16,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25\bin"/>
-    <property name="sun.java.command" value="C:\Users\isaim\AppData\Local\Temp\surefire14168374924910117915\surefirebooter1265792679177922737.jar C:\Users\isaim\AppData\Local\Temp\surefire14168374924910117915 2025-12-06T18-29-24_232-jvmRun1 surefire6707548446197951918tmp surefire_013292346442493260481tmp"/>
+    <property name="sun.java.command" value="C:\Users\isaim\AppData\Local\Temp\surefire9164454508925927310\surefirebooter18432827321818188873.jar C:\Users\isaim\AppData\Local\Temp\surefire9164454508925927310 2025-12-09T16-45-17_190-jvmRun1 surefire13228395105815969154tmp surefire_09287426314348211104tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\isaim\OneDrive\Pictures\DENUEVO\App-AppTest\PROBLEMA_5_2_PAG_363\target\test-classes;C:\Users\isaim\OneDrive\Pictures\DENUEVO\App-AppTest\PROBLEMA_5_2_PAG_363\target\classes;C:\Users\isaim\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\isaim\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\isaim\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\isaim\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\isaim\OneDrive\Pictures\PAGINAGIT\EjerciciosJava\App-AppTest\PROBLEMA_5_2_PAG_363\target\test-classes;C:\Users\isaim\OneDrive\Pictures\PAGINAGIT\EjerciciosJava\App-AppTest\PROBLEMA_5_2_PAG_363\target\classes;C:\Users\isaim\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\isaim\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\isaim\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\isaim\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\isaim\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\isaim\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\isaim"/>
     <property name="user.language" value="en"/>
@@ -26,12 +26,12 @@
     <property name="java.version.date" value="2025-09-16"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-25"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\isaim\OneDrive\Pictures\DENUEVO\App-AppTest\PROBLEMA_5_2_PAG_363"/>
+    <property name="basedir" value="C:\Users\isaim\OneDrive\Pictures\PAGINAGIT\EjerciciosJava\App-AppTest\PROBLEMA_5_2_PAG_363"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\isaim\AppData\Local\Temp\surefire14168374924910117915\surefirebooter1265792679177922737.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\isaim\AppData\Local\Temp\surefire9164454508925927310\surefirebooter18432827321818188873.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25+37-LTS-3491"/>
@@ -46,7 +46,7 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\isaim\AppData\Local\Temp\"/>
     <property name="java.version" value="25"/>
-    <property name="user.dir" value="C:\Users\isaim\OneDrive\Pictures\DENUEVO\App-AppTest\PROBLEMA_5_2_PAG_363"/>
+    <property name="user.dir" value="C:\Users\isaim\OneDrive\Pictures\PAGINAGIT\EjerciciosJava\App-AppTest\PROBLEMA_5_2_PAG_363"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.language.format" value="es"/>
@@ -61,22 +61,20 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testVentasDiciembreCarlos" classname="com.javatutor.AppTest" time="0.025"/>
-  <testcase name="testIncrementoSalarioJuan" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testMayorVentaDelAnoJuan" classname="com.javatutor.AppTest" time="0.001"/>
-  <testcase name="testSumaVentasJuan" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testSumaVentasCarlos" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testVentasDiciembreMaria" classname="com.javatutor.AppTest" time="0.001"/>
-  <testcase name="testEmpleadosBajosEnDiciembre" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testVentasDiciembreAna" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testCadaEmpleadoTiene12MesesVentas" classname="com.javatutor.AppTest" time="0.001"/>
-  <testcase name="testSumaVentasMaria" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testNingunEmpleadoSuperaMillon" classname="com.javatutor.AppTest" time="0.001"/>
+  <testcase name="testVentasDiciembreCarlos" classname="com.javatutor.AppTest" time="0.027"/>
+  <testcase name="testIncrementoSalarioJuan" classname="com.javatutor.AppTest" time="0.005"/>
+  <testcase name="testMayorVentaDelAnoJuan" classname="com.javatutor.AppTest" time="0.004"/>
+  <testcase name="testSumaVentasJuan" classname="com.javatutor.AppTest" time="0.003"/>
+  <testcase name="testSumaVentasCarlos" classname="com.javatutor.AppTest" time="0.004"/>
+  <testcase name="testVentasDiciembreMaria" classname="com.javatutor.AppTest" time="0.002"/>
+  <testcase name="testEmpleadosBajosEnDiciembre" classname="com.javatutor.AppTest" time="0.001"/>
+  <testcase name="testVentasDiciembreAna" classname="com.javatutor.AppTest" time="0.001"/>
+  <testcase name="testSumaVentasMaria" classname="com.javatutor.AppTest" time="0.002"/>
+  <testcase name="testNingunEmpleadoSuperaMillon" classname="com.javatutor.AppTest" time="0.002"/>
   <testcase name="testTodosLosEmpleadosTienenDatos" classname="com.javatutor.AppTest" time="0.001"/>
-  <testcase name="testEmpleadoAnaVentasBajasDiciembre" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testEmpleadoMayoresVentas" classname="com.javatutor.AppTest" time="0.001"/>
-  <testcase name="testArregloParaleloConsistencia" classname="com.javatutor.AppTest" time="0"/>
+  <testcase name="testEmpleadoAnaVentasBajasDiciembre" classname="com.javatutor.AppTest" time="0.001"/>
+  <testcase name="testEmpleadoMayoresVentas" classname="com.javatutor.AppTest" time="0.002"/>
   <testcase name="testIncrementoBuscaEmpleadosSuperior1Millon" classname="com.javatutor.AppTest" time="0.001"/>
-  <testcase name="testSumaVentasAna" classname="com.javatutor.AppTest" time="0"/>
-  <testcase name="testVentasDiciembreJuan" classname="com.javatutor.AppTest" time="0"/>
+  <testcase name="testSumaVentasAna" classname="com.javatutor.AppTest" time="0.002"/>
+  <testcase name="testVentasDiciembreJuan" classname="com.javatutor.AppTest" time="0.002"/>
 </testsuite>
