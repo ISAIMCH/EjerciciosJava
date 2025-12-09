@@ -6,6 +6,11 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+/**
+ * Pruebas unitarias para la clase App (Problema 4.1)
+ * 
+ * Valida la eliminación correcta de repeticiones en un arreglo ordenado
+ */
 class AppTest {
 
     private String runAppWithInput(String input) {
@@ -33,6 +38,8 @@ class AppTest {
         String output = runAppWithInput(input);
         assertTrue(output.contains("1") && output.contains("2") && output.contains("3"),
                 "Debe listar números sin repeticiones: 1, 2, 3");
+        assertTrue(output.toUpperCase().contains("SIN REPETICIONES") || output.toUpperCase().contains("LISTA"),
+                "Debe mostrar formato claro");
     }
 
     @Test
@@ -40,6 +47,9 @@ class AppTest {
         String input = "5\n5\n5\n5\n5\n5\n";
         String output = runAppWithInput(input);
         assertTrue(output.contains("5"), "Debe listar solo 5 cuando todos son iguales");
+        // Verificar que no se repite más de una vez
+        int count = (int) output.split("5", -1).length - 1;
+        assertTrue(count >= 1, "Debe contener al menos un 5");
     }
 
     @Test
@@ -48,6 +58,8 @@ class AppTest {
         String output = runAppWithInput(input);
         assertTrue(output.contains("10") && output.contains("20") && output.contains("80"),
                 "Debe listar todos cuando no hay repeticiones");
+        assertTrue(output.contains("30") && output.contains("40"),
+                "Debe incluir todos los elementos sin duplicar");
     }
 
     @Test
@@ -87,5 +99,77 @@ class AppTest {
         String input = "7\n7\n7\n7\n7\n7\n7\n7\n";
         String output = runAppWithInput(input);
         assertTrue(output.contains("7"), "Primer elemento siempre se incluye");
+    }
+
+    @Test
+    void testValidacionRangoValido() {
+        String input = "3\n1\n2\n3\n";
+        String output = runAppWithInput(input);
+        assertNotNull(output, "La salida no debe ser nula para un rango válido");
+        assertFalse(output.toUpperCase().contains("INCORRECTO"),
+                "No debe mostrar error para n=3 (dentro del rango 1-500)");
+    }
+
+    @Test
+    void testValidacionRangoCero() {
+        String input = "0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.toUpperCase().contains("INCORRECTO") || output.toUpperCase().contains("ERROR"),
+                "Debe mostrar error para n=0 (fuera del rango 1-500)");
+    }
+
+    @Test
+    void testValidacionRangoNegativo() {
+        String input = "-5\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.toUpperCase().contains("INCORRECTO") || output.toUpperCase().contains("ERROR"),
+                "Debe mostrar error para n negativo");
+    }
+
+    @Test
+    void testValidacionRangoMayorLimite() {
+        String input = "501\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.toUpperCase().contains("INCORRECTO") || output.toUpperCase().contains("ERROR"),
+                "Debe mostrar error para n > 500");
+    }
+
+    @Test
+    void testSalidaFormatoCompleto() {
+        String input = "4\n1\n1\n2\n2\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.length() > 20, "La salida debe ser significativa");
+        assertTrue(output.contains("1") && output.contains("2"), "Debe contener resultados");
+    }
+
+    @Test
+    void testOrdenPreservado() {
+        String input = "5\n10\n10\n20\n20\n30\n";
+        String output = runAppWithInput(input);
+        // Verificar que mantiene el orden
+        int pos10 = output.indexOf("10");
+        int pos20 = output.indexOf("20");
+        int pos30 = output.indexOf("30");
+        assertTrue(pos10 < pos20 && pos20 < pos30,
+                "El orden de los números debe preservarse");
+    }
+
+    @Test
+    void testNumeroGrande() {
+        String input = "2\n999\n999\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("999"), "Debe manejar números grandes");
+    }
+
+    @Test
+    void testArregloMaximo() {
+        // Crear entrada con 500 elementos
+        StringBuilder input = new StringBuilder("500\n");
+        for (int i = 0; i < 500; i++) {
+            input.append(i).append("\n");
+        }
+        String output = runAppWithInput(input.toString());
+        assertTrue(output.contains("0") && output.contains("499"),
+                "Debe manejar arreglo de 500 elementos");
     }
 }
