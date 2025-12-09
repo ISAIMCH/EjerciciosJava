@@ -31,7 +31,7 @@ public class App {
         seg = dias * 24 * 60 * 60;
 
         // Mostrar resultado
-        System.out.println("\n=== RESULTADO ===");
+        System.out.println("\nRESULTADO:");
         System.out.printf("En %d días, hay: SEG: \"%d\" segundos.%n", dias, seg);
 
         // Cerrar scanner
