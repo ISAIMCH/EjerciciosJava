@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    PLANTILLA DE POM.XML PARA NUEVOS EJERCICIOS
+    
+    Copia este contenido a cada carpeta de ejercicio y actualiza:
+    1. El nombre del artifactId (ej: ejemplo-3-3-pag-113)
+    2. El nombre del proyecto en <name>
+    3. La descripción en <description>
+    
+    El resto lo hereda automáticamente del POM padre.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.javatutor</groupId>
+        <artifactId>app-apptest</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- CAMBIAR: Nombre único del artifactId para este ejercicio -->
+    <artifactId>ejemplo-x-x-pag-xxx</artifactId>
+    
+    <!-- CAMBIAR: Nombre descriptivo del ejercicio -->
+    <name>Ejemplo/Problema X.X - Descripción del Ejercicio</name>
+    
+    <!-- CAMBIAR: Descripción breve -->
+    <description>Página XXX - Descripción detallada del ejercicio</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.javatutor.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

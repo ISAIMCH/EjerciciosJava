@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.javatutor</groupId>
+        <artifactId>app-apptest</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>problema-3-14-pag-154</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Problema 3.14 - Ventas de Boletos en Estadio</name>
+    <description>
+        Problema 3.14: Cálculo de ventas de boletos en un estadio con 5 localidades diferentes.
+        Utiliza ciclos while anidados para procesar múltiples ventas y calcular recaudación total.
+        Página 154 - Estructuras Repetitivas Anidadas.
+    </description>
+
+</project>

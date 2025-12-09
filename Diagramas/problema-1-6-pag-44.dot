@@ -6,7 +6,7 @@ digraph Problema_1_6_PAG_44 {
     inicio [shape=ellipse label="Inicio" style=filled fillcolor="#4472C4" fontcolor=white];
     
     // Entrada de datos (Rectángulos - box)
-    entrada [shape=box label="Leer DIAS" style=filled fillcolor="#4472C4" fontcolor=white];
+    entrada [shape=parallelogram label="Leer DIAS" style=filled fillcolor="#4472C4" fontcolor=white];
     
     // Proceso (Rectángulo - box)
     proc [shape=box label="SEG = DIAS * 24 * 60 * 60" style=filled fillcolor="#4472C4" fontcolor=white];

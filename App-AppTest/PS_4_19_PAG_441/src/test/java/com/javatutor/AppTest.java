@@ -1,0 +1,124 @@
+package com.javatutor;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.*;
+
+class AppTest {
+
+    private String runAppWithInput(String input) {
+        ByteArrayInputStream inContent = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setIn(inContent);
+        System.setOut(new PrintStream(outContent));
+        try {
+            App.main(new String[] {});
+        } catch (Exception e) {
+            fail("El programa lanzó una excepción: " + e.getMessage());
+        }
+        System.setIn(System.in);
+        System.setOut(System.out);
+        return outContent.toString();
+    }
+
+    @Test
+    void testDosAlumnosDosExamenes() {
+        String input = "2\n2\n8.0\n7.0\n6.0\n8.0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1: 7.00"));
+        assertTrue(output.contains("Examen 2: 7.50"));
+    }
+
+    @Test
+    void testTresAlumnosTresExamenes() {
+        String input = "3\n3\n8.0\n7.0\n9.0\n6.0\n8.0\n7.0\n10.0\n9.0\n8.0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1: 8.00"));
+        assertTrue(output.contains("Alumno 1: 8.00"));
+    }
+
+    @Test
+    void testPromediosPorExamen() {
+        String input = "2\n3\n9.0\n8.0\n7.0\n9.0\n8.0\n7.0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Promedios por Examen:"));
+        assertTrue(output.contains("Examen 1: 9.00"));
+        assertTrue(output.contains("Examen 2: 8.00"));
+        assertTrue(output.contains("Examen 3: 7.00"));
+    }
+
+    @Test
+    void testPromediosPorAlumno() {
+        String input = "3\n2\n10.0\n8.0\n6.0\n8.0\n8.0\n8.0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Promedios por Alumno:"));
+        assertTrue(output.contains("Alumno 1: 9.00"));
+        assertTrue(output.contains("Alumno 2: 7.00"));
+        assertTrue(output.contains("Alumno 3: 8.00"));
+    }
+
+    @Test
+    void testExamenMaximoCorrect() {
+        String input = "3\n3\n7.0\n8.0\n9.0\n7.0\n8.0\n9.0\n7.0\n8.0\n9.0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen con Mayor Promedio:"));
+        assertTrue(output.contains("Examen: 3"));
+        assertTrue(output.contains("Promedio: 9.00"));
+    }
+
+    @Test
+    void testValoresIguales() {
+        String input = "3\n3\n7.5\n7.5\n7.5\n7.5\n7.5\n7.5\n7.5\n7.5\n7.5\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1: 7.50"));
+        assertTrue(output.contains("Alumno 1: 7.50"));
+    }
+
+    @Test
+    void testUnAlumnoVariosExamenes() {
+        String input = "1\n5\n10.0\n9.0\n8.0\n7.0\n6.0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1: 10.00"));
+        assertTrue(output.contains("Examen 5: 6.00"));
+        assertTrue(output.contains("Alumno 1: 8.00"));
+    }
+
+    @Test
+    void testVariosAlumnosUnExamen() {
+        String input = "5\n1\n10.0\n9.0\n8.0\n7.0\n6.0\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1: 8.00"));
+        assertTrue(output.contains("Alumno 1: 10.00"));
+        assertTrue(output.contains("Alumno 5: 6.00"));
+    }
+
+    @Test
+    void testValoresDecimales() {
+        String input = "2\n2\n7.33\n8.66\n7.34\n8.67\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1"));
+        assertTrue(output.contains("Examen 2"));
+    }
+
+    @Test
+    void testValoresAltos() {
+        String input = "2\n3\n9.8\n9.9\n10.0\n9.7\n9.8\n9.9\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 3: 9.95"));
+    }
+
+    @Test
+    void testValoresBajos() {
+        String input = "2\n3\n1.0\n2.0\n3.0\n1.5\n2.5\n3.5\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1: 1.25"));
+    }
+
+    @Test
+    void testMatrizGrande() {
+        String input = "10\n4\n9.0\n8.5\n8.0\n7.5\n8.9\n8.4\n7.9\n7.4\n8.8\n8.3\n7.8\n7.3\n8.7\n8.2\n7.7\n7.2\n8.6\n8.1\n7.6\n7.1\n8.5\n8.0\n7.5\n7.0\n8.4\n7.9\n7.4\n6.9\n8.3\n7.8\n7.3\n6.8\n8.2\n7.7\n7.2\n6.7\n8.1\n7.6\n7.1\n6.6\n";
+        String output = runAppWithInput(input);
+        assertTrue(output.contains("Examen 1"));
+        assertTrue(output.contains("Alumno 1"));
+    }
+}
