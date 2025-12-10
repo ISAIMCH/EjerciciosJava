@@ -5,17 +5,17 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
         System.out.print("Ingrese la cantidad de candidatos: ");
         int n = scanner.nextInt();
         scanner.nextLine();
-        
+
         String[] nombres = new String[n];
         char[] sexos = new char[n];
         int[] edades = new int[n];
         int[] pesos = new int[n];
         double[] alturas = new double[n];
-        
+
         for (int i = 0; i < n; i++) {
             System.out.print("Ingrese el nombre del candidato " + (i + 1) + ": ");
             nombres[i] = scanner.nextLine();
@@ -29,14 +29,14 @@ public class App {
             alturas[i] = scanner.nextDouble();
             scanner.nextLine();
         }
-        
+
         scanner.close();
-        
+
         int aptasF = 0;
         int aptosM = 0;
         int totalF = 0;
         int totalM = 0;
-        
+
         System.out.println("\n=== RESULTADOS ===\n");
         System.out.println("===== CANDIDATAS APTAS PARA BÁSQUET =====");
         for (int i = 0; i < n; i++) {
@@ -48,7 +48,7 @@ public class App {
                 }
             }
         }
-        
+
         System.out.println("\n===== CANDIDATOS APTOS PARA BÁSQUET =====");
         for (int i = 0; i < n; i++) {
             if (sexos[i] == 'M') {
@@ -59,10 +59,10 @@ public class App {
                 }
             }
         }
-        
+
         double porcF = totalF > 0 ? (aptasF * 100.0) / totalF : 0;
         double porcM = totalM > 0 ? (aptosM * 100.0) / totalM : 0;
-        
+
         System.out.printf("\nPorcentaje de Candidatas Aptas: %.2f%%%n", porcF);
         System.out.printf("Porcentaje de Candidatos Aptos: %.2f%%%n", porcM);
     }
