@@ -5,7 +5,7 @@ digraph Problema3_14 {
 
     // Nodos principales
     inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
-    leer_precios [shape=box, label="Leer precios\nP1, P2, P3, P4, P5", fillcolor="#B3E5FC"];
+    leer_precios [shape=parallelogram, label="Leer precios\nP1, P2, P3, P4, P5", fillcolor="#B3E5FC"];
     inicializar [shape=box, label="AP1=0, AP2=0, AP3=0\nAP4=0, AP5=0\nRECAU=0", fillcolor="#B3E5FC"];
     
     // Ciclo externo WHILE

@@ -6,7 +6,7 @@ digraph Problema_2_1_PAG_77 {
     inicio [shape=ellipse label="Inicio" style=filled fillcolor="#4472C4" fontcolor=white];
     
     // Entrada de datos (Rectángulos - box)
-    entrada [shape=box label="Leer N" style=filled fillcolor="#4472C4" fontcolor=white];
+    entrada [shape=parallelogram label="Leer N" style=filled fillcolor="#4472C4" fontcolor=white];
     
     // Decisión (Rombo - diamond)
     decision [shape=diamond label="N > 0?" style=filled fillcolor="#FFC000" fontcolor=black];

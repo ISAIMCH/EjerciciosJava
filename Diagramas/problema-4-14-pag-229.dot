@@ -7,8 +7,8 @@ digraph Problema4_14 {
     inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
     
     // Entrada de datos
-    entrada_meses [shape=box, label="LEER meses", fillcolor="#B3E5FC"];
-    entrada_deptos [shape=box, label="LEER deptos", fillcolor="#B3E5FC"];
+    entrada_meses [shape=parallelogram, label="LEER meses", fillcolor="#B3E5FC"];
+    entrada_deptos [shape=parallelogram, label="LEER deptos", fillcolor="#B3E5FC"];
     crear_matriz [shape=box, label="CREAR PROD[meses][deptos]", fillcolor="#B3E5FC"];
     entrada_datos [shape=box, label="PARA I=0 HASTA meses-1:\n  PARA J=0 HASTA deptos-1:\n    LEER PROD[I][J]", fillcolor="#B3E5FC"];
     

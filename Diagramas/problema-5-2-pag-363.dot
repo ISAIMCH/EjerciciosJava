@@ -7,7 +7,7 @@ digraph Problema5_2 {
     inicio [shape=ellipse, label="Inicio", fillcolor="#4A90E2"];
     
     // Entrada de datos
-    entrada_n [shape=box, label="LEER N\n(Número de empleados)", fillcolor="#B3E5FC"];
+    entrada_n [shape=parallelogram, label="LEER N\n(Número de empleados)", fillcolor="#B3E5FC"];
     entrada_empleados [shape=box, label="PARA I = 0 HASTA N-1:\n  LEER número[I]\n  LEER nombre[I]\n  LEER salario[I]\n  PARA J = 0 HASTA 11:\n    LEER ventas[I][J]", fillcolor="#B3E5FC"];
     
     // Inciso a) - Empleado con mayores ventas
